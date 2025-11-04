@@ -3,18 +3,17 @@ on:
   push:
     branches:
       - main
-      - 'sprint*'
+      - dev
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
-      - 'sprint*'
+      - dev
 
 jobs:
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main' || startsWith(github.ref_name, 'sprint')
     steps:
       - uses: actions/checkout@v4
         with:
