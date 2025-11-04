@@ -22,4 +22,5 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
+          # NOTE: The SONAR_TOKEN secret must be configured in the repository settings for this workflow to work.
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
