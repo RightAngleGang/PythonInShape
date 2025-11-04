@@ -16,7 +16,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ## **Rôles**
 
 - Angelo est `SCRUM Master`, il doit rédiger le rapport avec les différents artefacts.
-- Corentin, Arthur, Colin et Théo sont développeurs.
+- Arthur, Colin et Théo sont développeurs.
 
 <!--pandoc README_sprint1.md -o README_sprint1.pdf --pdf-engine=xelatex-->
 
