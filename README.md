@@ -11,7 +11,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 - Théo Torres
 
 **lien vers Github**
-[README Sprint 4](https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md)
+[README Sprint 1][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
 
 ## **Rôles**
 
@@ -22,14 +22,6 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 # **Product Backlog**
 
-- Menu menu au début de l’exécution du système afin de choisir certains PDFs à parser au lancement.  
-- Récupérer la section introduction.
-- Récupérer la section corps.
-- Récupérer la section discussion. 
-- Récupérer la section conclusion. 
-- Supprimer certaines redondances dans les fichiers de code.
-- Améliorer les fonctionnalités du code.
-- Réaliser les artefacts compris dans le conteneur de ce sprint 4.
 
 # **Sprint Backlog**
 
@@ -37,40 +29,38 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 # **Poker planning**
 
-# **Dailly Sprint 04/11/25**
-
-# **mêlée**
-
+# **Daily Sprint 04/11/25**
 
 # **Revu Sprint (Travail de chaque menebre de la `SCRUM Team`) **
 
 ## _Consignes pour le compte rendu des développeurs_ :
 
-- Déposez votre compte rendu au plus tard le mercredi 14/05/2025 à 16h sur la branche 4.
-- Fournir AU MOINS une image de l’avancement par fonctionnalité par développeur.
-- Votre compte rendu doit comporter une analyse de votre développement, les aspects positifs, négatifs, limitations… Vous pourrez vous baser sur le squelette pour vous guider si nécéssaire.
-- Indiquer quel jour vous avez fini chaque fonctionnalité !
+- Remplir votre revu de sprint, vous êtes libre de changer l'organisation définie par défaut, ce n'est qu'une suggestion.
+- Remplir votre retrospective de sprint.
+- Creer pour chaque feature une branche **Sprint*X*-feat-*nom_de_vote_feature*** ou bien **Sprint*X*-scrum**.
+- Penser à mettre à jour vos issues/tickets dans *Project*.
 
 ---
 
 ## 1. **Angelo Adragna** :
 
-- Les backlogs doivent être réalisés en premier lieu, lors de la première réunion, afin de répartir les tâches entre chaque personne.
-- La réunion a permis d'établir la liste de questions pour le client, afin d'obtenir davantage de détails et de spécifications.
-- Le Burndown se termine à la fin du sprint 4.
-- La rédaction se fait au fil du sprint.
-- Création d'un squelette de rendu pour facilier la mise en commun du travail de chacun. Je propose donc un modèle en raison du manque de détails dans les productions personnelles des développeurs.
-- Médiation et conseils aux développeurs.
+### **details du travail effectué lors du sprint**
+
+### **Exemples d'utilisation:**
+
+### **analyse du travail effectué lors du sprint**
+
+### **Remarques**
 
 ---
 
 ## 2. **Arthur Buren** :
    
-### **details du code rédigé lors du sprint**
+### **details du travail effectué lors du sprint**
 
 ### **Exemples d'utilisation:**
 
-### **analyse du code rédigé lors du sprint**
+### **analyse du travail effectué lors du sprint**
 
 ### **Remarques**
 
@@ -79,41 +69,30 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 ## 3. **Colin Palazzetti Rubera** :
     
-### **details du code rédigé lors du sprint**
+### **details du travail effectué lors du sprint**
 
 ### **Exemples d'utilisation:**
 
-### **analyse du code rédigé lors du sprint**
+### **analyse du travail effectué lors du sprint**
 
 ### **Remarques**
 
 ---
 
-## 3. **Colin Palazzetti Rubera** :
+
+## 4. **Théo Torres** :
    
-### **details du code rédigé lors du sprint**
+### **details du travail effectué lors du sprint**
 
 ### **Exemples d'utilisation:**
 
-### **analyse du code rédigé lors du sprint**
+### **analyse du travail effectué lors du sprint**
 
 ### **Remarques**
 
 ---
 
-## 3. **Théo Torres** :
-   
-### **details du code rédigé lors du sprint**
-
-### **Exemples d'utilisation:**
-
-### **analyse du code rédigé lors du sprint**
-
-### **Remarques**
-
----
-
-# ** Rétrospective Sprint 4 (Retour sur le travail effectué)**
+# ** Rétrospective (Retour sur le travail effectué)**
 ## 1. **Angelo Adragna** 
 ### **Ce que j'ai mis en place**
 
