@@ -150,6 +150,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 ### **Ce qu’on doit améliorer**
 
+---
 
 ## 5. **Conclusion Global** :
 
