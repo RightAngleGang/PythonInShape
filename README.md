@@ -31,7 +31,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 # **Daily Sprint 04/11/25**
 
-# **Revu Sprint (Travail de chaque menebre de la `SCRUM Team`) **
+# **Revu Sprint (Travail de chaque menebre de la `SCRUM Team`)**
 
 ## _Consignes pour le compte rendu des développeurs_ :
 
