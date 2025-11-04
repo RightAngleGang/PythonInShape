@@ -71,13 +71,21 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ### **Exemples d'utilisation:**
 
 ### **analyse du code rédigé lors du sprint**
-#### **Pistes d'amélioration**
 
-#### **Analyse de performances**
+### **Remarques**
 
-#### **Remarques**
 
-### **Dates clés :**
+---
+
+## 3. **Colin Palazzetti Rubera** :
+    
+### **details du code rédigé lors du sprint**
+
+### **Exemples d'utilisation:**
+
+### **analyse du code rédigé lors du sprint**
+
+### **Remarques**
 
 ---
 
@@ -88,30 +96,8 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ### **Exemples d'utilisation:**
 
 ### **analyse du code rédigé lors du sprint**
-#### **Pistes d'amélioration**
 
-#### **Analyse de performances**
-
-#### **Remarques**
-
-### **Dates clés :**
-
----
-
-## 3. **Colin Palazzetti Rubera** :
-   
-### **details du code rédigé lors du sprint**
-
-### **Exemples d'utilisation:**
-
-### **analyse du code rédigé lors du sprint**
-#### **Pistes d'amélioration**
-
-#### **Analyse de performances**
-
-#### **Remarques**
-
-### **Dates clés :**
+### **Remarques**
 
 ---
 
@@ -122,13 +108,8 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ### **Exemples d'utilisation:**
 
 ### **analyse du code rédigé lors du sprint**
-#### **Pistes d'amélioration**
 
-#### **Analyse de performances**
-
-#### **Remarques**
-
-### **Dates clés :**
+### **Remarques**
 
 ---
 
