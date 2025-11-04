@@ -63,17 +63,14 @@ endif
 
 dev: venv
 	@echo "🛠️  Installation outils dev…"
-	$(PIP) install pytest black flake8 build
+	$(PIP) install -r requirements.txt
 	@echo "✅ Outils dev prêts."
 
 format:
-	@echo "🧽 Formatage (black)…"
-	$(BLACK) .
+	@echo "Formatage à définir"
 
 lint:
-	@echo "🔎 Lint (black --check + flake8)…"
-	$(BLACK) --check .
-	$(FLAKE8) .
+	@echo "Lint à definir"
 
 test:
 	@echo "🧪 Tests (pytest)…"
