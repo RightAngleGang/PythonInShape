@@ -25,7 +25,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 # **Sprint Backlog**
 
-# **Definition of Done"**
+# **Definition of Done**
 
 # **Poker planning**
 
