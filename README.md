@@ -1,7 +1,7 @@
 # PythonInShape
 CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
-# Sprint 4
+# Sprint 1
 
 **Auteurs : M1 IA Informatique**
 
