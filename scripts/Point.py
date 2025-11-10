@@ -1,5 +1,4 @@
 
-from Shape import Shape
 
 class Point():
     """Point dans un espace 2D"""
