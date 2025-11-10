@@ -24,37 +24,33 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 1. Créer et afficher un points dans un espace 2D (flottants) avec un retour de son nom
 2. Créer et afficher un polygone quelconque de N points (choisis) dans un espace 2D
-4. Calculer et afficher la distance euclidienne 2D entre 2 points
-3. Afficher la liste des formes crées (points + forme)
-5. Créer un menu textuel
-6. Créer et afficher un points dans un espace 3D (flottants) avec un retour de son nom
-7. Créer et afficher un polygone quelconque de N points (choisis) dans un espace 3D
-8. Calculer et afficher la distance euclidienne 3D entre 2 points
-9. Créer et afficher un carré en 2D
-10. Créer et afficher un triangle en 2D
-11. Créer et afficher un rectangle en 2D
-12. Créer et afficher un cercle en 2D
-13. Créer et afficher un segment en 2D
-9. Créer et afficher un carré en 3D
-10. Créer et afficher un triangle en 3D
-11. Créer et afficher un rectangle en 3D
-12. Créer et afficher un cercle en 3D
-13. Créer et afficher un segment en 3D
-14. Créer et afficher un cone
-10. Créer et afficher une pyramide
-11. Créer et afficher un pave
-12. Créer et afficher un cube
-13. Créer et afficher une sphere
-13. Éditer les points (suppression, translation, changement de base ?) 
-14. Éditer les formes (suppression, translation)  
-15. Appartenance de forme et intersection d’espace  
-16. Terminal -> déclarer + calcul (distance, volume, périmètre, surface)  
-17. Menu terminal  
-18. Que dans le terminal  
-19. Import / Export des points  
-20. Export sur R  
-21. Affichage web ou export Three.js  
-22. User peut ajouter des polygones quelconques
+3. Calculer et afficher la distance euclidienne 2D entre 2 points
+4. Afficher la liste des formes crées (points + forme)
+5. Créer un menu textuel dans le terminal
+6. Créer et afficher un carré en 2D
+7. Créer et afficher un triangle en 2D
+8. Créer et afficher un rectangle en 2D
+9. Créer et afficher un cercle en 2D
+10. Créer et afficher un segment en 2D
+11. Nommage automatique des points à la création de forme
+12. Éditer les points (suppression, translation, changement de base ?) 
+13. Éditer les formes (suppression, translation)  
+14. Créer et afficher un points dans un espace 3D (flottants) avec un retour de son nom
+15. Créer et afficher un polygone quelconque de N points (choisis) dans un espace 3D
+16. Calculer et afficher la distance euclidienne 3D entre 2 points
+17. Créer et afficher un carré en 3D
+18. Créer et afficher un triangle en 3D
+19. Créer et afficher un rectangle en 3D
+20. Créer et afficher un cercle en 3D
+21. Créer et afficher un segment en 3D
+22. Créer et afficher un cone
+23. Créer et afficher une pyramide
+24. Créer et afficher un pave
+25. Créer et afficher un cube
+26. Créer et afficher une sphere
+27. Affichage web ou export Three.js  
+28. Appartenance de forme et intersection d’espace  
+29. Import / Export des points (sur R potentiellement)  
 
 ---
 
