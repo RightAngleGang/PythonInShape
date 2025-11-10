@@ -7,6 +7,9 @@ class ShapeManager:
 
     def __init__(self):
         self.shapes = []
+    
+    def __str__(self):
+        pass
 
     def add_shape(self, shape: Shape):
         self.shapes.append(shape)
@@ -15,3 +18,17 @@ class ShapeManager:
         """Retourne la liste des shapes"""
         return self.shapes
     
+    def number_of_shapes(self) -> int:
+        """Retourne le nombre de shapes"""
+        return len(self.shapes)
+        
+    def remove_shape(self, shape: Shape):
+        """Supprime une forme"""
+        self.shapes.remove(shape)
+        
+    def find_shape_by_name(self, name: str) -> Shape | None:
+        """Recherche une forme par son nom"""
+        for shape in self.shapes:
+            if shape.nom == name:
+                return shape
+        return None

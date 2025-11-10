@@ -8,5 +8,8 @@ class Polygon(Shape):
         super().__init__(nom)
         self.points = []
 
+    def __str__(self):
+        pass
+
     def add_point(self, point: Point):
         self.points.append(point)

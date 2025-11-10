@@ -8,6 +8,9 @@ class PointManager:
     def __init__(self):
         self.points = []
 
+    def __str__(self):
+        pass
+
     def add_point(self, point: Point):
         self.points.append(point)
         
@@ -15,6 +18,22 @@ class PointManager:
         """Retourne la liste des points"""
         return self.points
     
+    def number_of_points(self) -> int:
+        """Retourne le nombre de points"""
+        return len(self.points)
+
+    def remove_point(self, point: Point):
+        """Supprime un point"""
+        self.points.remove(point)
+
+    def find_point_by_name(self, name: str) -> Point | None:
+        """Recherche un point par son nom"""
+        for point in self.points:
+            if point.nom == name:
+                return point
+        return None
+
+
     def list_points(self):
         """Liste tous les points dans l'espace"""
         for point in self.points:
