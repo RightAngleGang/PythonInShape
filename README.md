@@ -20,22 +20,6 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 <!--pandoc README_sprint1.md -o README_sprint1.pdf --pdf-engine=xelatex-->
 
-# **Sprint Review (Et planning)**
-
-Sprint S1 était principalement un sprint d’initialisation technique.
-
-Travail réalisé pendant ce sprint :
-- Mise en place de l’organisation GitHub
-- Création et configuration de l’environnement de développement
-- Mise en place de SonarQube (qualité / dette technique / couverture)
-- Écriture des premiers tests unitaires (base du futur TDD)
-
-Livrable du sprint : infrastructure stable + pipeline qualité ready  
-Les fonctionnalités console 2D commenceront réellement à être implémentées au Sprint 2.
-
-
----
-
 # **Product Backlog**
 
 1. User peut définir les points  
@@ -56,77 +40,101 @@ Les fonctionnalités console 2D commenceront réellement à être implémentées
 16. Affichage web ou export Three.js  
 17. User peut ajouter des polygones quelconques
 
-
 ---
 
 # **Sprint Backlog — S1 (04/11/25)**
 
-**Objectif Sprint** : construire l’infrastructure du projet et l’environnement qualité.
-
-Items du Sprint :
-
-- Initialisation organisation GitHub commune  
-- Mise en place de SonarQube qualité + règles + intégration  
-- Création et configuration de l’environnement de développement  
-- Écriture des premiers tests unitaires  
-- Préparation structure future console (sans implémentation fonctionnelle)
-
-**NOTE** : Pas de features 2D User dans ce sprint → tout l’effort était préparatoire.
-
+- Créer un points dans un espace 2D (flottants) avec un retour de son nom
+- Définir des polygones quelconques de N points (choisis) dans un espace 2D 
+- voir la liste des ibjets crées (points + forme)
+- Definir la distance euclidienne entre 2 points
+- Affichage de l'objet après sa création
+- Creer un menu textuel
 
 ---
 
-# **Use Case — Sprint S1**
-
-Pas de Use Case user final encore implémenté.  
-Le Sprint S1 se concentrait sur “Enable” → préparer les futurs UCs.
-
-
+# **User Story**
+- Depuis un menu un utilisateur choisi l'option creeation de points et donne sa coordonnée x.0 ; y.0
+- Depuis un menu un utilisateur choisi l'option creeation de polygone :
+     - Il choisi le nombre de points
+     - Pour chaque il peut soit indiqué le nom d'un point existant (exemple p0) ou indiquer ses coordonnées  x.0;y.0
+- Depuis un menu un utilisateur choisi l'option 3 pour afficher tous l'espace f0: p0(x.0;y.0); p1(x.0;y.0) puis à la ligne pour chaque objet
+- Depuis un menu textuelle l'utilisateur choisi une option pour calculer la distance en 2 points déjà existant depuis leur nom : p0;p1
+- Une fois un objet crééer par un utilisateur, il s'affiche dans le menu textuel f0: p0(x.0;y.0); p1(x.0;y.0) ou  p0(x.0;y.0)
+  
 ---
 
-# **Definition of Done**
+# Definition of Done
 
-- Pipeline qualité opérationnel  
-- Environnement reproductible et fonctionnel  
-- SonarQube actif + inspecte projet  
-- Tests unitaires existants exécutables et passent  
-- Base de code propre, structurée et lisible
+Un élément du sprint est considéré **terminé** lorsque tous les critères suivants sont remplis :
 
+## Fonctionnalités de création
+- Les points peuvent être créés dans un espace 2D avec des coordonnées flottantes `x.0;y.0`.
+- Les polygones peuvent être définis avec un nombre quelconque de points.
+- Les points d’un polygone peuvent être soit :
+  - des points déjà existants (référence par nom), ou  
+  - de nouveaux points avec coordonnées `(x.0, y.0)`.
+
+## Fonctionnalités de consultation
+-  La liste complète des objets créés (points et polygones) peut être affichée.
+
+## Calculs
+- La distance euclidienne entre deux points existants peut être calculée et affiché (calcul en flottants)
+
+## Menu textuel
+- Un menu textuel fonctionne correctement et permet :
+  - la création de points  
+  - la création de polygones  
+  - l’affichage de tous les objets  
+  - le calcul de distance entre deux points
 
 ---
 
 # **Poker planning**
+Pas encore mis en place
 
-Pas encore mis en place.
 <!--
+1pts = 10min
 | Item sprint | Estimation |
 |-------------|------------|
 | Setup GitHub | 3 |
 | Setup SonarQube | 8 |
 | Setup Environnement dev | 5 |
 | Écrire premiers tests | 3 |
+
 -->
 
 ---
 
 # **Daily Sprint 04/11/25**
-
-- Mise en place GitHub / accès pour tous  
-- Setup SonarQube local + règles  
-- Initialisation projet + premières classes vides  
-- Premier test unitaire écrit et exécuté
+ Ceci represente l'avancement, qui a du retard , si ça se passe bien ou non
 
 
+---
+# **interne**
 ## _Consignes pour le compte rendu des développeurs_ :
 
-- Remplir votre revu de sprint, vous êtes libre de changer l'organisation définie par défaut, ce n'est qu'une suggestion.
-- Remplir votre retrospective de sprint.
 - Creer pour chaque feature une branche **Sprint*X*-feat-*nom_de_vote_feature*** ou bien **Sprint*X*-scrum**.
 - Penser à mettre à jour vos issues/tickets dans *Project*.
+- Le code est commenté de manière claire pour chaque fonction principale.
+-  Chaque fonctionnalité principale est testée manuellement pour vérifier son bon fonctionnement.
+
+
+## _Sprint planning_ :
+
+Sprint S1 était principalement un sprint d’initialisation technique :
+- Initialisation organisation GitHub commune  
+- Mise en place de SonarQube qualité + règles + intégration  
+- Création et configuration de l’environnement de développement  
+- Écriture des premiers tests unitaires  
+- Préparation structure future console (sans implémentation fonctionnelle)
+
+
 
 ---
 
-## 1. **Angelo Adragna** :
+# **Sprint planning**
+
 
 ### **details du travail effectué lors du sprint**
 
@@ -136,82 +144,13 @@ Pas encore mis en place.
 
 ### **Remarques**
 
----
-
-## 2. **Arthur Buren** :
-   
-### **details du travail effectué lors du sprint**
-
-1 - j'ai créé la base de l'environnement avec un makefile et un requirements.txt
-2 - j'ai créé une boucle de main qui propose un menu d'action
-
-### **Exemples d'utilisation:**
-
-- make run -> lancer le programme avec les vérification
-- make lint -> à implémenter
-- make clean -> néttoie le cache 
-- make test -> lance les test
-
-- lancer la boucle -> 1 -> script python executé
-
-### **analyse du travail effectué lors du sprint**
-
-ça marche, certains trucs reste à implémenter mais son bloqué par le travail des autres
-
-### **Remarques**
-
-
-
----
-
-## 3. **Colin Palazzetti Rubera** :
-    
-### **details du travail effectué lors du sprint**
-- Initialisation de SonarQube
-- Configuration de Github
-- Adaptation des pratiques en fonction des besoin de SonarQube free
-
-### **Exemples d'utilisation:**
-
-### **analyse du travail effectué lors du sprint**
-- La configuration du projet SonarQube
-J'ai dû supprimer le projet deux fois, pour bien le reconfigurer  
-Lors de nos sprint, la branche "principale" sera la branche dev, qui est analysée par SonarQube
-
-
-- Configuration de Github
-Création de l'orga et du repo, et d'un projet dans le repo, pour tester  
-
-Protection des branche `main` et `dev` contre les commits, requiérant des PR
-
-les PR nécessitent au moins 1 reviewer 
-
-### **Remarques**
-Il aurait fallu que je comprenne SonarQube avant que le groupe se mette d'accord sur les principes de dev, 
-ce qui a délayé mon travail et a nécessité un nouvel accord compatible avec SonarQube free
-
----
-
-
-## 4. **Théo Torres** :
-   
-### **details du travail effectué lors du sprint**
-- Ajout d'un exemple d'utilisation de pytest
-- Ajout de la class Point 
-### **Exemples d'utilisation:**
-p1 = Point(1.0,1.0)
-print(p1)
-
-pytest
-### **analyse du travail effectué lors du sprint**
-Ca marche ! 
-### **Remarques**
+### **A faire **
 
 ---
 
 # ** Rétrospective (Retour sur le travail effectué)**
-## 1. **Angelo Adragna** 
-### **Ce que j'ai mis en place**
+
+### **Ce qui a été mis en place**
 
 
 ### **Ce qui a bien fonctionné**
@@ -222,56 +161,6 @@ Ca marche !
 
 ### **Ce qu’on doit améliorer**
 
----
-
-## 2. **Arthur Buren** 
-
-### **Ce que j'ai mis en place**
-environnement de travail
-menu principal
-Boucle principal fonctionnelle dans le terminal 
-
-### **Ce qui a bien fonctionné**
-tout
-
-
-### **Ce qui a posé problème**
-formattage de l'env et utilisation 
-
-### **Ce qu’on doit améliorer**
-flexibilité du menu et de l'environnement d'execution
 
 ---
-
-## 3. **Colin Palazzetti Rubera** 
-
-### **Ce que j'ai mis en place**
-
-
-### **Ce qui a bien fonctionné**
-
-
-### **Ce qui a posé problème**
-
-
-### **Ce qu’on doit améliorer**
-
----
-
-## 4. **Théo Torres** 
-
-
-### **Ce que j'ai mis en place**
-On peut tester avec pytest et créer un point avec Point
-### **Ce qui a bien fonctionné**
-- Tout
-### **Ce qui a posé problème**
-- Rien
-### **Ce qu’on doit améliorer**
-- Productivité et communication
-
----
-
-## 5. **Conclusion Global** :
-
 
