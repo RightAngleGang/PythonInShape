@@ -1,5 +1,5 @@
-from Shape import Shape
-from Point import Point
+from scripts.Shape import Shape
+from scripts.Point import Point
 
 class Polygon(Shape):
     """Ensemble de points formant une forme fermée"""

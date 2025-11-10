@@ -26,22 +26,21 @@ def menu_loop(title: str, actions: list[tuple[str, callable]]):
 
 # --- Actions concrètes ---
 ACTIONS_CREATION_POINTS = [
-    ("Créer un point", lambda: add_point_shape(sm)),      # si ta fonction ne prend pas sm
-    ("Utiliser un point existant", lambda: select_existing_point(sm)),
+    #("Créer un point", lambda: add_point_shape(sm)),      # si ta fonction ne prend pas sm
+    #("Utiliser un point existant", lambda: select_existing_point(sm)),
 ]
 
 ACTIONS_SHAPE = [
-    ("Ajouter un point à un polygone", lambda: add_point_to_polygon(sm)),
-    ("Lister les polygones", lambda: sm.get_shape_manager().list_polygons()),
-    ("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
+    #("Lister les polygones", lambda: sm.get_shape_manager().list_polygons()),
+    #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
 
 ACTIONS_BASIC = [
     ("Ajouter un point", lambda: add_point(sm)),
     ("Lister les points", lambda: sm.list_points()),
-    ("Supprimer un point", lambda: sm.remove_point_interactive()),
+   #("Supprimer un point", lambda: sm.remove_point_interactive()),
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
-    ("Afficher les données de l'espace", lambda: display_space_data(sm)),
+    #("Afficher les données de l'espace", lambda: display_space_data(sm)),
     ("Actions de Polygones ▶", lambda: menu_loop("--- MENU POLYGONES ---", ACTIONS_SHAPE)),
 ]
 

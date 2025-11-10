@@ -1,4 +1,4 @@
-from Point import Point
+from scripts.Point import Point
 
 class PointManager:
     """Espace contenant des formes géométriques"""
