@@ -18,7 +18,6 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 - Angelo est `SCRUM Master`, il doit rédiger le rapport avec les différents artefacts.
 - Arthur, Colin et Théo sont développeurs.
 
-<!--pandoc README_sprint1.md -o README_sprint1.pdf --pdf-engine=xelatex-->
 
 # **Product Backlog**
 
@@ -65,13 +64,13 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ---
 
 # **User Story**
-- Depuis un menu un utilisateur choisi l'option creeation de points et donne sa coordonnée x.0 ; y.0
-- Depuis un menu un utilisateur choisi l'option creeation de polygone :
-     - Il choisi le nombre de points
-     - Pour chaque il peut soit indiqué le nom d'un point existant (exemple p0) ou indiquer ses coordonnées  x.0;y.0
-- Depuis un menu un utilisateur choisi l'option 3 pour afficher tous l'espace f0: p0(x.0;y.0); p1(x.0;y.0) puis à la ligne pour chaque objet
-- Depuis un menu textuelle l'utilisateur choisi une option pour calculer la distance en 2 points déjà existant depuis leur nom : p0;p1
-- Une fois un objet crééer par un utilisateur, il s'affiche dans le menu textuel f0: p0(x.0;y.0); p1(x.0;y.0) ou  p0(x.0;y.0)
+- Depuis le menu, un utilisateur peut choisir l'option 'creation de points' et donne ses coordonnées de la manière suivante : `x.0;y.0`
+- Depuis le menu, un utilisateur peut choisir l'option `creation de polygone` :
+     - Il choisi le d'abord nombre de points : `n`
+     - Pour chaque point, il peut soit indiqué le nom d'un point existant : `p0`
+       ou indiquer ses coordonnées `x.0;y.0`
+- Depuis le menu, un utilisateur peut choisir l'option `afficher l'espace` et affiche à la ligne pour chaque forme: `f0: p0(x.0;y.0); p1(x.0;y.0)`
+- Depuis le menu un utilisateur peut choisie l'option `calcule la distance euclidienne` entre 2 points déjà existant depuis leur nom : `p0;p1`
   
 ---
 
@@ -122,27 +121,6 @@ Pas encore mis en place
 
 
 ---
-# **interne**
-## _Consignes pour le compte rendu des développeurs_ :
-
-- Creer pour chaque feature une branche **Sprint*X*-feat-*nom_de_vote_feature*** ou bien **Sprint*X*-scrum**.
-- Penser à mettre à jour vos issues/tickets dans *Project*.
-- Le code est commenté de manière claire pour chaque fonction principale.
--  Chaque fonctionnalité principale est testée manuellement pour vérifier son bon fonctionnement.
-
-
-## _Sprint planning_ :
-
-Sprint S1 était principalement un sprint d’initialisation technique :
-- Initialisation organisation GitHub commune  
-- Mise en place de SonarQube qualité + règles + intégration  
-- Création et configuration de l’environnement de développement  
-- Écriture des premiers tests unitaires  
-- Préparation structure future console (sans implémentation fonctionnelle)
-
-
-
----
 
 # **Sprint planning**
 
@@ -175,3 +153,20 @@ Sprint S1 était principalement un sprint d’initialisation technique :
 
 ---
 
+# **interne**
+
+## _taches_ :
+
+- Initialisation organisation GitHub commune  
+- Mise en place de SonarQube qualité + règles + intégration  
+- Création et configuration de l’environnement de développement  
+- Écriture des premiers tests unitaires  
+
+## _Consignes pour le compte rendu des développeurs_ :
+
+- Creer pour chaque feature une branche **Sprint*X*-feat-*nom_de_vote_feature*** ou bien **Sprint*X*-scrum**.
+- Penser à mettre à jour vos issues/tickets dans *Project*.
+- Le code est commenté de manière claire pour chaque fonction principale.
+-  Chaque fonctionnalité principale est testée manuellement pour vérifier son bon fonctionnement.
+
+---
