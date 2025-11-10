@@ -1,6 +1,6 @@
 # menu.py
-import os
-import sys
+
+
 import subprocess
 import importlib.util
 
@@ -22,7 +22,7 @@ def run_python_function(script_path: str, func_name: str):
 # --- Liste des actions disponibles ---
 ACTIONS = [
     ("Dire bonjour (scripts/hello.py)", "python_func:scripts/hello.py:dire_bonjour"),
-    ("Hello (bash script)", "bash interface/scripts/hello.sh"),
+    ("Hello (bash script)", "bash scripts/hello.sh"),
 ]
 
 # --- Fonction d’exécution générique ---
