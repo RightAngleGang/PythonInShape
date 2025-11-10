@@ -117,8 +117,7 @@ Pas encore mis en place
 ---
 
 # **Daily Sprint 04/11/25**
- Ceci represente l'avancement, qui a du retard , si ça se passe bien ou non
-
+retard car refactor de l'architecture pour permettre une production et adaptation plus performante pour les prochains sprints
 
 ---
 
@@ -126,31 +125,38 @@ Pas encore mis en place
 
 
 ### **details du travail effectué lors du sprint**
+Ceci represente l'avancement, qui a du retard , si ça se passe bien ou non
+Backend : Gérer les données il faut que colin finisse la logique applicative sur certaines fonctions.
+Créer et afficher un point dans un espace en 2D (float) fini; theo faire distance euclidienne
+Creation de polygone 
 
 ### **Exemples d'utilisation:**
 
 ### **analyse du travail effectué lors du sprint**
+pyrhon bon choix car gestion des floats simple, gestion structure et classe ça va , mooins contraignant
 
 ### **Remarques**
+
 
 ### **A faire **
 
 ---
 
-# ** Rétrospective (Retour sur le travail effectué)**
+# ** Rétrospective **
 
 ### **Ce qui a été mis en place**
-
+pas de poker planning
 
 ### **Ce qui a bien fonctionné**
+meilleur repartiion des taches, donc perte de temps en reunion inferieur
 
 
 ### **Ce qui a posé problème**
-
+trop de trucs dans le sprint et comme archi pas clair on perd du temps 
 
 ### **Ce qu’on doit améliorer**
-
-
+Architecture des données et structure plus claire et fixé, cibler question aux profs
+Venir avec des questions réflechis
 ---
 
 # **interne**
