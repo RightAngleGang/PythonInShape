@@ -22,34 +22,49 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 # **Product Backlog**
 
-1. User peut définir les points  
-2. Définir des points dans un espace 2D (création d’un point avec 2 coordonnées)  
-3. Définir des points dans un espace 3D (création d’un point avec 3 coordonnées)  
-4. Nommage automatique des points à la création  
-5. Distance euclidienne entre les points  
-6. Faire des formes de base (carré, triangle, cercle, segments) + (cube, pyramide, sphère)  
-7. Polygones quelconques  
-8. Éditer les points (suppression, translation, changement de base)  
-9. Éditer les formes (suppression, translation)  
-10. Appartenance + intersection d’espace  
-11. Terminal -> déclarer + calcul (distance, volume, périmètre, surface)  
-12. Menu terminal  
-13. Que dans le terminal  
-14. Import / Export des points  
-15. Export sur R  
-16. Affichage web ou export Three.js  
-17. User peut ajouter des polygones quelconques
+1. Créer et afficher un points dans un espace 2D (flottants) avec un retour de son nom
+2. Créer et afficher un polygone quelconque de N points (choisis) dans un espace 2D
+4. Calculer et afficher la distance euclidienne 2D entre 2 points
+3. Afficher la liste des formes crées (points + forme)
+5. Créer un menu textuel
+6. Créer et afficher un points dans un espace 3D (flottants) avec un retour de son nom
+7. Créer et afficher un polygone quelconque de N points (choisis) dans un espace 3D
+8. Calculer et afficher la distance euclidienne 3D entre 2 points
+9. Créer et afficher un carré en 2D
+10. Créer et afficher un triangle en 2D
+11. Créer et afficher un rectangle en 2D
+12. Créer et afficher un cercle en 2D
+13. Créer et afficher un segment en 2D
+9. Créer et afficher un carré en 3D
+10. Créer et afficher un triangle en 3D
+11. Créer et afficher un rectangle en 3D
+12. Créer et afficher un cercle en 3D
+13. Créer et afficher un segment en 3D
+14. Créer et afficher un cone
+10. Créer et afficher une pyramide
+11. Créer et afficher un pave
+12. Créer et afficher un cube
+13. Créer et afficher une sphere
+13. Éditer les points (suppression, translation, changement de base ?) 
+14. Éditer les formes (suppression, translation)  
+15. Appartenance de forme et intersection d’espace  
+16. Terminal -> déclarer + calcul (distance, volume, périmètre, surface)  
+17. Menu terminal  
+18. Que dans le terminal  
+19. Import / Export des points  
+20. Export sur R  
+21. Affichage web ou export Three.js  
+22. User peut ajouter des polygones quelconques
 
 ---
 
 # **Sprint Backlog — S1 (04/11/25)**
 
-- Créer un points dans un espace 2D (flottants) avec un retour de son nom
-- Définir des polygones quelconques de N points (choisis) dans un espace 2D 
-- voir la liste des ibjets crées (points + forme)
-- Definir la distance euclidienne entre 2 points
-- Affichage de l'objet après sa création
-- Creer un menu textuel
+- Créer et afficher un points dans un espace 2D (flottants) avec un retour de son nom
+- Créer et afficher un polygone quelconque de N points (choisis) dans un espace 2D 
+- Afficher la liste des formes crées (points + forme)
+- Calculer et afficher la distance euclidienne entre 2 points
+- Créer un menu textuel
 
 ---
 
