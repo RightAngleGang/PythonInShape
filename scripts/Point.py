@@ -1,4 +1,3 @@
-from sympy import false
 
 from Shape import Shape
 
