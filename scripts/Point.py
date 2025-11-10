@@ -1,13 +1,17 @@
+from sympy import false
+
 from Shape import Shape
 
-class Point(Shape):
+class Point():
     """Point dans un espace 2D"""
     x: float
     y: float
-    def __init__(self, x: float, y: float, nom: str = ""):
-        super().__init__(nom)
+    nom: str
+    def __init__(self, x: float, y: float, nom: str):
         self.x = x
         self.y = y
+        self.nom = nom
+
 
     def distance_to(self, other: "Point") -> float:
         """Calcule la distance entre ce point et un autre point"""

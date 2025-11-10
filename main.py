@@ -1,4 +1,4 @@
-from scripts.SpaceManager import Space
+from scripts.Space import Space
 import sys
 
 sm = Space()
