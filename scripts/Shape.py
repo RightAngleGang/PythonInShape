@@ -4,3 +4,6 @@ class Shape:
     def __init__(self, nom: str):
         self.nom = nom
 
+    def area(self) -> float:
+        """Calcule l'aire de la forme"""
+        pass
