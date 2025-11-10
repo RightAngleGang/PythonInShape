@@ -3,9 +3,9 @@ from ShapeManager import ShapeManager
 
 class Space:
     """Espace contenant des formes géométriques"""
-
     points: PointManager
     shapes: ShapeManager
+    
 
     def __init__(self):
         self.points = PointManager()

@@ -2,8 +2,8 @@ from Point import Point
 
 class PointManager:
     """Espace contenant des formes géométriques"""
-
     points: list[Point]
+
 
     def __init__(self):
         self.points = []

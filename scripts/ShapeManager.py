@@ -2,8 +2,8 @@ from Shape import Shape
 
 class ShapeManager:
     """Espace contenant des formes géométriques"""
-
     shapes: list[Shape]
+    
 
     def __init__(self):
         self.shapes = []
