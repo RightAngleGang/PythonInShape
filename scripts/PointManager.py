@@ -15,4 +15,7 @@ class PointManager:
         """Retourne la liste des points"""
         return self.points
     
-    
+    def list_points(self):
+        """Liste tous les points dans l'espace"""
+        for point in self.points:
+            print(f"{point.nom}: ({point.x}, {point.y})")
