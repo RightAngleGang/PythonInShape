@@ -31,6 +31,7 @@ ACTIONS_CREATION_POINTS = [
 ]
 
 ACTIONS_SHAPE = [
+    ("Ajouter un polygone", lambda: add_shape(sm)),
     #("Lister les polygones", lambda: sm.get_shape_manager().list_polygons()),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
