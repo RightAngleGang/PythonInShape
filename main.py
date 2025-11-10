@@ -1,7 +1,7 @@
-from scripts.PointManager import SpaceManager
+from scripts.Space import Space
 import sys
 
-sm = SpaceManager()
+sm = Space()
 
 ACTIONS = [
     ("Ajouter un point", lambda: sm.add_point_interactive()),
