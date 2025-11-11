@@ -21,3 +21,13 @@ def add_shape(space: Space):
     print(f"Shape {tmpStr} created with {nb_of_points} points.")
     for i in range(nb_of_points):
         print(f"Point tmp{i+1}: (" + str(space.get_point_manager().get_points()[-(nb_of_points-i)].x) + ", " + str(space.get_point_manager().get_points()[-(nb_of_points-i)].y) + ")")
+
+def show_shapes(space: Space):
+    shapes = space.get_shape_manager().get_shapes()
+    if not shapes:
+        print("No shapes available.")
+        return
+    for shape in shapes:
+        print(f"Shape: {shape.nom}")
+        for point in shape.points:
+            print(f"  Point {point.nom}: ({point.x}, {point.y})")
