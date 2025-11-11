@@ -141,7 +141,7 @@ Cette réorganisation devrait faciliter la production et l’adaptation pour les
 # **Sprint Planning**
 Le sprint a permis de poser les bases du projet PythonInShape : architecture du code, création et affichage des points, et développement du menu textuel.  
 
-### **Détails du travail effectué**
+## **Détails du travail effectué**
 Ce sprint s’est concentré sur la mise en place des fonctionnalités principales :  
 - **Backend** : gestion des données et implémentation des classes de base.  
   Colin doit encore finaliser la logique applicative de certaines fonctions.
@@ -152,9 +152,8 @@ Ce sprint s’est concentré sur la mise en place des fonctionnalités principal
 
 L’avancement global est satisfaisant malgré un léger retard dû à des ajustements d’architecture nécessaires pour mieux structurer le code.
 
----
 
-### **Analyse**
+## **Analyse**
 Le choix du **langage Python** s’est révélé pertinent :  
 - bonne gestion des nombres flottants,  
 - structures et classes faciles à manipuler,  
@@ -162,15 +161,11 @@ Le choix du **langage Python** s’est révélé pertinent :
 
 L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui a permis un meilleur avancement global.
 
----
-
-### **Remarques**
+## **Remarques**
 - Quelques imprécisions subsistent dans l’architecture du code, ce qui a ralenti la progression.  
 - Il faudra clarifier dès le prochain sprint la logique de création et de gestion des entités (points, polygones).  
 
----
-
-### **À faire**
+## **À faire**
 - Finaliser les fonctions manquantes du backend.  
 - Terminer le calcul de distance euclidienne.  
 - Améliorer la structure de l’architecture (organisation des classes et dépendances).  
@@ -180,27 +175,21 @@ L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui 
 
 # **Rétrospective**
 
-### **Ce qui a été mis en place**
+## **Ce qui a été mis en place**
 - Aucun **poker planning** n’a été réalisé pour l’estimation des tâches.  
 - L’équipe a choisi de se concentrer sur la production et les tests en séance cette fois-ci afin de rattraper son retard.
 
----
-
-### **Ce qui a bien fonctionné**
+## **Ce qui a bien fonctionné**
 - **Meilleure répartition des tâches** entre les membres.  
 - **Moins de perte de temps** en réunion grâce à une communication plus directe.  
 - Collaboration fluide et bonnes prises d’initiative pendant la séance.
 
----
-
-### **Ce qui a posé problème**
+## **Ce qui a posé problème**
 - **Architecture initiale floue**, entraînant des réécritures et du retard.  
 - **Trop d’objectifs** prévus dans un seul sprint de 3h en plus de la remodilisation de l'architecture interne menée par Colin et Arthur.
 - Manque de clarté sur certaines responsabilités au sein du groupe.
 
----
-
-### **Ce qu’on doit améliorer**
+## **Ce qu’on doit améliorer**
 - Définir une **architecture des données plus claire et stable** avant le début du sprint.  
 - **Préparer à l’avance les questions à poser au professeur** pour gagner du temps.  
 - Continuer à améliorer la communication technique entre les membres.
@@ -224,5 +213,3 @@ L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui 
 - Penser à mettre à jour vos issues/tickets dans *Project*.
 - Le code est commenté de manière claire pour chaque fonction principale.
 -  Chaque fonctionnalité principale est testée manuellement pour vérifier son bon fonctionnement.
-
----
