@@ -1,8 +1,8 @@
-from scripts.Polygon import Polygon
+from scripts.Shape import Shape
 
 class ShapeManager:
     """Espace contenant des formes géométriques"""
-    shapes: list[Polygon]
+    shapes: list[Shape]
     
 
     def __init__(self):
@@ -11,10 +11,10 @@ class ShapeManager:
     def __str__(self):
         pass
 
-    def add_shape(self, shape: Polygon):
+    def add_shape(self, shape: Shape):
         self.shapes.append(shape)
         
-    def get_shapes(self) -> list[Polygon]:
+    def get_shapes(self) -> list[Shape]:
         """Retourne la liste des shapes"""
         return self.shapes
     
@@ -22,11 +22,11 @@ class ShapeManager:
         """Retourne le nombre de shapes"""
         return len(self.shapes)
         
-    def remove_shape(self, shape: Polygon):
+    def remove_shape(self, shape: Shape):
         """Supprime une forme"""
         self.shapes.remove(shape)
         
-    def find_shape_by_name(self, name: str) -> Polygon | None:
+    def find_shape_by_name(self, name: str) -> Shape | None:
         """Recherche une forme par son nom"""
         for shape in self.shapes:
             if shape.nom == name:
