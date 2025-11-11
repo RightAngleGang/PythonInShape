@@ -143,56 +143,59 @@ Le sprint a permis de poser les bases du projet PythonInShape : architecture du 
 
 ## **Détails du travail effectué**
 Ce sprint s’est concentré sur la mise en place des fonctionnalités principales :  
-- **Backend** : gestion des données et implémentation des classes de base.  
+- Backend : gestion des données et implémentation des classes de base.  
   Colin doit encore finaliser la logique applicative de certaines fonctions.
-- **menu textuel** développé avec différentes options par Arthur. terminé.
-- **Création et affichage de points 2D** (coordonnées flottantes) : terminé.  
-- **Calcul de la distance euclidienne** : en cours, pris en charge par Théo.  
-- **Création de polygones** : implémentation commencée, nécessite encore des ajustements par Théo.
+- menu textuel développé avec différentes options par Arthur. terminé.
+- Création et affichage de points 2D (coordonnées flottantes) , arthur et théo : terminé.  
+- Calcul de la distance euclidienne : en cours, pris en charge par Théo.  
+- Création de polygones : implémentation commencée, nécessite encore des ajustements par Arthur.
+- Architecture : Shape Manager pour gerer les formmes
+- Architecture : Point Manager pour gerer les points
+- Architecture : Tests pret mais pas implémentés
 
-L’avancement global est satisfaisant malgré un léger retard dû à des ajustements d’architecture nécessaires pour mieux structurer le code.
+L’avancement global est satisfaisant, le retard dû à des ajustements d’architecture nécessaires pour mieux structurer le code à été rattrapé.
 
 
 ## **Analyse**
 Le choix du **langage Python** s’est révélé pertinent :  
 - bonne gestion des nombres flottants,  
 - structures et classes faciles à manipuler,  
-- syntaxe souple et moins contraignante pour ce type de prototype.
+- syntaxe souple et temoins contraignante pour ce type de prototype.
+- scalabilité architecture
 
 L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui a permis un meilleur avancement global.
 
 ## **Remarques**
-- Quelques imprécisions subsistent dans l’architecture du code, ce qui a ralenti la progression.  
-- Il faudra clarifier dès le prochain sprint la logique de création et de gestion des entités (points, polygones).  
+- Quelques imprécisions subsistaient dans l’architecture du code.
+- Il faudra clarifier dès le prochain sprint la logique de création et de gestion des entités (points, polygones) avec le PO/client  
 
 ## **À faire**
-- Finaliser les fonctions manquantes du backend.  
-- Terminer le calcul de distance euclidienne.  
-- Améliorer la structure de l’architecture (organisation des classes et dépendances).  
+- Impleter tests
+- Rajouter quelques commentaires
 - Préparer une courte documentation d’utilisation pour valider la DoD.
+- Préparer des queqtions pour le PO/client.
 
 ---
 
 # **Rétrospective**
 
 ## **Ce qui a été mis en place**
-- Aucun **poker planning** n’a été réalisé pour l’estimation des tâches.  
+- Aucun **poker planning** n’a été réalisé pour l’estimation des tâches.
 - L’équipe a choisi de se concentrer sur la production et les tests en séance cette fois-ci afin de rattraper son retard.
 
 ## **Ce qui a bien fonctionné**
-- **Meilleure répartition des tâches** entre les membres.  
-- **Moins de perte de temps** en réunion grâce à une communication plus directe.  
+- Meilleure répartition des tâches entre les membres.  
+- Moins de perte de temps en réunion grâce à une communication plus directe.  
 - Collaboration fluide et bonnes prises d’initiative pendant la séance.
 
 ## **Ce qui a posé problème**
-- **Architecture initiale floue**, entraînant des réécritures et du retard.  
-- **Trop d’objectifs** prévus dans un seul sprint de 3h en plus de la remodilisation de l'architecture interne menée par Colin et Arthur.
+- Les artefacts n'ont pas copllé aux attende du PO
+- Architecture initiale floue, entraînant des réécritures et du retard.  
+- Trop d’objectifs prévus dans un seul sprint de 3h en plus de la remodilisation de l'architecture interne menée par Colin et Arthur.
 - Manque de clarté sur certaines responsabilités au sein du groupe.
 
 ## **Ce qu’on doit améliorer**
-- Définir une **architecture des données plus claire et stable** avant le début du sprint.  
-- **Préparer à l’avance les questions à poser au professeur** pour gagner du temps.  
-- Continuer à améliorer la communication technique entre les membres.
+- Préparer à l’avance les questions à poser au professeur pour gagner du temps.  
 - Meilleur gestions à prevoir pour la gestions des items dans "project" pour ameliorer la transparence du travail de chacun. 
 
 ---
