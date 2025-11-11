@@ -1,5 +1,5 @@
-from PointManager import PointManager
-from ShapeManager import ShapeManager
+from scripts.PointManager import PointManager
+from scripts.ShapeManager import ShapeManager
 
 class Space:
     """Espace contenant des formes géométriques"""
@@ -18,3 +18,7 @@ class Space:
     def get_shape_manager(self) -> ShapeManager:
         """Retourne le gestionnaire de formes"""
         return self.shapes
+
+    def list_points(self):
+        """Liste tous les points dans l'espace"""
+        self.points.list_points()

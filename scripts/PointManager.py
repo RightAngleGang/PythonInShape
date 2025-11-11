@@ -1,4 +1,4 @@
-from Point import Point
+from scripts.Point import Point
 
 class PointManager:
     """Espace contenant des formes géométriques"""
@@ -7,7 +7,7 @@ class PointManager:
 
     def __init__(self):
         self.points = []
-    
+
     def __str__(self):
         pass
 
@@ -21,16 +21,20 @@ class PointManager:
     def number_of_points(self) -> int:
         """Retourne le nombre de points"""
         return len(self.points)
-        
+
     def remove_point(self, point: Point):
         """Supprime un point"""
         self.points.remove(point)
-        
+
     def find_point_by_name(self, name: str) -> Point | None:
         """Recherche un point par son nom"""
         for point in self.points:
             if point.nom == name:
                 return point
         return None
-    
-    
+
+
+    def list_points(self):
+        """Liste tous les points dans l'espace"""
+        for point in self.points:
+            print(f"{point.nom}: ({point.x}, {point.y})")
