@@ -6,8 +6,8 @@ class Shape:
     def __init__(self, nom: str):
         self.nom = nom
 
-    def __str__(self):
-        pass
+    def __str__(self) -> str:
+        pass 
     
     def __eq__(self, value):
         pass
