@@ -13,7 +13,7 @@ class Point():
         self.y = y
 
     def __str__(self) -> str:
-        pass
+        return f"{self.nom}({self.x};{self.y})"
     
     def __eq__(self, other: "Point") -> bool:
         pass
