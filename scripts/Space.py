@@ -1,5 +1,5 @@
-from PointManager import PointManager
-from ShapeManager import ShapeManager
+from scripts.PointManager import PointManager
+from scripts.ShapeManager import ShapeManager
 
 class Space:
     """Espace contenant des formes géométriques"""
