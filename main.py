@@ -1,4 +1,4 @@
-# menu.py
+# main.py
 from scripts.Space import Space
 import sys
 from scripts.menu_function import *
