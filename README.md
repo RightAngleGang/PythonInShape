@@ -189,7 +189,7 @@ L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui 
 - Collaboration fluide et bonnes prises d’initiative pendant la séance.
 
 ## **Ce qui a posé problème**
-- Les artefacts n'ont pas copllé aux attende du PO
+- Les artefacts n'ont pas collé aux attende du PO
 - Architecture initiale floue, entraînant des réécritures et du retard.  
 - Trop d’objectifs prévus dans un seul sprint de 3h en plus de la remodilisation de l'architecture interne menée par Colin et Arthur.
 - Manque de clarté sur certaines responsabilités au sein du groupe.
@@ -212,7 +212,6 @@ L’équipe a mieux réparti les tâches que lors du sprint précédent, ce qui 
 
 ## _Consignes pour le compte rendu des développeurs_ :
 
-- Creer pour chaque feature une branche **Sprint*X*-feat-*nom_de_vote_feature*** ou bien **Sprint*X*-scrum**.
 - Penser à mettre à jour vos issues/tickets dans *Project*.
 - Le code est commenté de manière claire pour chaque fonction principale.
--  Chaque fonctionnalité principale est testée manuellement pour vérifier son bon fonctionnement.
+- Chaque fonctionnalité principale est testée (manuellement au moins) pour vérifier son bon fonctionnement.
