@@ -2,6 +2,13 @@ from scripts.Point import Point
 from scripts.Polygon import Polygon
 from scripts.Space import Space
 
+def add_points(space: Space):
+    space.get_point_manager().add_name_point(1.2, 3.4)
+    space.get_point_manager().add_name_point(5.6, 7.8)
+    space.get_point_manager().add_name_point(9.0, 1.2)
+    space.get_point_manager().add_name_point(3.4, 5.6)
+    space.get_point_manager().add_name_point(7.8, 9.0)
+    
 def add_point(space: Space):
     tmpStr = str(input("Points format : x.0;y.0 : ")).split(";")
     space.get_point_manager().add_name_point(tmpStr[0], tmpStr[1])

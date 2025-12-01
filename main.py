@@ -44,6 +44,7 @@ ACTIONS_BASIC = [
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
     ("Actions de Polygones ▶", lambda: menu_loop("--- MENU POLYGONES ---", ACTIONS_SHAPE)),
+    ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
 
 if __name__ == "__main__":
