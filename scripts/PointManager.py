@@ -12,6 +12,10 @@ class PointManager:
         pass
 
     def add_point(self, point: Point):
+        if point in self.points:
+            return
+        if self.find_point_by_name(point.nom) is not None:
+            raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
         
     def get_points(self) -> list[Point]:
@@ -34,7 +38,6 @@ class PointManager:
         return None
 
 
-    def list_points(self):
+    def list_points(self, separator: str = "\n"):
         """Liste tous les points dans l'espace"""
-        for point in self.points:
-            print(f"{point.nom}: ({point.x}, {point.y})")
+        print(separator.join([str(point) for point in self.points]))
