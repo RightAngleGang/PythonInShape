@@ -14,7 +14,7 @@ class PointManager:
     def add_point(self, point: Point):
         if point in self.points:
             return
-        if find_point_by_name(point.nom) is not None:
+        if self.find_point_by_name(point.nom) is not None:
             raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
         
