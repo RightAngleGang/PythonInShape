@@ -20,8 +20,8 @@ class Polygon(Shape):
     def export_to_json(self):
         """Export le polygone au format JSON"""
         return {
-            "type": "Polygon",
+            "type": "Polygon",          # pour savoir quelle classe recréer
             "name": self.nom,
+            "subtype": self.type,       # Carré / Rectangle / Triangle / Segment
             "points": [point.nom for point in self.points],
         }
-        
