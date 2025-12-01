@@ -31,8 +31,8 @@ ACTIONS_CREATION_POINTS = [
 ]
 
 ACTIONS_SHAPE = [
-    ("Ajouter un polygone", lambda: add_shape(sm)),
-    ("Lister les polygones", lambda: show_shapes(sm)),
+    ("Ajouter une forme", lambda: add_shape(sm)),
+    ("Lister les formes", lambda: show_shapes(sm)),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
 
@@ -43,7 +43,7 @@ ACTIONS_BASIC = [
    #("Supprimer un point", lambda: sm.remove_point_interactive()),
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
-    ("Actions de Polygones ▶", lambda: menu_loop("--- MENU POLYGONES ---", ACTIONS_SHAPE)),
+    ("Actions des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
     ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
 
