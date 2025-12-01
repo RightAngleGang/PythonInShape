@@ -26,7 +26,7 @@ class ShapeManager:
         """Supprime une forme"""
         self.shapes.remove(shape)
         
-    def find_shape_by_name(self, name: str) -> Shape | None:
+    def find_shape_by_name(self, name: str):
         """Recherche une forme par son nom"""
         for shape in self.shapes:
             if shape.nom == name:
