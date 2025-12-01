@@ -1,10 +1,7 @@
 from scripts.Point import Point
 from scripts.Polygon import Polygon
 from scripts.Space import Space
-
-def get_coords2() -> tuple[float, float]:
-    tmpStr = str(input("Donner des coordonnées, format x;y : ")).split(";")
-    return float(tmpStr[0].strip()), float(tmpStr[1].strip())
+from scripts.utils import get_coords2
     
 def add_point(space: Space):
     coords = get_coords2()
