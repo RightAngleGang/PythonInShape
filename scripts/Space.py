@@ -3,8 +3,8 @@ from scripts.ShapeManager import ShapeManager
 
 class Space:
     """Espace contenant des formes géométriques"""
-    points: PointManager
-    shapes: ShapeManager
+    pointManager: PointManager
+    shapeManager: ShapeManager
     
 
     def __init__(self):
@@ -13,12 +13,12 @@ class Space:
 
     def get_point_manager(self) -> PointManager:
         """Retourne le gestionnaire de points"""
-        return self.points
+        return self.pointManager
     
     def get_shape_manager(self) -> ShapeManager:
         """Retourne le gestionnaire de formes"""
-        return self.shapes
+        return self.shapeManager
 
     def list_points(self):
         """Liste tous les points dans l'espace"""
-        self.points.list_points()
+        self.pointManager.list_points()
