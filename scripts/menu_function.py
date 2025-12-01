@@ -217,17 +217,30 @@ def import_space_data(space: Space):
 =======
     # Calcul de la distance
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
-        
-def move_point(space: Space):
-    tmpStr = str(input("Nom du point à déplacer : "))
+
+def remove_point(space: Space):
+    tmpStr = str(input("Nom du point à supprimer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
-        print(f"Point actuel : {point}")
-        new_x, new_y = get_coords2()
-        point.x = new_x
-        point.y = new_y
-        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
+        for shape in space.get_shape_manager().get_shapes():
+            if isinstance(shape, Polygon) and point in shape.points:
+                shape.remove_point(point)
+            # Ajout d'autres types de formes si nécessaire
+        space.get_point_manager().remove_point(point)
+        print(f"Point '{tmpStr}' supprimé avec succès.")
+    else:
+        print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
+        
+<<<<<<< HEAD
+>>>>>>> 63ac01e (add removepoint)
+=======
+def rename_point(space: Space):
+    tmpStr = str(input("Nom du point à renommer : "))
+    point = space.get_point_manager().find_point_by_name(tmpStr)
+    if point:
+        new_name = str(input("Nouveau nom du point : "))
+        point.nom = new_name
+        print(f"Point renommé en '{new_name}'.")
     else:
         print(f"Point '{tmpStr}' introuvable.")
-        
->>>>>>> 63ac01e (add removepoint)
+>>>>>>> de3a714 (add rename point)
