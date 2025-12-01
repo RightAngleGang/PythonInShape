@@ -16,7 +16,7 @@ class Point():
         return f"{self.nom}({self.x};{self.y})"
     
     def __eq__(self, other: "Point") -> bool:
-        pass
+        return self.x == other.x and self.y == other.y
     
     def distance_to(self, other: "Point") -> float:
         """Calcule la distance entre ce point et un autre point"""
