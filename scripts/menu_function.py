@@ -17,7 +17,6 @@ def add_shape(space: Space):
         polygon.add_point(tmpPoint)
     space.get_shape_manager().add_shape(polygon)
     print(f"Shape {tmpStr} created with {nb_of_points} points.", end="\n\t")
-    print(polygon)
 
 def show_shapes(space: Space):
     shapes = space.get_shape_manager().get_shapes()
