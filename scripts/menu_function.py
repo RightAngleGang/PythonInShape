@@ -6,6 +6,10 @@ from scripts.Shape import Shape
 import math
 
 
+def get_coords2() -> tuple[float, float]:
+    tmpStr = str(input("Donner des coordonnées, format x;y : ")).split(";")
+    return float(tmpStr[0].strip()), float(tmpStr[1].strip())
+
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4)
     space.get_point_manager().add_name_point(5.6, 7.8)
