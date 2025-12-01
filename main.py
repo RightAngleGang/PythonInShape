@@ -31,9 +31,14 @@ ACTIONS_CREATION_POINTS = [
 ]
 
 ACTIONS_SHAPE = [
-    ("Ajouter une forme", lambda: add_shape(sm)),
-    ("Lister les formes", lambda: show_shapes(sm)),
+    ("Ajouter un polygone", lambda: add_shape(sm)),
+    ("Lister les polygones", lambda: show_shapes(sm)),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
+]
+
+ACTIONS_DATA = [
+    ("Exporter les données de l'espace vers un fichier JSON", lambda: export_space_data(sm)),
+    ("Importer les données de l'espace depuis un fichier JSON", lambda: import_space_data(sm)),
 ]
 
 ACTIONS_BASIC = [
@@ -43,6 +48,7 @@ ACTIONS_BASIC = [
    #("Supprimer un point", lambda: sm.remove_point_interactive()),
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
+    ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
     ("Actions des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
     ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
