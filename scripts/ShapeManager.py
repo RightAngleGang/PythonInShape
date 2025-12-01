@@ -34,5 +34,5 @@ class ShapeManager:
         return None
 
     def export_to_json(self):
-        """Export les formes au format JSON"""
+        """Export the shapes to a JSON-serializable list"""
         return [shape.export_to_json() for shape in self.shapes]

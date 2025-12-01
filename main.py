@@ -48,7 +48,7 @@ ACTIONS_BASIC = [
    #("Supprimer un point", lambda: sm.remove_point_interactive()),
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
-    ("Actions de Polygones ▶", lambda: menu_loop("--- MENU POLYGONES ---", ACTIONS_SHAPE)),
+    ("Actions des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
     ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
     ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
