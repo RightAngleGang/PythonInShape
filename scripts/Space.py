@@ -64,4 +64,6 @@ class Space:
                 point = self.points.find_point_by_name(point_name)
                 if point:
                     shape.add_point(point)
+                else:
+                    print(f"Warning: Point '{point_name}' referenced in shape '{shape_data['name']}' not found.")
             self.shapes.add_shape(shape)
