@@ -39,6 +39,7 @@ ACTIONS_SHAPE = [
 ACTIONS_BASIC = [
     ("Ajouter un point", lambda: add_point(sm)),
     ("Lister les points", lambda: sm.list_points()),
+    ("Calculer la distance euclidienne entre 2 points", lambda: euclidean_distance(sm)),
    #("Supprimer un point", lambda: sm.remove_point_interactive()),
     ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
