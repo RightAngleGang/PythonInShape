@@ -18,9 +18,13 @@ class PointManager:
         self.points.append(point)
 
     def add_name_point(self, x: float, y: float) -> str:
-        pid = self.number_of_points() + 1
-        point = Point(f"P{pid}", x, y)
-        self.add_point(point)
+        """Ajoute un point avec un nom généré automatiquement et retourne son nom"""
+        point = Point(f"P{self.pid}", x, y)
+        self.pid += 1
+        try:
+            self.add_point(point)
+        except ValueError as e:
+            raise ValueError(f"Erreur lors de l'ajout du point<{point}>: {e}")
         return point.nom
         
     def get_points(self) -> list[Point]:
