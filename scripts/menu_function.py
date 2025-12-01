@@ -194,6 +194,7 @@ def euclidean_distance(space: Space):
         print(f"Point '{tmpP2}' introuvable dans l'espace. Impossible de calculer la distance.")
         return
 
+<<<<<<< HEAD
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
 
 
@@ -213,3 +214,21 @@ def import_space_data(space: Space):
         print(f"Données de l'espace importées avec succès depuis '{filename}'.")
     except Exception as e:
         print(f"Erreur lors de l'importation des données : {e}")
+=======
+    # Calcul de la distance
+    print(f"La distance entre les points est : {p1.distance_to(p2)}")
+
+def remove_point(space: Space):
+    tmpStr = str(input("Nom du point à supprimer : "))
+    point = space.get_point_manager().find_point_by_name(tmpStr)
+    if point:
+        for shape in space.get_shape_manager().get_shapes():
+            if isinstance(shape, Polygon) and point in shape.points:
+                shape.remove_point(point)
+            # Ajout d'autres types de formes si nécessaire
+        space.get_point_manager().remove_point(point)
+        print(f"Point '{tmpStr}' supprimé avec succès.")
+    else:
+        print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
+        
+>>>>>>> 63ac01e (add removepoint)
