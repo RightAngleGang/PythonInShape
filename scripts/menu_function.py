@@ -217,18 +217,17 @@ def import_space_data(space: Space):
 =======
     # Calcul de la distance
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
-
-def remove_point(space: Space):
-    tmpStr = str(input("Nom du point à supprimer : "))
+        
+def move_point(space: Space):
+    tmpStr = str(input("Nom du point à déplacer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
-        for shape in space.get_shape_manager().get_shapes():
-            if isinstance(shape, Polygon) and point in shape.points:
-                shape.remove_point(point)
-            # Ajout d'autres types de formes si nécessaire
-        space.get_point_manager().remove_point(point)
-        print(f"Point '{tmpStr}' supprimé avec succès.")
+        print(f"Point actuel : {point}")
+        new_x, new_y = get_coords2()
+        point.x = new_x
+        point.y = new_y
+        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
     else:
-        print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
+        print(f"Point '{tmpStr}' introuvable.")
         
 >>>>>>> 63ac01e (add removepoint)
