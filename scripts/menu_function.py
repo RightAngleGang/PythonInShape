@@ -19,7 +19,7 @@ def add_shape(space: Space):
     nb_of_points = int(input("Number of points : "))
     for i in range(nb_of_points):
         point_input = str(input(f"Point tmp{i+1} format : x.0;y.0 : ")).split(";")
-        tmpPoint = Point(f"tmp{i+1}", point_input[0], point_input[1])
+        tmpPoint = Point(f"tmp{i+1}", float(point_input[0]), float(point_input[1]))
         space.get_point_manager().add_point(tmpPoint)
         polygon.add_point(tmpPoint)
     space.get_shape_manager().add_shape(polygon)
