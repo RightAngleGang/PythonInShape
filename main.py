@@ -30,6 +30,14 @@ ACTIONS_CREATION_POINTS = [
     #("Utiliser un point existant", lambda: select_existing_point(sm)),
 ]
 
+ACTIONS_GESTION_POINTS = [
+    ("Ajouter un point", lambda: add_point(sm)),
+    ("Lister les points", lambda: sm.list_points()),
+    ("Déplacer un point", lambda: move_point(sm)),
+    ("Renommer un point", lambda: rename_point(sm)),
+    ("Supprimer un point", lambda: remove_point(sm)),
+]
+
 ACTIONS_SHAPE = [
     ("Ajouter un polygone", lambda: add_shape(sm)),
     ("Lister les polygones", lambda: show_shapes(sm)),
@@ -42,11 +50,10 @@ ACTIONS_DATA = [
 ]
 
 ACTIONS_BASIC = [
-    ("Ajouter un point", lambda: add_point(sm)),
-    ("Lister les points", lambda: sm.list_points()),
+    ("Gestion des Points ▶", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_GESTION_POINTS)),
     ("Calculer la distance euclidienne entre 2 points", lambda: euclidean_distance(sm)),
    #("Supprimer un point", lambda: sm.remove_point_interactive()),
-    ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
+    # ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
     ("Actions des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
     ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
