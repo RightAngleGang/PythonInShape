@@ -69,5 +69,5 @@ class Space:
                 if point:
                     shape.add_point(point)
                 else:
-                    print(f"Warning: Point '{point_name}' referenced in shape '{shape_data['name']}' not found.")
+                    print(f"Attention: le point '{point_name}' n'existe pas dans l'espace et ne peut pas être ajouté à la forme '{shape.nom}'.")
             self.shapes.add_shape(shape)

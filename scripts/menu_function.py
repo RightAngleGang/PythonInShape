@@ -8,6 +8,11 @@ def add_points(space: Space):
     space.get_point_manager().add_name_point(9.0, 1.2)
     space.get_point_manager().add_name_point(3.4, 5.6)
     space.get_point_manager().add_name_point(7.8, 9.0)
+    polygon = Polygon("Triangle")
+    polygon.add_point(space.get_point_manager().find_point_by_name("P1"))
+    polygon.add_point(space.get_point_manager().find_point_by_name("P2"))
+    polygon.add_point(space.get_point_manager().find_point_by_name("P3"))
+    space.get_shape_manager().add_shape(polygon)
     
 def add_point(space: Space):
     tmpStr = str(input("Points format : x.0;y.0 : ")).split(";")
