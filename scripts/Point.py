@@ -12,7 +12,7 @@ class Point():
         self.x = float(x)
         self.y = float(y)  
     
-    def __str3__(self) -> str:
+    def __str__(self) -> str:
         return f"{self.nom}({self.x};{self.y})"
     
     def __eq__(self, other: "Point") -> bool:
