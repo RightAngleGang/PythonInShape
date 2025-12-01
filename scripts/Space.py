@@ -40,7 +40,7 @@ class Space:
             json.dump(data, f, indent=4)
 
     def import_from_json(self, filename):
-        """Import the space data from a JSON file, same format as export_to_json"""
+        """Importe les données de l'espace depuis un fichier JSON, même format que export_to_json"""
         with open(filename, "r") as f:
             data = json.load(f)
 
