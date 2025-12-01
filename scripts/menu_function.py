@@ -232,8 +232,23 @@ def remove_point(space: Space):
         print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 63ac01e (add removepoint)
 =======
+=======
+def move_point(space: Space):
+    tmpStr = str(input("Nom du point à déplacer : "))
+    point = space.get_point_manager().find_point_by_name(tmpStr)
+    if point:
+        print(f"Point actuel : {point}")
+        new_x, new_y = get_coords2()
+        point.x = new_x
+        point.y = new_y
+        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
+    else:
+        print(f"Point '{tmpStr}' introuvable.")
+        
+>>>>>>> 5c7a832 (add movepoint)
 def rename_point(space: Space):
     tmpStr = str(input("Nom du point à renommer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
