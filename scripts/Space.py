@@ -59,7 +59,11 @@ class Space:
 
         # Import shapes
         for shape_data in data.get("shapes", []):
-            shape = Shape(shape_data["name"])
+            if shape_data.get("type") == "Polygon":
+                from scripts.Polygon import Polygon
+                shape = Polygon(shape_data["name"])
+            else:
+                shape = Shape(shape_data["name"])
             for point_name in shape_data.get("points", []):
                 point = self.points.find_point_by_name(point_name)
                 if point:
