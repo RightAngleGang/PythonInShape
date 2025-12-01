@@ -36,7 +36,7 @@ class Space:
             "shapes": self.shapes.export_to_json(),
         }
 
-        with open(filename, "w") as f:
+        with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
 
     def import_from_json(self, filename):
