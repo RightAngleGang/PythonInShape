@@ -18,10 +18,11 @@ class PointManager:
             raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
 
-    def add_point(self, x: int, y: int):
+    def add_point(self, x: int, y: int) -> str:
         pid = self.number_of_points() + 1
         point = Point(f"P{pid}", x, y)
         self.points.append(point)
+        return point.nom
         
     def get_points(self) -> list[Point]:
         """Retourne la liste des points"""
