@@ -13,12 +13,16 @@ def add_points(space: Space):
     space.get_point_manager().add_name_point(3.4, 5.6)
     space.get_point_manager().add_name_point(7.8, 9.0)
 
-    polygon = Polygon("Polygone", "Triangle")
-    polygon.add_point(space.get_point_manager().find_point_by_name("P1"))
-    polygon.add_point(space.get_point_manager().find_point_by_name("P2"))
-    polygon.add_point(space.get_point_manager().find_point_by_name("P3"))
+    #ajout d'une forme pour la démo
+    polygon = Polygon("DemoSquare", "Carré")
+    p0 = Point("DemoSquare0", 0.0, 0.0)
+    p1 = Point("DemoSquare1", 0.0, 1.0)
+    p2 = Point("DemoSquare2", 1.0, 1.0)
+    p3 = Point("DemoSquare3", 1.0, 0.0)
+    for p in (p0, p1, p2, p3):
+        space.get_point_manager().add_point(p)
+        polygon.add_point(p)
     space.get_shape_manager().add_shape(polygon)
-
 
 def add_point(space: Space):
     tmpStr = str(input("Points format : x.0;y.0 : ")).split(";")
@@ -148,8 +152,16 @@ def add_shape(space: Space):
         polygon = Circle(tmpStr, centre, radius)
 
     else:
-        print("Type de forme invalide (choisissez un nombre entre 1 et 5).")
-        return
+        polygon = Polygon(tmpStr, "Polygone")
+        tmpStr = str(input("Combien de points pour la forme polygonale : "))
+        for i in range(int(tmpStr)):
+            point_input = str(input(f"Point {i+1} du polygone (x.0;y.0) : ")).split(";")
+            px = float(point_input[0])
+            py = float(point_input[1])
+
+            p = Point(f"{tmpStr}{i}", (px), (py))
+            space.get_point_manager().add_point(p)
+            polygon.add_point(p)
 
     space.get_shape_manager().add_shape(polygon)
     print()
