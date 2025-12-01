@@ -30,3 +30,19 @@ def show_shapes(space: Space):
         print(f"Shape: {shape.nom}")
         for point in shape.points:
             print(f"  Point {point.nom}: ({point.x}, {point.y})")
+
+def euclidean_distance(space : Space):
+    tmpP1 = str(input("Nom du 1er point : "))  
+    tmpP2 = str(input("Nom du 2eme point : "))  
+    p1 = space.get_point_manager().find_point_by_name(tmpP1)
+    p2 = space.get_point_manager().find_point_by_name(tmpP2)
+    # Vérifications
+    if p1 is None:
+        print(f"Point '{tmpP1}' introuvable dans l'espace. Impossible de calculer la distance.")
+        return
+    if p2 is None:
+        print(f"Point '{tmpP2}' introuvable dans l'espace. Impossible de calculer la distance.")
+        return
+
+    # Calcul de la distance
+    print(f"La distance entre les points est : {p1.distance_to(p2)}")
