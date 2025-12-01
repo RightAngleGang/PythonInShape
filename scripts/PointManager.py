@@ -36,7 +36,7 @@ class PointManager:
         """Supprime un point"""
         self.points.remove(point)
 
-    def find_point_by_name(self, name: str) -> Point | None:
+    def find_point_by_name(self, name: str):
         """Recherche un point par son nom"""
         for point in self.points:
             if point.nom == name:

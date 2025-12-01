@@ -84,13 +84,16 @@ build:
 run:
 	@echo "▶️  Exécution main.py…"
 	# Assure que main.py existe
-	@if [ ! -f main.py ]; then echo "❌ main.py introuvable."; exit 1; fi
-	# vérifie les dépendances avant d'exécuter
-	@if [ -f $(REQ_FILE) ]; then \ \
-	    echo "📦 Vérification des dépendances…"; \
-	    $(PIP) install -r $(REQ_FILE); \ \
+	@if [ ! -f main.py ]; then \
+	    echo "❌ main.py introuvable."; \
+	    exit 1; \
 	fi
-	# exécute le script principal
+	# Vérifie les dépendances avant d'exécuter
+	@if [ -f $(REQ_FILE) ]; then \
+	    echo "📦 Vérification des dépendances…"; \
+	    $(PIP) install -r $(REQ_FILE); \
+	fi
+	# Exécute le script principal
 	$(PYTHON) main.py
 
 clean:
