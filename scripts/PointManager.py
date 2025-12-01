@@ -3,6 +3,7 @@ from scripts.Point import Point
 class PointManager:
     """Espace contenant des formes géométriques"""
     points: list[Point]
+    pid: int = 1
 
 
     def __init__(self):
