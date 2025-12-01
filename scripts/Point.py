@@ -6,7 +6,6 @@ class Point():
     x: float
     y: float
     
-    _count = 0
 
     def __init__(self, nom: str, x: float, y: float):
         self.nom = nom
