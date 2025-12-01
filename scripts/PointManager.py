@@ -9,11 +9,9 @@ class PointManager:
         self.points = []
 
     def __str__(self):
-        pass
+        return f"Points({self.number_of_points()}) :[" + "; ".join([str(point) for point in self.points]) + "]"
 
     def add_point(self, point: Point):
-        if point in self.points:
-            return
         if self.find_point_by_name(point.nom) is not None:
             raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
