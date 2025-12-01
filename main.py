@@ -2,6 +2,7 @@
 from scripts.Space import Space
 import sys
 from scripts.menu_function import *
+import scripts.menu_points as mp
 
 sm = Space()
 
@@ -31,11 +32,11 @@ ACTIONS_CREATION_POINTS = [
 ]
 
 ACTIONS_GESTION_POINTS = [
-    ("Ajouter un point", lambda: add_point(sm)),
+    ("Ajouter un point", lambda: mp.add_point(sm)),
     ("Lister les points", lambda: sm.list_points()),
-    ("Déplacer un point", lambda: move_point(sm)),
-    ("Renommer un point", lambda: rename_point(sm)),
-    ("Supprimer un point", lambda: remove_point(sm)),
+    ("Déplacer un point", lambda: mp.move_point(sm)),
+    ("Renommer un point", lambda: mp.rename_point(sm)),
+    ("Supprimer un point", lambda: mp.remove_point(sm)),
 ]
 
 ACTIONS_SHAPE = [

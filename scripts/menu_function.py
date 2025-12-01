@@ -6,10 +6,6 @@ from scripts.Shape import Shape
 import math
 
 
-def get_coords2() -> tuple[float, float]:
-    tmpStr = str(input("Donner des coordonnées, format x;y : ")).split(";")
-    return float(tmpStr[0].strip()), float(tmpStr[1].strip())
-
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4)
     space.get_point_manager().add_name_point(5.6, 7.8)
@@ -27,12 +23,6 @@ def add_points(space: Space):
         space.get_point_manager().add_point(p)
         polygon.add_point(p)
     space.get_shape_manager().add_shape(polygon)
-
-def add_point(space: Space):
-    tmpStr = str(input("Points format : x.0;y.0 : ")).split(";")
-    x = float(tmpStr[0])
-    y = float(tmpStr[1])
-    space.get_point_manager().add_name_point(x, y)
 
 
 def clean_coord(v: float, eps: float = 1e-9) -> float:
@@ -193,69 +183,4 @@ def euclidean_distance(space: Space):
     if p2 is None:
         print(f"Point '{tmpP2}' introuvable dans l'espace. Impossible de calculer la distance.")
         return
-
-<<<<<<< HEAD
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
-
-
-def export_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
-    try:
-        space.export_to_json(filename)
-        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'exportation des données : {e}")
-
-
-def import_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
-    try:
-        space.import_from_json(filename)
-        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'importation des données : {e}")
-=======
-    # Calcul de la distance
-    print(f"La distance entre les points est : {p1.distance_to(p2)}")
-
-def remove_point(space: Space):
-    tmpStr = str(input("Nom du point à supprimer : "))
-    point = space.get_point_manager().find_point_by_name(tmpStr)
-    if point:
-        for shape in space.get_shape_manager().get_shapes():
-            if isinstance(shape, Polygon) and point in shape.points:
-                shape.remove_point(point)
-            # Ajout d'autres types de formes si nécessaire
-        space.get_point_manager().remove_point(point)
-        print(f"Point '{tmpStr}' supprimé avec succès.")
-    else:
-        print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
-        
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 63ac01e (add removepoint)
-=======
-=======
-def move_point(space: Space):
-    tmpStr = str(input("Nom du point à déplacer : "))
-    point = space.get_point_manager().find_point_by_name(tmpStr)
-    if point:
-        print(f"Point actuel : {point}")
-        new_x, new_y = get_coords2()
-        point.x = new_x
-        point.y = new_y
-        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
-    else:
-        print(f"Point '{tmpStr}' introuvable.")
-        
->>>>>>> 5c7a832 (add movepoint)
-def rename_point(space: Space):
-    tmpStr = str(input("Nom du point à renommer : "))
-    point = space.get_point_manager().find_point_by_name(tmpStr)
-    if point:
-        new_name = str(input("Nouveau nom du point : "))
-        point.nom = new_name
-        print(f"Point renommé en '{new_name}'.")
-    else:
-        print(f"Point '{tmpStr}' introuvable.")
->>>>>>> de3a714 (add rename point)
