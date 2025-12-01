@@ -15,4 +15,12 @@ class Polygon(Shape):
 
     def add_point(self, point: Point):
         self.points.append(point)
+
+    def export_to_json(self):
+        """Export the polygon to a JSON-serializable dict"""
+        return {
+            "type": "Polygon",
+            "name": self.nom,
+            "points": [point.nom for point in self.points],
+        }
         

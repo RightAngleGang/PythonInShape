@@ -32,17 +32,8 @@ class Space:
         import json
 
         data = {
-            "points": [
-                {"name": point.nom, "x": point.x, "y": point.y}
-                for point in self.points.get_points()
-            ],
-            "shapes": [
-                {
-                    "name": shape.nom,
-                    "points": [point.nom for point in shape.points],
-                }
-                for shape in self.shapes.get_shapes()
-            ],
+            "points": self.points.export_to_json(),
+            "shapes": self.shapes.export_to_json(),
         }
 
         with open(filename, "w") as f:
@@ -59,7 +50,11 @@ class Space:
 
         # Import points
         for point_data in data.get("points", []):
-            point = Point(point_data["name"], point_data["x"], point_data["y"])
+            point = Point(
+                point_data["name"],
+                point_data["x"],
+                point_data["y"]
+            )
             self.points.add_point(point)
 
         # Import shapes

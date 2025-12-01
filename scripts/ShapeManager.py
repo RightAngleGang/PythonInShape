@@ -32,3 +32,7 @@ class ShapeManager:
             if shape.nom == name:
                 return shape
         return None
+
+    def export_to_json(self):
+        """Export the shapes to a JSON-serializable list"""
+        return [shape.export_to_json() for shape in self.shapes]
