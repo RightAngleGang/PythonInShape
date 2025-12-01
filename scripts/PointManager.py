@@ -47,3 +47,10 @@ class PointManager:
     def list_points(self, separator: str = "\n"):
         """Liste tous les points dans l'espace"""
         print(separator.join([str(point) for point in self.points]))
+
+    def export_to_json(self):
+        """Export the points to a JSON-serializable list"""
+        return [
+            {"name": point.nom, "x": point.x, "y": point.y}
+            for point in self.points
+        ]
