@@ -7,10 +7,10 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 - Colin Palazzetti Rubera
 - Théo Torres
 
-# Sprint 1
+# Sprint 3
 
 **lien vers Github**
-[README Sprint 1][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
+[README Sprint 2][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
 
 ## **Rôles**
 
@@ -33,8 +33,8 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 9. Créer et afficher un **cercle en 2D**  
 10. Créer et afficher un **segment en 2D**  
 11. Gérer le **nommage automatique des points** lors de la création de formes  
-12. **Éditer les points** (suppression, translation, changement de base, etc.)  
-13. **Éditer les formes** (suppression, translation, etc.)  
+12. **Éditer les points** (suppression, translation)  
+13. **Éditer les formes** (suppression points, translation points)  
 
 ##  Espace 3D
 14. Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom  
@@ -54,91 +54,181 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ## Fonctions avancées
 27. Gérer l’**affichage web** ou **l’export vers Three.js**  
 28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  
-29. **Importer / Exporter** les points (par exemple via R ou un autre format compatible)  
-
----
-
-# **Sprint Backlog — (04/11/25 et 10/11/25)**
-
-1. Créer et afficher un **point** dans un espace 2D (coordonnées flottantes) avec retour de son nom  
-2. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 2D  
-3. Calculer et afficher la **distance euclidienne 2D** entre deux points  
-4. Afficher la **liste des formes créées** (points + formes)  
-5. Créer un **menu textuel** dans le terminal  
-
----
-
-# **User Story**
-En tant qu’utilisateur, je veux créer, visualiser et manipuler des points et des polygones dans un espace 2D à partir d’un menu textuel, afin d’explorer leurs relations géométriques.
-
-### Cas d’usage :
-- **Création de points** : saisie `x.0;y.0` → `p0(x.0;y.0)` créé
-- **Création de polygones** :
-  - saisie du nombre de points `n`
-  - pour chaque point : saisir un nom (`p0`) ou des coordonnées (`x.0;y.0`)
-- **Affichage de l’espace** :
-  - chaque forme listée sur une ligne :  
-    `f0: p0(x.0;y.0); p1(x.0;y.0)`
-- **Calcul de distance euclidienne** :
-  - saisie : `p0;p1`
-  - sortie : `distance(p0,p1) = ...`
-  
----
-
-# **Definition of Done**
-Un élément du sprint est considéré **terminé** lorsque tous les critères suivants sont remplis :
-
-## Création
-- Les points sont créés dans un espace 2D avec des coordonnées flottantes `x.0;y.0`.  
-- Les polygones sont définis à partir d’un nombre quelconque de points.  
-- Les points d’un polygone peuvent être :
-  - des points déjà existants (référencés par nom), ou  
-  - de nouveaux points définis par leurs coordonnées `(x.0;y.0)`.
-
-## Consultation
-- La liste complète des objets créés (points et polygones) est affichable à tout moment.
-
-## Calculs
-- La distance euclidienne entre deux points existants est calculée et affichée avec précision (valeur en flottants).
-
-## Menu textuel
-- Un menu textuel fonctionnel permet :
-  - la création de points,  
-  - la création de polygones,  
-  - l’affichage de tous les objets,  
-  - le calcul de distance entre deux points.  
-
-## Qualité et validation
-- Le code compile et s’exécute sans erreur.  
-- Les fonctionnalités sont testées et validées.  
-- Les entrées invalides sont gérées sans crash.  
-- Les messages d’affichage sont clairs et cohérents.
+29. **Importer** les points (Via Json)  
+30. **Exporter** les points (Via Json)  
 
 ---
 
 # **Poker planning**
-Pas encore mis en place
+Première utilisation d'un poker planning, on part du principe que nous avons 2h de travail effectif pour les développeurs.
+Car nous déduisons 20 minutes de réunion qui centralise avec le Client/PO le spring planning, spring retrospective.
+Le poker planning de 10 minutes.
+Le spring review de 20 minutes.
+La rétrospective de 10 minutes.
 
-<!--
-1pts = 10min
-| Item sprint | Estimation |
-|-------------|------------|
-| Setup GitHub | 3 |
-| Setup SonarQube | 8 |
-| Setup Environnement dev | 5 |
-| Écrire premiers tests | 3 |
+En définissant qu'un points vaut 10 minutes. Cela fait normalement 12 points par personne cependant nous préférons prendre une marge de 20% au cas de sous estimation.
+Nous sommes ainsi à un total de 40 points.
 
--->
+| Item sprint backlog | Estimation | membre |
+|-------------|------------|------------|
+| Créer et afficher un carré en 2D | 3 | Théo |
+| Créer et afficher un triangle en 2D | 1 | Théo |
+| Créer et afficher un cercle en 2D | 2 | Théo |
+| Créer et afficher un rectangle en 2D | 1 | Théo |
+| Créer et afficher un segment en 2D | 1 | Théo |
+| nommage automatique des points lors de la création de formes | 3 | Colin |
+| Éditer les points | 2 | Colin |
+| Éditer les points de formes | 3 | Colin |
+| Ajouter des tests sur le code déjà existant | 2 | Colin |
+| Importer les points en Json | 4 | Arthur |
+| Exporter les points en Json | 4 | Arthur |
+| Documentation du code produit | 1 | chaque développeur |
+| Ecriture des tests du code produit | 1 | chaque développeur |
+| Mise en forme du poker planning | 3 | Angelo |
+| Mise en forme du Sprint Backlog | 1 | Angelo |
+| Mise en forme de l'User Story et DOD | 2 | Angelo |
+
 
 ---
 
-# **Daily Sprint 10/11/25**
-L’équipe a pris du retard en raison d’un refactoring de l’architecture du code, nécessaire pour rendre la création et la gestion des entités (points/polygones) plus modulaires et réutilisables.
-Cette réorganisation devrait faciliter la production et l’adaptation pour les prochains sprints.
+# **Sprint Backlog — (01/12/2025)**
+
+6. Créer et afficher un **carré en 2D**  
+7. Créer et afficher un **triangle en 2D**  
+8. Créer et afficher un **rectangle en 2D**  
+9. Créer et afficher un **cercle en 2D**  
+10. Créer et afficher un **segment en 2D**  
+11. Gérer le **nommage automatique des points** lors de la création de formes  
+12. **Éditer les points** (suppression, translation)  
+13. **Éditer les formes** (suppression point, translation point)
+29. **Importer** les points (Via Json)  
+30. **Exporter** les points (Via Json)  
 
 ---
 
-# **Sprint Planning**
+# **User Story** et **Definition of Done**
+## 6. Créer et afficher un carré en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un carré en 2D afin de visualiser une forme géométrique parfaite à partir d’un point de départ.
+
+**Definition of Done**
+- L’utilisateur peut sélectionner l’outil **Carré**.
+- Un clic définit le premier point (coin ou centre selon l’option choisie).
+- Le carré est dessiné avec 4 côtés égaux.
+- Les 4 points sont affichés.
+- Le carré est visible à l’écran.
+- Les coordonnées sont correctement stockées.
+
+---
+
+## 7. Créer et afficher un triangle en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un triangle en 2D afin de représenter une forme à trois côtés.
+
+**Definition of Done**
+- L’utilisateur sélectionne l’outil **Triangle**.
+- Trois clics définissent les 3 points.
+- Les segments sont reliés automatiquement.
+- La forme est correctement affichée.
+- Les coordonnées sont stockées.
+
+---
+
+## 8. Créer et afficher un rectangle en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un rectangle en 2D afin de représenter une forme à quatre côtés avec deux longueurs et deux largeurs.
+
+**Definition of Done**
+- L’utilisateur sélectionne l’outil **Rectangle**.
+- Deux clics définissent les coins opposés.
+- Le rectangle est généré automatiquement.
+- Les 4 points sont visibles.
+- Les côtés opposés sont parallèles et égaux.
+
+---
+
+## 9. Créer et afficher un cercle en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un cercle en 2D afin de représenter une forme définie par un centre et un rayon.
+
+**Definition of Done**
+- L’utilisateur sélectionne l’outil **Cercle**.
+- Le premier clic définit le centre.
+- Le second clic définit le rayon.
+- Le cercle est tracé à l’écran de manière fluide.
+- Le rayon et le centre sont enregistrés.
+
+---
+
+## 10. Créer et afficher un segment en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir tracer un segment afin de relier deux points sur le plan.
+
+**Definition of Done**
+- Deux clics définissent les extrémités.
+- Un segment droit apparaît entre ces points.
+- Les deux points sont affichés.
+
+---
+
+## 11. Nommage automatique des points
+
+**User Story**  
+En tant qu’utilisateur, je veux que les points soient nommés automatiquement afin de ne pas avoir à les nommer manuellement.
+
+**Definition of Done**
+- Chaque point reçoit automatiquement un nom (A, B, C... puis A1, B1...).
+- Le nom est affiché près du point.
+- Aucun doublon n’est possible.
+
+---
+
+## 12. Éditer les points (suppression, translation)
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir supprimer ou déplacer un point afin de corriger et modifier mes figures.
+
+**Definition of Done**
+- Le point est sélectionnable.
+- L’utilisateur peut supprimer le point.
+- Le point peut être déplacé (drag & drop ou saisie de coordonnées).
+- La vue est mise à jour en temps réel.
+
+---
+
+## 13. Éditer les formes (suppression de point, translation)
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir modifier une forme en déplaçant ou supprimant ses points afin d’adapter sa géométrie.
+
+**Definition of Done**
+- Une forme peut être sélectionnée.
+- Déplacer un point met à jour toute la forme.
+- Supprimer un point supprime ou modifie la forme.
+- L’affichage est mis à jour automatiquement.
+
+---
+
+## 29. Importer les points via JSON
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir importer des points depuis un fichier JSON afin de récupérer une scène existante.
+
+**Definition of Done**
+- Un bouton ou menu **Importer** est disponible.
+- Le programme accepte un fichier `.json`.
+- Les points sont correctement chargés.
+- Les points sont affichés à l’écran.
+- Aucun crash avec un fichier valide.
+
+---
+
+# **Sprint Review**
 Le sprint a permis de poser les bases du projet PythonInShape : architecture du code, création et affichage des points, et développement du menu textuel.  
 
 ## **Détails du travail effectué**
