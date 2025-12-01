@@ -21,7 +21,7 @@ class PointManager:
     def add_name_point(self, x: float, y: float) -> str:
         pid = self.number_of_points() + 1
         point = Point(f"P{pid}", x, y)
-        self.points.append(point)
+        self.add_point(point)
         return point.nom
         
     def get_points(self) -> list[Point]:
