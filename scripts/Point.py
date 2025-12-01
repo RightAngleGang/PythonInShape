@@ -6,16 +6,13 @@ class Point():
     x: float
     y: float
     
-    _count = 0
 
-    def __init__(self, x: float, y: float):
-        #self.nom = nom
-        self.x = x
-        self.y = y
-        self.nom = f"p{Point._count}" 
-        Point._count += 1
-
-    def __str__(self) -> str:
+    def __init__(self, nom: str, x: float, y: float):
+        self.nom = nom
+        self.x = float(x)
+        self.y = float(y)  
+    
+    def __str3__(self) -> str:
         return f"{self.nom}({self.x};{self.y})"
     
     def __eq__(self, other: "Point") -> bool:
