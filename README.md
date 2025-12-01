@@ -54,8 +54,8 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ## Fonctions avancées
 27. Gérer l’**affichage web** ou **l’export vers Three.js**  
 28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  
-29. **Importer** les points (Via Json)  
-30. **Exporter** les points (Via Json)  
+29. **Importer** les points et formes (Via Json)  
+30. **Exporter** les points et formes (Via Json)  
 
 ---
 
@@ -66,7 +66,7 @@ Le poker planning de 10 minutes.
 Le spring review de 20 minutes.
 La rétrospective de 10 minutes.
 
-En définissant qu'un points vaut 10 minutes. Cela fait normalement 12 points par personne cependant nous préférons prendre une marge de 20% au cas de sous estimation.
+En définissant qu'un points vaut environs 10 minutes. Cela fait normalement 12 points par personne cependant nous préférons prendre une marge de 20% au cas de sous estimation.
 Nous sommes ainsi à un total de 40 points.
 
 | Item sprint backlog | Estimation | membre |
@@ -80,13 +80,15 @@ Nous sommes ainsi à un total de 40 points.
 | Éditer les points | 2 | Colin |
 | Éditer les points de formes | 3 | Colin |
 | Ajouter des tests sur le code déjà existant | 2 | Colin |
-| Importer les points en Json | 4 | Arthur |
-| Exporter les points en Json | 4 | Arthur |
+| Importer les points et formes en Json | 4 | Arthur |
+| Exporter les points et formes en Json | 4 | Arthur |
 | Documentation du code produit | 1 | chaque développeur |
 | Ecriture des tests du code produit | 1 | chaque développeur |
-| Mise en forme du poker planning | 3 | Angelo |
+| Mise en forme du poker planning | 2 | Angelo |
 | Mise en forme du Sprint Backlog | 1 | Angelo |
-| Mise en forme de l'User Story et DOD | 2 | Angelo |
+| Mise en forme de l'User Story et DOD | 3 | Angelo |
+| Mise en forme du Sprint Review | 1 | Angelo |
+| Mise en forme de la rétrospective | 1 | Angelo |
 
 
 ---
@@ -107,101 +109,89 @@ Nous sommes ainsi à un total de 40 points.
 ---
 
 # **User Story** et **Definition of Done**
-## 6. Créer et afficher un carré en 2D
+## 1. Créer et afficher un carré en 2D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un carré en 2D afin de visualiser une forme géométrique parfaite à partir d’un point de départ.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un carré en 2D à partir d’un point de départ (pas encore existant) et une taille de segment et un angle.
 
 **Definition of Done**
-- L’utilisateur peut sélectionner l’outil **Carré**.
-- Un clic définit le premier point (coin ou centre selon l’option choisie).
-- Le carré est dessiné avec 4 côtés égaux.
-- Les 4 points sont affichés.
-- Le carré est visible à l’écran.
-- Les coordonnées sont correctement stockées.
-
----
-
-## 7. Créer et afficher un triangle en 2D
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un triangle en 2D afin de représenter une forme à trois côtés.
-
-**Definition of Done**
-- L’utilisateur sélectionne l’outil **Triangle**.
-- Trois clics définissent les 3 points.
-- Les segments sont reliés automatiquement.
-- La forme est correctement affichée.
+- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- Un point, la taille d'un côté et un angle définissent un carré.
+- 0° correspondant à l’axe des abscisses dans un repère orthonormé.
+- La forme est affichées de façon textuelle.
 - Les coordonnées sont stockées.
 
----
-
-## 8. Créer et afficher un rectangle en 2D
+## 2. Créer et afficher un triangle en 2D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un rectangle en 2D afin de représenter une forme à quatre côtés avec deux longueurs et deux largeurs.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un triangle en 2D à partir de 3 points (pas encore existant).
 
 **Definition of Done**
-- L’utilisateur sélectionne l’outil **Rectangle**.
-- Deux clics définissent les coins opposés.
-- Le rectangle est généré automatiquement.
-- Les 4 points sont visibles.
-- Les côtés opposés sont parallèles et égaux.
+- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- Trois points définissent le triangle.
+- La forme est affichées de façon textuelle.
+- Les coordonnées sont stockées.
 
----
 
-## 9. Créer et afficher un cercle en 2D
+## 3. Créer et afficher un rectangle en 2D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un rectangle en 2D à partir d'un point, une longueur, une largeur et un angle.
+
+**Definition of Done**
+- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- Un point, la longueur, la largeur et un angle définissent un rectangle.
+- 0° correspondant à l’axe des abscisses dans un repère orthonormé.
+- La forme est affichées de façon textuelle.
+- Les coordonnées sont stockées.
+
+## 4. Créer et afficher un cercle en 2D
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir créer et afficher un cercle en 2D afin de représenter une forme définie par un centre et un rayon.
 
 **Definition of Done**
-- L’utilisateur sélectionne l’outil **Cercle**.
-- Le premier clic définit le centre.
-- Le second clic définit le rayon.
-- Le cercle est tracé à l’écran de manière fluide.
-- Le rayon et le centre sont enregistrés.
+- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- Un point et un rayon définissent un cercle.
+- La forme est affichées de façon textuelle.
+- Les coordonnées sont stockées.
 
----
 
-## 10. Créer et afficher un segment en 2D
+## 5. Créer et afficher un segment en 2D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir tracer un segment afin de relier deux points sur le plan.
+En tant qu’utilisateur, je veux pouvoir tracer un segment.
 
 **Definition of Done**
-- Deux clics définissent les extrémités.
-- Un segment droit apparaît entre ces points.
-- Les deux points sont affichés.
+- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- Deux points définissent un segment.
+- La forme est affichées de façon textuelle.
+- Les coordonnées sont stockées.
 
----
 
-## 11. Nommage automatique des points
+## 6. Nommage automatique des points
 
 **User Story**  
-En tant qu’utilisateur, je veux que les points soient nommés automatiquement afin de ne pas avoir à les nommer manuellement.
+En tant qu’utilisateur, je veux que lors de la création d'une forme, les points qui la compose soient nommés automatiquement.
 
 **Definition of Done**
-- Chaque point reçoit automatiquement un nom (A, B, C... puis A1, B1...).
+- Chaque point reçoit automatiquement un nom.
+- Il est ajouté à l'espace.
 - Le nom est affiché près du point.
 - Aucun doublon n’est possible.
 
----
-
-## 12. Éditer les points (suppression, translation)
+## 7. Éditer les points (suppression, translation)
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir supprimer ou déplacer un point afin de corriger et modifier mes figures.
+En tant qu’utilisateur, je veux pouvoir supprimer ou déplacer un point.
 
 **Definition of Done**
 - Le point est sélectionnable.
 - L’utilisateur peut supprimer le point.
-- Le point peut être déplacé (drag & drop ou saisie de coordonnées).
-- La vue est mise à jour en temps réel.
+- Le point peut être déplacé (modification coordonnées).
+- Le point est affichés de façon textuelle.
 
----
-
-## 13. Éditer les formes (suppression de point, translation)
+## 9. Éditer les formes (suppression de point, translation)
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir modifier une forme en déplaçant ou supprimant ses points afin d’adapter sa géométrie.
@@ -210,21 +200,30 @@ En tant qu’utilisateur, je veux pouvoir modifier une forme en déplaçant ou s
 - Une forme peut être sélectionnée.
 - Déplacer un point met à jour toute la forme.
 - Supprimer un point supprime ou modifie la forme.
-- L’affichage est mis à jour automatiquement.
+- Le point est affichés de façon textuelle.
 
----
-
-## 29. Importer les points via JSON
+## 10. Importer les points et formes via JSON
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir importer des points depuis un fichier JSON afin de récupérer une scène existante.
 
 **Definition of Done**
-- Un bouton ou menu **Importer** est disponible.
+- Une option dans le menu "gestion des données" ouvre un sous menu avec l'option pour importer.
 - Le programme accepte un fichier `.json`.
 - Les points sont correctement chargés.
-- Les points sont affichés à l’écran.
-- Aucun crash avec un fichier valide.
+- Les points et formes sont affichés de façon textuelle.
+
+## 11. Exporter les points et formes via JSON
+
+**User Story**
+En tant qu’utilisateur, je veux pouvoir exporter mes points vers un fichier JSON afin de les sauvegarder ou les partager.
+
+**Definition of Done**
+- Une option dans le menu "gestion des données" ouvre un sous menu avec l'option pour exporter.
+- Un fichier .json est généré.
+- Tous les points actuels sont enregistrés.
+- L’utilisateur peut choisir l’emplacement de sauvegarde à condition que le dossier existe.
+- Les points et formes sont affichés de façon textuelle.
 
 ---
 
