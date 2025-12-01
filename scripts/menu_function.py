@@ -50,3 +50,19 @@ def euclidean_distance(space : Space):
 
     # Calcul de la distance
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
+
+def export_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
+    try:
+        space.export_to_json(filename)
+        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'exportation des données : {e}")
+
+def import_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
+    try:
+        space.import_from_json(filename)
+        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'importation des données : {e}")

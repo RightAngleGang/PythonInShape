@@ -1,5 +1,9 @@
 from scripts.PointManager import PointManager
 from scripts.ShapeManager import ShapeManager
+from scripts.Point import Point
+from scripts.Shape import Shape
+import json
+
 
 class Space:
     """Espace contenant des formes géométriques"""
@@ -22,3 +26,47 @@ class Space:
     def list_points(self):
         """Liste tous les points dans l'espace"""
         self.points.list_points()
+
+    def export_to_json(self, filename):
+        """Export the space data to a JSON file"""
+        import json
+
+        data = {
+            "points": [
+                {"name": point.nom, "x": point.x, "y": point.y}
+                for point in self.points.get_points()
+            ],
+            "shapes": [
+                {
+                    "name": shape.nom,
+                    "points": [point.nom for point in shape.points],
+                }
+                for shape in self.shapes.get_shapes()
+            ],
+        }
+
+        with open(filename, "w") as f:
+            json.dump(data, f, indent=4)
+
+    def import_from_json(self, filename):
+        """Import the space data from a JSON file, same format as export_to_json"""
+        with open(filename, "r") as f:
+            data = json.load(f)
+
+        # Clear existing data
+        self.points = PointManager()
+        self.shapes = ShapeManager()
+
+        # Import points
+        for point_data in data.get("points", []):
+            point = Point(point_data["name"], point_data["x"], point_data["y"])
+            self.points.add_point(point)
+
+        # Import shapes
+        for shape_data in data.get("shapes", []):
+            shape = Shape(shape_data["name"])
+            for point_name in shape_data.get("points", []):
+                point = self.points.find_point_by_name(point_name)
+                if point:
+                    shape.add_point(point)
+            self.shapes.add_shape(shape)
