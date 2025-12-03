@@ -22,7 +22,7 @@ class Polygon(Shape):
             if point not in value.points:
                 return False
         
-        return len(self.points) != len(value.points)
+        return len(self.points) == len(value.points)
 
 
     def add_point(self, point: Point):
