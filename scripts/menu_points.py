@@ -18,7 +18,7 @@ def remove_point(space: Space):
         space.get_point_manager().remove_point(point)
         print(f"Point '{tmpStr}' supprimé avec succès.")
     else:
-        print(f"Point '{tmpStr}' introuvable. Suppression impossible.")
+        raise ValueError(f"Point '{tmpStr}' introuvable. Suppression impossible.")
         
 def move_point(space: Space):
     tmpStr = str(input("Nom du point à déplacer : "))
@@ -30,14 +30,17 @@ def move_point(space: Space):
         point.y = new_y
         print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
     else:
-        print(f"Point '{tmpStr}' introuvable.")
+        raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
         
 def rename_point(space: Space):
     tmpStr = str(input("Nom du point à renommer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
         new_name = str(input("Nouveau nom du point : "))
+        verify_point = space.get_point_manager().find_point_by_name(new_name)
+        if verify_point:
+            raise ValueError(f"Le nom '{new_name}' est déjà utilisé. Renommage impossible.")
         point.nom = new_name
         print(f"Point renommé en '{new_name}'.")
     else:
-        print(f"Point '{tmpStr}' introuvable.")
+        raise ValueError(f"Point '{tmpStr}' introuvable. Renommage impossible.")
