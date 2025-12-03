@@ -148,7 +148,7 @@ def add_shape(space: Space):
             print(f"Saisir le point {i+1} du polygone :")
             (px, py) = get_coords2()
 
-            p = Point(f"{tmpStr}{i}", (px), (py))
+            p = Point(f"{tmpStr}{i}", px, py)
             space.get_point_manager().add_point(p)
             polygon.add_point(p)
 
