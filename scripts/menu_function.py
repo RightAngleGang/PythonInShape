@@ -93,7 +93,7 @@ def add_shape(space: Space):
         vx = math.cos(angle_rad + math.pi / 2)
         vy = math.sin(angle_rad + math.pi / 2)
 
-        p0 = Point(f"{tmpStr}0", x0, y0)
+        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0))
         p1 = Point(f"{tmpStr}1", clean_coord(x0 + length * ux), clean_coord(y0 + length * uy))
         p2 = Point(
             f"{tmpStr}2",
