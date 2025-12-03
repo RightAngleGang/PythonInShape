@@ -143,8 +143,8 @@ def add_shape(space: Space):
 
     else:
         polygon = Polygon(tmpStr, "Polygone")
-        tmpStr = str(input("Combien de points pour la forme polygonale : "))
-        for i in range(int(tmpStr)):
+        num_points = int(input("Combien de points pour la forme polygonale : "))
+        for i in range(num_points):
             print(f"Saisir le point {i+1} du polygone :")
             (px, py) = get_coords2()
 
