@@ -1,4 +1,3 @@
-from scripts.Point import Point
 from scripts.Polygon import Polygon
 from scripts.Space import Space
 from scripts.utils import get_coords2
