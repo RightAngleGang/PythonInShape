@@ -78,7 +78,7 @@ def add_shape(space: Space):
     elif shapeType == 2:
         polygon = Polygon(tmpStr, "Rectangle")
         print("Saisissez le point d'origine du rectangle")
-        (px, py) = get_coords2()
+        (x0, y0) = get_coords2()
         length = float(input("Longueur du rectangle (base) : "))
         width = float(input("Largeur du rectangle (hauteur) : "))
         angle = float(input("Angle du rectangle (en degrés) : "))
