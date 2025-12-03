@@ -15,8 +15,8 @@ class Space:
     shapeManager: ShapeManager
 
     def __init__(self):
-        self.points = PointManager()
-        self.shapes = ShapeManager()
+        self.pointManager = PointManager()
+        self.shapeManager = ShapeManager()
 
     def get_point_manager(self) -> PointManager:
         """Retourne le gestionnaire de points"""
