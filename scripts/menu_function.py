@@ -13,6 +13,12 @@ def add_points(space: Space):
     space.get_point_manager().add_name_point(9.0, 1.2)
     space.get_point_manager().add_name_point(3.4, 5.6)
     space.get_point_manager().add_name_point(7.8, 9.0)
+    
+    polygon = Polygon("Triangle", "Triangle")
+    polygon.add_point(space.get_point_manager().find_point_by_name("P1"))
+    polygon.add_point(space.get_point_manager().find_point_by_name("P2"))
+    polygon.add_point(space.get_point_manager().find_point_by_name("P3"))
+    space.get_shape_manager().add_shape(polygon)
 
     #ajout d'une forme pour la démo
     polygon = Polygon("DemoSquare", "Carré")
@@ -178,3 +184,19 @@ def euclidean_distance(space: Space):
         print(f"Point '{tmpP2}' introuvable dans l'espace. Impossible de calculer la distance.")
         return
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
+
+def export_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
+    try:
+        space.export_to_json(filename)
+        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'exportation des données : {e}")
+
+def import_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
+    try:
+        space.import_from_json(filename)
+        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'importation des données : {e}")
