@@ -26,7 +26,14 @@ class Polygon(Shape):
 
 
     def add_point(self, point: Point):
+        if point in self.points:
+            raise ValueError("Le point existe déjà dans ce polygone.")
         self.points.append(point)
+        
+    def remove_point(self, point: Point):
+        if point not in self.points:
+            raise ValueError("Le point n'existe pas dans ce polygone.")
+        self.points.remove(point)
 
     def export_to_json(self):
         """Export le polygone au format JSON"""
@@ -36,3 +43,4 @@ class Polygon(Shape):
             "subtype": self.type,       # Carré / Rectangle / Triangle / Segment
             "points": [point.nom for point in self.points],
         }
+        
