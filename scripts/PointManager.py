@@ -3,12 +3,12 @@ from scripts.Point import Point
 class PointManager:
     """Espace contenant des formes géométriques"""
     points: list[Point]
-    pid: int = 1
+    pid: int
 
 
     def __init__(self):
         self.points = []
-
+        self.pid = 1
     def __str__(self):
         return f"Points({self.number_of_points()}) :[" + "; ".join([str(point) for point in self.points]) + "]"
 
