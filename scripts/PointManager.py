@@ -1,27 +1,30 @@
 from scripts.Point import Point
 
 class PointManager:
-    """Espace contenant des formes géométriques"""
+    """Gestionnaire de points dans un espace 2D"""
     points: list[Point]
+    pid: int
 
 
     def __init__(self):
         self.points = []
-
+        self.pid = 1
     def __str__(self):
-        pass
+        return f"Points({self.number_of_points()}): [" + "; ".join([str(point) for point in self.points]) + "]"
 
     def add_point(self, point: Point):
-        if point in self.points:
-            return
         if self.find_point_by_name(point.nom) is not None:
             raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
 
     def add_name_point(self, x: float, y: float) -> str:
-        pid = self.number_of_points() + 1
-        point = Point(f"P{pid}", x, y)
-        self.add_point(point)
+        """Ajoute un point avec un nom généré automatiquement et retourne son nom"""
+        point = Point(f"P{self.pid}", x, y)
+        try:
+            self.add_point(point)
+            self.pid += 1  # Only increment if addition succeeds
+        except ValueError as e:
+            raise ValueError(f"Erreur lors de l'ajout du point<{point}>: {e}")
         return point.nom
         
     def get_points(self) -> list[Point]:

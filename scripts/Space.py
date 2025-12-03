@@ -10,9 +10,9 @@ import json
 
 class Space:
     """Espace contenant des formes géométriques"""
-    points: PointManager
-    shapes: ShapeManager
 
+    pointManager: PointManager
+    shapeManager: ShapeManager
 
     def __init__(self):
         self.points = PointManager()
@@ -20,23 +20,23 @@ class Space:
 
     def get_point_manager(self) -> PointManager:
         """Retourne le gestionnaire de points"""
-        return self.points
+        return self.pointManager
 
     def get_shape_manager(self) -> ShapeManager:
         """Retourne le gestionnaire de formes"""
-        return self.shapes
+        return self.shapeManager
 
     def list_points(self):
         """Liste tous les points dans l'espace"""
-        self.points.list_points()
+        self.pointManager.list_points()
 
     def export_to_json(self, filename):
         """Export the space data to a JSON file"""
         import json
 
         data = {
-            "points": self.points.export_to_json(),
-            "shapes": self.shapes.export_to_json(),
+            "points": self.pointManager.export_to_json(),
+            "shapes": self.shapeManager.export_to_json(),
         }
 
         with open(filename, "w", encoding="utf-8") as f:
@@ -48,8 +48,8 @@ class Space:
             data = json.load(f)
 
         # Réinitialiser les managers
-        self.points = PointManager()
-        self.shapes = ShapeManager()
+        self.pointManager = PointManager()
+        self.shapeManager = ShapeManager()
 
         # ---------- 1) Import des points ----------
         for point_data in data.get("points", []):
@@ -58,7 +58,7 @@ class Space:
                 point_data["x"],
                 point_data["y"],
             )
-            self.points.add_point(point)
+            self.pointManager.add_point(point)
 
         # ---------- 2) Import des formes ----------
         for shape_data in data.get("shapes", []):
@@ -70,7 +70,7 @@ class Space:
                 shape = Polygon(shape_data["name"], subtype)
 
                 for point_name in shape_data.get("points", []):
-                    point = self.points.find_point_by_name(point_name)
+                    point = self.pointManager.find_point_by_name(point_name)
                     if point:
                         shape.add_point(point)
                     else:
@@ -78,14 +78,14 @@ class Space:
                             f"Attention: le point '{point_name}' n'existe pas dans "
                             f"l'espace et ne peut pas être ajouté à la forme '{shape.nom}'."
                         )
-                self.shapes.add_shape(shape)
+                self.shapeManager.add_shape(shape)
 
             # --- CERCLE ---
             elif shape_type == "Circle":
                 center_name = shape_data.get("center")
                 radius = shape_data.get("radius")
 
-                center_point = self.points.find_point_by_name(center_name)
+                center_point = self.pointManager.find_point_by_name(center_name)
                 if center_point is None:
                     print(
                         f"Attention: le centre '{center_name}' du cercle '{shape_data.get('name')}' "
@@ -94,9 +94,9 @@ class Space:
                     continue
 
                 shape = Circle(shape_data["name"], center_point, radius)
-                self.shapes.add_shape(shape)
+                self.shapeManager.add_shape(shape)
 
             # --- SHAPE générique (fallback) ---
             else:
                 shape = Shape(shape_data["name"])
-                self.shapes.add_shape(shape)
+                self.shapeManager.add_shape(shape)
