@@ -3,6 +3,7 @@ from scripts.Polygon import Polygon
 from scripts.Circle import Circle
 from scripts.Space import Space
 from scripts.Shape import Shape
+from scripts.utils import get_coords2
 import math
 
 
@@ -41,7 +42,8 @@ def add_shape(space: Space):
     # ---------- 1) CARRÉ ----------
     if shapeType == 1:
         polygon = Polygon(tmpStr, "Carré")
-        point_input = str(input("Origine du carré (x.0;y.0) : ")).split(";")
+        print("Saisissez le point d'origine du carré")
+        point_input = get_coords2()
         length = float(input("Longueur du côté du carré : "))
         angle = float(input("Angle du carré (en degrés) : "))
 
@@ -75,13 +77,11 @@ def add_shape(space: Space):
     # ---------- 2) RECTANGLE ----------
     elif shapeType == 2:
         polygon = Polygon(tmpStr, "Rectangle")
-        point_input = str(input("Origine du rectangle (x.0;y.0) : ")).split(";")
+        print("Saisissez le point d'origine du rectangle")
+        (px, py) = get_coords2()
         length = float(input("Longueur du rectangle (base) : "))
         width = float(input("Largeur du rectangle (hauteur) : "))
         angle = float(input("Angle du rectangle (en degrés) : "))
-
-        x0 = float(point_input[0])
-        y0 = float(point_input[1])
 
         angle_rad = math.radians(angle)
 
@@ -111,9 +111,8 @@ def add_shape(space: Space):
         polygon = Polygon(tmpStr, "Triangle")
         print("Saisissez les 3 points du triangle :")
         for i in range(3):
-            point_input = str(input(f"Point {i+1} du triangle (x.0;y.0) : ")).split(";")
-            px = float(point_input[0])
-            py = float(point_input[1])
+            print(f"Saisir le point {i+1} du triangle :")
+            (px, py) = get_coords2()
 
             p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py))
             space.get_point_manager().add_point(p)
@@ -124,9 +123,8 @@ def add_shape(space: Space):
         polygon = Polygon(tmpStr, "Segment")
         print("Saisissez les 2 points du segment :")
         for i in range(2):
-            point_input = str(input(f"Point {i+1} du segment (x.0;y.0) : ")).split(";")
-            px = float(point_input[0])
-            py = float(point_input[1])
+            print(f"Saisir le point {i+1} du segment :")
+            (px, py) = get_coords2()
 
             p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py))
             space.get_point_manager().add_point(p)
@@ -135,9 +133,7 @@ def add_shape(space: Space):
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
         print("Saisissez l'origine puis le rayon du cercle :")
-        point_input = str(input("Centre du cercle (x.0;y.0) : ")).split(";")
-        px = float(point_input[0])
-        py = float(point_input[1])
+        (px, py) = get_coords2()
         radius = float(input("Rayon : "))
 
         centre = Point(f"{tmpStr}0", clean_coord(px), clean_coord(py))
@@ -149,17 +145,15 @@ def add_shape(space: Space):
         polygon = Polygon(tmpStr, "Polygone")
         tmpStr = str(input("Combien de points pour la forme polygonale : "))
         for i in range(int(tmpStr)):
-            point_input = str(input(f"Point {i+1} du polygone (x.0;y.0) : ")).split(";")
-            px = float(point_input[0])
-            py = float(point_input[1])
+            print(f"Saisir le point {i+1} du polygone :")
+            (px, py) = get_coords2()
 
             p = Point(f"{tmpStr}{i}", (px), (py))
             space.get_point_manager().add_point(p)
             polygon.add_point(p)
 
     space.get_shape_manager().add_shape(polygon)
-    print()
-    print(f"Forme créé : {polygon}")
+    print(f"\nForme créé : {polygon}")
 
 
 def show_shapes(space: Space):
