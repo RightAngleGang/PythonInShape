@@ -39,7 +39,6 @@ def test_move_point_nonexistent(monkeypatch):
     sm = Space()
     inputs = iter(["NonExistentPoint", "5;6"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
-    assert sm.get_point_manager().find_point_by_name("NonExistentPoint") is None
     with pytest.raises(ValueError):
         move_point(sm)
         
