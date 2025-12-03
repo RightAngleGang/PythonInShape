@@ -3,12 +3,24 @@ from scripts.Space import Space
 from scripts.utils import get_coords2
     
 def add_point(space: Space):
+    """
+    Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
+    
+    :param space:
+    :type space: Space
+    """
     coords = get_coords2()
     pname = space.get_point_manager().add_name_point(coords[0], coords[1])
     print(f"Point '{pname}' ajouté aux coordonnées ({coords[0]}; {coords[1]}).")
     
 
 def remove_point(space: Space):
+    """
+    Supprime un point de l'espace en demandant son nom à l'utilisateur.
+    
+    :param space: 
+    :type space: Space
+    """
     tmpStr = str(input("Nom du point à supprimer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
@@ -22,6 +34,12 @@ def remove_point(space: Space):
         raise ValueError(f"Point '{tmpStr}' introuvable. Suppression impossible.")
         
 def move_point(space: Space):
+    """
+    Déplace un point dans l'espace en demandant son nom et les nouvelles coordonnées à l'utilisateur.
+    
+    :param space: Description
+    :type space: Space
+    """
     tmpStr = str(input("Nom du point à déplacer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
@@ -34,6 +52,12 @@ def move_point(space: Space):
         raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
         
 def rename_point(space: Space):
+    """
+    Renomme un point dans l'espace en demandant son nom actuel et le nouveau nom à l'utilisateur.
+    
+    :param space:
+    :type space: Space
+    """
     tmpStr = str(input("Nom du point à renommer : "))
     point = space.get_point_manager().find_point_by_name(tmpStr)
     if point:
