@@ -5,7 +5,9 @@ from scripts.utils import get_coords2
     
 def add_point(space: Space):
     coords = get_coords2()
-    space.get_point_manager().add_name_point(coords[0], coords[1])
+    pname = space.get_point_manager().add_name_point(coords[0], coords[1])
+    print(f"Point '{pname}' ajouté aux coordonnées ({coords[0]}; {coords[1]}).")
+    
 
 def remove_point(space: Space):
     tmpStr = str(input("Nom du point à supprimer : "))
