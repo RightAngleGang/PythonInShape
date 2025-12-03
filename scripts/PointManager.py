@@ -10,7 +10,7 @@ class PointManager:
         self.points = []
         self.pid = 1
     def __str__(self):
-        return f"Points({self.number_of_points()}) :[" + "; ".join([str(point) for point in self.points]) + "]"
+        return f"Points({self.number_of_points()}): [" + "; ".join([str(point) for point in self.points]) + "]"
 
     def add_point(self, point: Point):
         if self.find_point_by_name(point.nom) is not None:
