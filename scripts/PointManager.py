@@ -1,7 +1,7 @@
 from scripts.Point import Point
 
 class PointManager:
-    """Espace contenant des formes géométriques"""
+    """Gestionnaire de points dans un espace 2D"""
     points: list[Point]
     pid: int
 
