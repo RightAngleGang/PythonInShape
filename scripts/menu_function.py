@@ -153,7 +153,7 @@ def add_shape(space: Space):
             polygon.add_point(p)
 
     space.get_shape_manager().add_shape(polygon)
-    print(f"\nForme créé : {polygon}")
+    print(f"\nForme créée : {polygon}")
 
 
 def show_shapes(space: Space):
