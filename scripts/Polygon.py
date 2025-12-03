@@ -31,7 +31,7 @@ class Polygon(Shape):
         self.points.append(point)
         
     def remove_point(self, point: Point):
-        if point in self.points:
+        if point not in self.points:
             raise ValueError("Le point n'existe pas dans ce polygone.")
         self.points.remove(point)
 
