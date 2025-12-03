@@ -93,7 +93,7 @@ def add_shape(space: Space):
         vx = math.cos(angle_rad + math.pi / 2)
         vy = math.sin(angle_rad + math.pi / 2)
 
-        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0))
+        p0 = Point(f"{tmpStr}0", x0, y0)
         p1 = Point(f"{tmpStr}1", clean_coord(x0 + length * ux), clean_coord(y0 + length * uy))
         p2 = Point(
             f"{tmpStr}2",
@@ -114,7 +114,7 @@ def add_shape(space: Space):
             print(f"Saisir le point {i+1} du triangle :")
             (px, py) = get_coords2()
 
-            p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py))
+            p = Point(f"{tmpStr}{i}", px, py)
             space.get_point_manager().add_point(p)
             polygon.add_point(p)
 
@@ -126,7 +126,7 @@ def add_shape(space: Space):
             print(f"Saisir le point {i+1} du segment :")
             (px, py) = get_coords2()
 
-            p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py))
+            p = Point(f"{tmpStr}{i}", px, py)
             space.get_point_manager().add_point(p)
             polygon.add_point(p)
 
@@ -136,15 +136,15 @@ def add_shape(space: Space):
         (px, py) = get_coords2()
         radius = float(input("Rayon : "))
 
-        centre = Point(f"{tmpStr}0", clean_coord(px), clean_coord(py))
+        centre = Point(f"{tmpStr}0", px, py)
         space.get_point_manager().add_point(centre)
 
         polygon = Circle(tmpStr, centre, radius)
 
     else:
         polygon = Polygon(tmpStr, "Polygone")
-        num_points = int(input("Combien de points pour la forme polygonale : "))
-        for i in range(num_points):
+        tmpStr = str(input("Combien de points pour la forme polygonale : "))
+        for i in range(int(tmpStr)):
             print(f"Saisir le point {i+1} du polygone :")
             (px, py) = get_coords2()
 
