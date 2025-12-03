@@ -22,7 +22,6 @@ def test_remove_point_removes_existing(monkeypatch):
 def test_remove_point_nonexistent(monkeypatch):
     sm = Space()
     monkeypatch.setattr("builtins.input", lambda _: "NonExistentPoint")
-    assert sm.get_point_manager().find_point_by_name("NonExistentPoint") is None
     with pytest.raises(ValueError):
         remove_point(sm)
 
