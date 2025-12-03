@@ -49,12 +49,9 @@ def add_shape(space: Space):
     if shapeType == 1:
         polygon = Polygon(tmpStr, "Carré")
         print("Saisissez le point d'origine du carré")
-        point_input = get_coords2()
+        (x0,y0) = get_coords2()
         length = float(input("Longueur du côté du carré : "))
         angle = float(input("Angle du carré (en degrés) : "))
-
-        x0 = float(point_input[0])
-        y0 = float(point_input[1])
 
         angle_rad = math.radians(angle)
 
