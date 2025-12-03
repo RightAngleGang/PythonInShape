@@ -1,6 +1,5 @@
 import pytest
 from scripts.menu_points import add_point, remove_point, move_point, rename_point
-from scripts.utils import get_coords2
 from scripts.Space import Space
 from scripts.Point import Point
 
