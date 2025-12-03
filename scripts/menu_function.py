@@ -136,7 +136,7 @@ def add_shape(space: Space):
         (px, py) = get_coords2()
         radius = float(input("Rayon : "))
 
-        centre = Point(f"{tmpStr}0", px, py)
+        centre = Point(f"{tmpStr}0", clean_coord(px), clean_coord(py))
         space.get_point_manager().add_point(centre)
 
         polygon = Circle(tmpStr, centre, radius)
