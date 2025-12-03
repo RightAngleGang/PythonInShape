@@ -228,7 +228,68 @@ En tant qu’utilisateur, je veux pouvoir exporter mes points vers un fichier JS
 ---
 
 # **Sprint Review**
+## Objectif
 
+Mettre en place les fonctionnalités principales en 2D :
+- Création de formes de base
+- Gestion avancée des points
+- Import / export en JSON
+- Amélioration de l’architecture du projet
+
+## Fonctionnalités livrées
+
+### Formes 2D
+- Carré  
+- Triangle  
+- Rectangle  
+- Cercle  
+- Segment  
+
+La création est possible via le menu « Actions de formes ».  
+Les formes sont affichées de manière textuelle et les points sont générés et stockés automatiquement.
+
+
+### Gestion des points
+- Nommage automatique sans doublon  
+- Suppression d’un point  
+- Déplacement (translation)  
+- Renommage  
+- Mise à jour des formes liées  
+
+
+### Import / Export JSON
+- Export des points et formes dans un fichier `.json`  
+- Import d’une scène à partir d’un fichier `.json`  
+- Fonctionnalités intégrées dans le menu « Gestion des données »
+
+
+## Amélioration de la structure du projet
+
+- Refonte des classes `Shape`, `Polygon`, `Circle` et `Space`
+- Mise en place de `PointManager` et `ShapeManager`
+- Correction du `Makefile`
+- Amélioration de la lisibilité (print et méthodes `__str__`)
+- Organisation générale du projet améliorée
+
+
+## Tests et qualité
+
+- Ajout d’un fichier `pytest.ini`
+- Premiers tests unitaires réalisés
+- Tests fonctionnels effectués manuellement
+- Début d’intégration d’outils de qualité (SonarQube)
+
+
+## Résultat du sprint
+
+Les objectifs du sprint ont été atteints.  
+Les fonctionnalités prévues ont été implémentées et l’architecture du projet est maintenant plus stable et plus maintenable, en préparation du passage à la 3D et aux fonctionnalités avancées.
+
+## Points d’amélioration
+
+- Augmenter la couverture des tests
+- Renforcer la gestion des erreurs
+- Compléter la documentation
 
 ---
 
@@ -242,7 +303,7 @@ En tant qu’utilisateur, je veux pouvoir exporter mes points vers un fichier JS
 - Planning et rétrospective avec le client/PO plus fluide avec des questions déjà préparer et une idée du sprint baclog à venir.  
 
 ## **Ce qui a posé problème**
-- Les users stories et les dod doivent s'entremeler. 
+- Les users stories et les dod devaient s'entremeler. 
 - Léger retard sur les tests.
 - Bonne répartition des tâches entre les membres grâce au poker planning sauf pour Colin qui a eu un légé retard à cause d'un soucis personnel.  
 
