@@ -1,5 +1,5 @@
 class Point():
-    """Point dans un espace 2D"""
+    """Point dans un espace 2D ou 3D"""
     nom: str
     x: float
     y: float
