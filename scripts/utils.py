@@ -16,7 +16,7 @@ def get_coords2() -> tuple[float, float]:
 
 def get_coords3() -> tuple[float, float, float]:
     """
-    Demande à l'utilisateur de saisir des coordonnées au format x;y et les retourne sous forme de tuple de floats.
+    Demande à l'utilisateur de saisir des coordonnées au format x;y;z et les retourne sous forme de tuple de floats.
     Erreur levée (ValueError) si le format est incorrect ou si les valeurs ne sont pas des nombres valides.
     
     :return: Tuple contenant les coordonnées x, y et z. (x,y,z)
