@@ -17,9 +17,9 @@ class PointManager:
             raise ValueError(f"Un point avec le nom '{point.nom}' existe déjà.")
         self.points.append(point)
 
-    def add_name_point(self, x: float, y: float) -> str:
+    def add_name_point(self, x: float, y: float, z: float=0) -> str:
         """Ajoute un point avec un nom généré automatiquement et retourne son nom"""
-        point = Point(f"P{self.pid}", x, y)
+        point = Point(f"P{self.pid}", x, y, z)
         try:
             self.add_point(point)
             self.pid += 1  # Only increment if addition succeeds
@@ -54,6 +54,6 @@ class PointManager:
     def export_to_json(self):
         """Export the points to a JSON-serializable list"""
         return [
-            {"name": point.nom, "x": point.x, "y": point.y}
+            {"name": point.nom, "x": point.x, "y": point.y, "z": point.z}
             for point in self.points
         ]
