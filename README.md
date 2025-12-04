@@ -132,6 +132,21 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher un point dans un es
 - Le point et son nom sont affichés de façon textuelle.
 - Les coordonnées sont stockées.
 
+## 15. Créer et afficher un polygone quelconque (3D)
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un polygone quelconque en 3D à partir d’un ensemble de N points afin de représenter une forme libre orientée dans l’espace.
+
+**Definition of Done**
+- L’utilisateur sélectionne **Gestion des Formes 3D → Ajouter une forme 3D → Polygone (N)**.
+- Le polygone est défini par :
+  - un nombre de points **N (N ≥ 3)**
+  - une liste de points dans l’espace 3D : `(x₁, y₁, z₁), (x₂, y₂, z₂), …, (xₙ, yₙ, zₙ)`
+- Les segments reliant les points sont générés automatiquement dans l’ordre donné.
+- Le dernier point est relié au premier pour **fermer le polygone**.
+- Si **N < 3**, un message d’erreur s’affiche.
+- La forme est affichée de façon **textuelle** (liste des sommets et des arêtes).
+- Les coordonnées des points sont **stockées**.
 
 
 ## 16. Calculer la distance euclidienne entre deux points en 3D
