@@ -91,6 +91,80 @@ def create_circle(tmpStr: str, space):
     # Création finale du cercle orienté
     circle = Circle(tmpStr, centre, radius, normal)
     return circle
+
+def create_polygon(tmpStr: str, space: Space):
+    """Crée un polygone en 3D à partir :
+       - de coordonnées 2D (sx, sy) saisies par l'utilisateur
+       - d'un point d'origine 3D
+       - d'un vecteur normal définissant le plan du polygone
+    """
+
+    # 1) Nombre de sommets
+    nb_points_str = input("Combien de points pour le polygone ? ")
+    try:
+        nb_points = int(nb_points_str)
+    except ValueError:
+        print("Nombre invalide.")
+        return None
+
+    if nb_points < 3:
+        print("Un polygone doit avoir au moins 3 points.")
+        return None
+
+    print("\n=== Saisie des points en 2D (plan local) ===")
+    points_2d = []  # liste des (sx, sy)
+
+    for i in range(nb_points):
+        print(f"Point {i+1} :")
+        (sx, sy) = get_coords2()
+        points_2d.append((sx, sy))
+
+    # 2) Point d'origine pour positionner le polygone dans l'espace
+    print("\n=== Position du polygone dans l'espace ===")
+    print("Saisissez le point d'origine (3D) du polygone :")
+    (x0, y0, z0) = get_coords3()
+
+    origin = Point(f"{tmpStr}_O", clean_coord(x0), clean_coord(y0), clean_coord(z0))
+    space.get_point_manager().add_point(origin)
+
+    # 3) Vecteur normal définissant l'orientation du polygone dans l'espace
+    print("\nSaisissez un vecteur normal pour orienter le polygone :")
+    nx = float(input("nx : "))
+    ny = float(input("ny : "))
+    nz = float(input("nz : "))
+
+    norm = math.sqrt(nx * nx + ny * ny + nz * nz)
+    if norm == 0:
+        print("⚠ Vecteur normal nul : impossible de définir un plan.")
+        return None
+
+    n = np.array([nx / norm, ny / norm, nz / norm])
+
+    # 4) Construction d'une base orthonormée (u, v) dans le plan
+    ref = np.array([0.0, 0.0, 1.0])
+    if abs(np.dot(ref, n)) > 0.99:
+        ref = np.array([1.0, 0.0, 0.0])
+
+    u = np.cross(n, ref)
+    u = u / np.linalg.norm(u)
+
+    v = np.cross(n, u)
+    v = v / np.linalg.norm(v)
+
+    # 5) Construction réelle du polygone en 3D
+    polygon = Polygon(tmpStr, "Polygone")
+
+    for i, (sx, sy) in enumerate(points_2d):
+        px = x0 + sx * u[0] + sy * v[0]
+        py = y0 + sx * u[1] + sy * v[1]
+        pz = z0 + sx * u[2] + sy * v[2]
+
+        p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py), clean_coord(pz))
+        space.get_point_manager().add_point(p)
+        polygon.add_point(p)
+
+    return polygon
+
 def add_shape(space: Space):
     try:
         shapeType = int(input("Type de forme : Carré/Rectangle/Triangle/Segment/Cercle (entrez un nombre 1-5) : "))
@@ -220,15 +294,7 @@ def add_shape(space: Space):
         polygon = create_circle(tmpStr, space)
 
     else:
-        polygon = Polygon(tmpStr, "Polygone")
-        tmpStr = str(input("Combien de points pour la forme polygonale : "))
-        for i in range(int(tmpStr)):
-            print(f"Saisir le point {i+1} du polygone :")
-            (px, py) = get_coords2()
-
-            p = Point(f"{tmpStr}{i}", px, py)
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        polygon=create_polygon(tmpStr, space)
 
     space.get_shape_manager().add_shape(polygon)
     print(f"\nForme créée : {polygon}")
