@@ -459,6 +459,9 @@ def add_shape3D(space: Space):
     
     # ---------- 5) TRIANGLE (3 points) ----------
     elif shapeType == 5:
+        polygon = add_triangle(space, tmpStr, True)
+        space.get_shape_manager().add_shape(polygon)
+        print(f"\nForme 3D créée : {polygon}")
 
 
     # ---------- 7) SPHERE (1 pt + 1 rayon) ----------
