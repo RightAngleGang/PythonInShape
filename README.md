@@ -220,50 +220,69 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher un cône en 3D à p
 - Les coordonnées sont stockées.
 
 
-## 23. Créer et afficher une pyramide
+## 23. Créer et afficher une pyramide (base carrée) en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher une pyramide en 3D à partir d’une base et d’un sommet afin de représenter un solide à faces triangulaires.
+En tant qu’utilisateur, je veux pouvoir créer et afficher une pyramide à base carrée en 3D à partir d’un point, de la taille d’un côté, d’une hauteur et de deux angles afin de représenter un solide orienté dans l’espace.
 
 **Definition of Done**
-- L’utilisateur sélectionne "Pyramide".
-- Une base (polygone) et un sommet définissent la pyramide.
+- L’utilisateur sélectionne **Gestion des Formes 3D → Ajouter une forme 3D → Pyramide (3)**.
+- La pyramide est définie par :
+  - un point de base (x, y, z)
+  - une taille de côté (base carrée)
+  - une hauteur
+  - deux angles d’orientation
+- La base carrée et le sommet sont calculés automatiquement.
 - La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 24. Créer et afficher un pavé (parallélépipède rectangle)
+
+## 24. Créer et afficher un pavé droit (3D)
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un pavé 3D à partir d’un point, d’une longueur, d’une largeur et d’une hauteur afin de représenter un solide rectangulaire.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un pavé droit en 3D à partir d’un point, de ses dimensions et de deux angles afin de représenter un solide rectangulaire orienté dans l’espace.
 
 **Definition of Done**
-- L’utilisateur sélectionne "Pavé".
-- Un point, une longueur, une largeur et une hauteur définissent le pavé.
+- L’utilisateur sélectionne **Gestion des Formes 3D → Ajouter une forme 3D → Pavé droit (2)**.
+- Le pavé est défini par :
+  - un point d’origine (x, y, z)
+  - une longueur
+  - une largeur
+  - une hauteur
+  - deux angles d’orientation (rotation dans l’espace)
+- Les sommets sont calculés automatiquement à partir de ces données.
 - La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 25. Créer et afficher un cube
+## 25. Créer et afficher un cube en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un cube en 3D à partir d’un point et d’une longueur d’arête afin de représenter un solide régulier.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un cube en 3D à partir d’un point, d’une longueur d’arête et de deux angles afin de représenter un solide régulier orienté dans l’espace.
 
 **Definition of Done**
-- L’utilisateur sélectionne "Cube".
-- Un point et une longueur d’arête définissent le cube.
+- L’utilisateur sélectionne **Gestion des Formes 3D → Ajouter une forme 3D → Cube (1)**.
+- Le cube est défini par :
+  - un point d’origine (x, y, z)
+  - une longueur d’arête
+  - deux angles d’orientation
+- Les sommets sont générés automatiquement.
 - La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 26. Créer et afficher une sphère
+
+## 26. Créer et afficher une sphère en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher une sphère en 3D à partir d’un centre et d’un rayon afin de représenter un solide parfaitement symétrique.
+En tant qu’utilisateur, je veux pouvoir créer et afficher une sphère en 3D à partir d’un point et d’un rayon afin de représenter un solide parfaitement symétrique dans l’espace.
 
 **Definition of Done**
-- L’utilisateur sélectionne "Sphère".
-- Un point et un rayon définissent la sphère.
+- L’utilisateur sélectionne **Gestion des Formes 3D → Ajouter une forme 3D → Sphère**.
+- La sphère est définie par :
+  - un point centre (x, y, z)
+  - un rayon
 - La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
