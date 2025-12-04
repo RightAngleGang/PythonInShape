@@ -49,13 +49,19 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 23. Créer et afficher une **pyramide**  
 24. Créer et afficher un **pavé**  
 25. Créer et afficher un **cube**  
-26. Créer et afficher une **sphère**  
+26. Créer et afficher une **sphère**
+31. **Éditer les points en 3D** (suppression, translation)  
+32. **Éditer les points des formes en 3D** (suppression points, translation points)  
 
 ## Fonctions avancées
 27. Gérer l’**affichage web** ou **l’export vers Three.js**  
 28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  
 29. **Importer** les points et formes (Via Json)  
-30. **Exporter** les points et formes (Via Json)  
+30. **Exporter** les points et formes (Via Json)
+
+## Calcul
+33. Calculer l'aire
+33. Calculer le volume 
 
 ---
 
@@ -71,19 +77,19 @@ Nous sommes ainsi à un total de 40 points.
 
 | Item sprint backlog | Estimation | membre |
 |-------------|------------|------------|
-| Créer et afficher un carré en 2D | 3 | Théo |
-| Créer et afficher un triangle en 2D | 1 | Théo |
-| Créer et afficher un cercle en 2D | 2 | Théo |
-| Créer et afficher un rectangle en 2D | 1 | Théo |
-| Créer et afficher un segment en 2D | 1 | Théo |
-| nommage automatique des points lors de la création de formes | 3 | Colin |
-| Éditer les points | 2 | Colin |
-| Éditer les points de formes | 3 | Colin |
-| Ajouter des tests sur le code déjà existant | 2 | Colin |
-| Importer les points et formes en Json | 4 | Arthur |
-| Exporter les points et formes en Json | 4 | Arthur |
-| Documentation du code produit | 1 | chaque développeur |
-| Ecriture des tests du code produit | 1 | chaque développeur |
+| Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom | 1 | Dev 1 |
+| Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D | 3 | Dev 2 |
+| Calculer et afficher la **distance euclidienne 3D** entre deux points | 1 | Dev 1 |
+| Créer et afficher un **carré en 3D** | 2 | Dev 2 |
+| Créer et afficher un **triangle en 3D** | 2 | Dev 2 |
+| Créer et afficher un **rectangle en 3D** | 2 | Dev 2 |
+| Créer et afficher un **cercle en 3D** | 3 | Dev 2 |
+| Créer et afficher un **segment en 3D** | 1 | Dev 1 |
+| Créer et afficher un **cône** | 5 | Dev 3 |
+| Créer et afficher une **pyramide** | 5 | Dev 3 |
+| Créer et afficher un **pavé** | 4 | Dev 3 |
+| Créer et afficher un **cube** | 3 | Dev 3 |
+| Créer et afficher une **sphère** | 5 | Dev 3 |
 | Mise en forme du poker planning | 2 | Angelo |
 | Mise en forme du Sprint Backlog | 1 | Angelo |
 | Mise en forme de l'User Story et DOD | 3 | Angelo |
@@ -95,135 +101,183 @@ Nous sommes ainsi à un total de 40 points.
 
 # **Sprint Backlog — (01/12/2025)**
 
-6. Créer et afficher un **carré en 2D**  
-7. Créer et afficher un **triangle en 2D**  
-8. Créer et afficher un **rectangle en 2D**  
-9. Créer et afficher un **cercle en 2D**  
-10. Créer et afficher un **segment en 2D**  
-11. Gérer le **nommage automatique des points** lors de la création de formes  
-12. **Éditer les points** (suppression, translation)  
-13. **Éditer les formes** (suppression point, translation point)
-29. **Importer** les points (Via Json)  
-30. **Exporter** les points (Via Json)  
+14. Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom  
+15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D  
+16. Calculer et afficher la **distance euclidienne 3D** entre deux points  
+17. Créer et afficher un **carré en 3D**  
+18. Créer et afficher un **triangle en 3D**  
+19. Créer et afficher un **rectangle en 3D**  
+20. Créer et afficher un **cercle en 3D**  
+21. Créer et afficher un **segment en 3D**  
+22. Créer et afficher un **cône**  
+23. Créer et afficher une **pyramide**  
+24. Créer et afficher un **pavé**  
+25. Créer et afficher un **cube**  
+26. Créer et afficher une **sphère**
 
 ---
+# **User Story** et **Definition of Done – Sprint (3D)**
 
-# **User Story** et **Definition of Done**
-## 1. Créer et afficher un carré en 2D
+## 14. Créer et afficher un point en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un carré en 2D à partir d’un point de départ (pas encore existant) et une taille de segment et un angle.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un point dans un espace 3D à partir de coordonnées flottantes afin de définir une position dans l’espace.
 
 **Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
-- Un point, la taille d'un côté et un angle définissent un carré.
-- 0° correspondant à l’axe des abscisses dans un repère orthonormé.
-- La forme est affichées de façon textuelle.
+- L’utilisateur peut sélectionner l’option "Ajouter un point 3D" depuis le menu.
+- Le point est défini par trois coordonnées flottantes (x, y, z).
+- Le point est ajouté à l’espace.
+- Un nom est automatiquement attribué au point.
+- Le point et son nom sont affichés de façon textuelle.
 - Les coordonnées sont stockées.
 
-## 2. Créer et afficher un triangle en 2D
+
+## 15. Créer et afficher un polygone en 3D à partir de N points
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un triangle en 2D à partir de 3 points (pas encore existant).
+En tant qu’utilisateur, je veux pouvoir créer et afficher un polygone quelconque en 3D à partir de N points choisis afin de représenter une forme libre dans l’espace.
 
 **Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
+- L’utilisateur peut sélectionner le type de forme dans le sous-menu "Ajouter une forme" via le menu "Actions de Formes".
+- L’utilisateur choisit N points (N ≥ 3).
+- Le polygone est généré à partir des points sélectionnés.
+- La forme est affichée de façon textuelle.
+- Les coordonnées des points sont stockées.
+
+
+## 16. Calculer la distance euclidienne entre deux points en 3D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir calculer et afficher la distance euclidienne en 3D entre deux points afin de mesurer un écart dans l’espace.
+
+**Definition of Done**
+- L’utilisateur sélectionne deux points existants dans l’espace.
+- La distance euclidienne 3D est calculée selon la formule mathématique appropriée.
+- La distance est affichée de façon textuelle.
+- Les deux points restent inchangés dans l’espace.
+
+
+## 17. Créer et afficher un carré en 3D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un carré dans un espace 3D à partir d’un point, d’une taille et d’une orientation afin de représenter une surface plane carrée.
+
+**Definition of Done**
+- L’utilisateur peut sélectionner "Carré 3D" dans le sous-menu "Ajouter une forme".
+- Un point, une longueur de côté et une orientation définissent le carré.
+- Le carré est généré dans un plan de l’espace 3D.
+- La forme est affichée de façon textuelle.
+- Les coordonnées des points sont stockées.
+
+
+## 18. Créer et afficher un triangle en 3D
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un triangle en 3D à partir de trois points afin de créer une surface élémentaire.
+
+**Definition of Done**
+- L’utilisateur sélectionne "Triangle 3D" dans le sous-menu "Ajouter une forme".
 - Trois points définissent le triangle.
-- La forme est affichées de façon textuelle.
+- La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 3. Créer et afficher un rectangle en 2D
+## 19. Créer et afficher un rectangle en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un rectangle en 2D à partir d'un point, une longueur, une largeur et un angle.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un rectangle en 3D à partir d’un point, d’une longueur, d’une largeur et d’une orientation afin de représenter une surface rectangulaire.
 
 **Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
-- Un point, la longueur, la largeur et un angle définissent un rectangle.
-- 0° correspondant à l’axe des abscisses dans un repère orthonormé.
-- La forme est affichées de façon textuelle.
-- Les coordonnées sont stockées.
-
-## 4. Créer et afficher un cercle en 2D
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un cercle en 2D afin de représenter une forme définie par un centre et un rayon.
-
-**Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
-- Un point et un rayon définissent un cercle.
-- La forme est affichées de façon textuelle.
+- L’utilisateur peut sélectionner "Rectangle 3D".
+- Un point, une longueur, une largeur et une orientation définissent le rectangle.
+- La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 5. Créer et afficher un segment en 2D
+## 20. Créer et afficher un cercle en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir tracer un segment.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un cercle en 3D à partir d’un centre et d’un rayon afin de représenter une forme circulaire dans l’espace.
 
 **Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous menu "Ajouter une forme" depuis l'option "Actions de Formes" dans le menu. 
-- Deux points définissent un segment.
-- La forme est affichées de façon textuelle.
+- L’utilisateur sélectionne "Cercle 3D".
+- Un point et un rayon définissent le cercle.
+- Le cercle est situé dans un plan 3D définissable.
+- La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
 
-## 6. Nommage automatique des points
+## 21. Créer et afficher un segment en 3D
 
 **User Story**  
-En tant qu’utilisateur, je veux que lors de la création d'une forme, les points qui la compose soient nommés automatiquement.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un segment en 3D afin de relier deux points dans l’espace.
 
 **Definition of Done**
-- Chaque point reçoit automatiquement un nom.
-- Il est ajouté à l'espace.
-- Le nom est affiché près du point.
-- Aucun doublon n’est possible.
+- L’utilisateur sélectionne "Segment 3D".
+- Deux points définissent le segment.
+- Le segment est affiché de façon textuelle.
+- Les coordonnées sont stockées.
 
-## 7. Éditer les points (suppression, translation)
+
+## 22. Créer et afficher un cône
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir supprimer ou déplacer un point.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un cône en 3D à partir d’un centre de base, d’un rayon et d’une hauteur afin de représenter un solide géométrique.
 
 **Definition of Done**
-- Le point est sélectionnable.
-- L’utilisateur peut supprimer le point.
-- Le point peut être déplacé (modification coordonnées).
-- Le point est affichés de façon textuelle.
+- L’utilisateur sélectionne "Cône" dans le sous-menu "Ajouter une forme".
+- Un point définit le centre de la base.
+- Un rayon et une hauteur définissent le cône.
+- La forme est affichée de façon textuelle.
+- Les coordonnées sont stockées.
 
-## 9. Éditer les formes (suppression de point, translation)
+
+## 23. Créer et afficher une pyramide
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir modifier une forme en déplaçant ou supprimant ses points afin d’adapter sa géométrie.
+En tant qu’utilisateur, je veux pouvoir créer et afficher une pyramide en 3D à partir d’une base et d’un sommet afin de représenter un solide à faces triangulaires.
 
 **Definition of Done**
-- Une forme peut être sélectionnée.
-- Déplacer un point met à jour toute la forme.
-- Supprimer un point supprime ou modifie la forme.
-- Le point est affichés de façon textuelle.
+- L’utilisateur sélectionne "Pyramide".
+- Une base (polygone) et un sommet définissent la pyramide.
+- La forme est affichée de façon textuelle.
+- Les coordonnées sont stockées.
 
-## 10. Importer les points et formes via JSON
+
+## 24. Créer et afficher un pavé (parallélépipède rectangle)
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir importer des points depuis un fichier JSON afin de récupérer une scène existante.
+En tant qu’utilisateur, je veux pouvoir créer et afficher un pavé 3D à partir d’un point, d’une longueur, d’une largeur et d’une hauteur afin de représenter un solide rectangulaire.
 
 **Definition of Done**
-- Une option dans le menu "gestion des données" ouvre un sous menu avec l'option pour importer.
-- Le programme accepte un fichier `.json`.
-- Les points sont correctement chargés.
-- Les points et formes sont affichés de façon textuelle.
+- L’utilisateur sélectionne "Pavé".
+- Un point, une longueur, une largeur et une hauteur définissent le pavé.
+- La forme est affichée de façon textuelle.
+- Les coordonnées sont stockées.
 
-## 11. Exporter les points et formes via JSON
 
-**User Story**
-En tant qu’utilisateur, je veux pouvoir exporter mes points vers un fichier JSON afin de les sauvegarder ou les partager.
+## 25. Créer et afficher un cube
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher un cube en 3D à partir d’un point et d’une longueur d’arête afin de représenter un solide régulier.
 
 **Definition of Done**
-- Une option dans le menu "gestion des données" ouvre un sous menu avec l'option pour exporter.
-- Un fichier .json est généré.
-- Tous les points actuels sont enregistrés.
-- L’utilisateur peut choisir l’emplacement de sauvegarde à condition que le dossier existe.
-- Les points et formes sont affichés de façon textuelle.
+- L’utilisateur sélectionne "Cube".
+- Un point et une longueur d’arête définissent le cube.
+- La forme est affichée de façon textuelle.
+- Les coordonnées sont stockées.
+
+
+## 26. Créer et afficher une sphère
+
+**User Story**  
+En tant qu’utilisateur, je veux pouvoir créer et afficher une sphère en 3D à partir d’un centre et d’un rayon afin de représenter un solide parfaitement symétrique.
+
+**Definition of Done**
+- L’utilisateur sélectionne "Sphère".
+- Un point et un rayon définissent la sphère.
+- La forme est affichée de façon textuelle.
+- Les coordonnées sont stockées.
 
 ---
 
