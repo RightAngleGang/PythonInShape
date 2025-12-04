@@ -217,7 +217,7 @@ def add_shape(space: Space):
 
 def add_shape3D(space: Space):
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
@@ -449,7 +449,7 @@ def add_shape3D(space: Space):
         print(f"\nForme 3D créée : {polygon}")
 
     else:
-        print("Type de forme inconnu. Merci de choisir 1, 2, 4 ou 3.")
+        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 5.")
 
 
 
