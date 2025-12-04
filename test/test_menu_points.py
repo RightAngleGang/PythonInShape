@@ -1,5 +1,5 @@
 import pytest
-from scripts.menu_points import add_point, remove_point, move_point, rename_point
+from scripts.menu_points import *
 from scripts.Space import Space
 from scripts.Point import Point
 
@@ -8,7 +8,7 @@ from scripts.Point import Point
 def test_add_point(monkeypatch):
     sm = Space()
     monkeypatch.setattr("builtins.input", lambda _: "3; 4")
-    add_point(sm)
+    add_point_2d(sm)
     assert f"{sm.get_point_manager()}" == "" # à Compléter
    
 def test_remove_point_removes_existing(monkeypatch):
@@ -31,7 +31,7 @@ def test_move_point_changes_coords(monkeypatch):
     sm.get_point_manager().add_point(pt)
     inputs = iter(["PointA", "5;6"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
-    move_point(sm)
+    move_point_2d(sm)
     assert pt.x == 5.0
     assert pt.y == 6.0
 
@@ -40,7 +40,7 @@ def test_move_point_nonexistent(monkeypatch):
     inputs = iter(["NonExistentPoint", "5;6"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
     with pytest.raises(ValueError):
-        move_point(sm)
+        move_point_2d(sm)
         
 
 def test_rename_point_nonexistent(monkeypatch):

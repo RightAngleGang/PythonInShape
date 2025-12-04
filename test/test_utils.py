@@ -1,5 +1,5 @@
 import pytest
-from scripts.utils import get_coords2
+from scripts.utils import get_coords2, get_coords3
 
 def test_get_coords2_returns_tuple(monkeypatch):
     # Mock input to return valid coordinates
@@ -15,3 +15,18 @@ def test_get_coords2_invalid_input(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
     with pytest.raises(ValueError):
         get_coords2()
+
+def test_get_coords3_returns_tuple(monkeypatch):
+    # Mock input to return valid coordinates
+    inputs = iter(["1;2;3"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    coords = get_coords3()
+    assert isinstance(coords, tuple)
+    assert coords == (1.0, 2.0, 3.0)
+
+def test_get_coords3_invalid_input(monkeypatch):
+    # Mock input to return invalid coordinates
+    inputs = iter(["1;two;3"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    with pytest.raises(ValueError):
+        get_coords3()
