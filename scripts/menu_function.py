@@ -5,7 +5,7 @@ from scripts.Polygon import Polygon
 from scripts.Circle import Circle
 from scripts.Space import Space
 from scripts.Shape import Shape
-from scripts.utils import get_coords2
+from scripts.utils import get_coords2, get_coords3
 import math
 
 
@@ -41,7 +41,7 @@ def create_circle(tmpStr: str, space):
     """Crée un cercle 3D orienté dans l’espace avec différentes options."""
 
     print("Saisissez le centre du cercle :")
-    (px, py, pz) = get_coords2()
+    (px, py, pz) = get_coords3()
     radius = float(input("Rayon : "))
 
     # Création du point centre
@@ -90,10 +90,7 @@ def create_circle(tmpStr: str, space):
 
     # Création finale du cercle orienté
     circle = Circle(tmpStr, centre, radius, normal)
-    space.get_shape_manager().add_shape(circle)
-
-    print(f"Cercle {tmpStr} créé avec succès.")
-
+    return circle
 def add_shape(space: Space):
     try:
         shapeType = int(input("Type de forme : Carré/Rectangle/Triangle/Segment/Cercle (entrez un nombre 1-5) : "))
@@ -107,7 +104,7 @@ def add_shape(space: Space):
     if shapeType == 1:
         polygon = Polygon(tmpStr, "Carré")
         print("Saisissez le point d'origine du carré")
-        (x0, y0, z0) = get_coords2()
+        (x0, y0, z0) = get_coords3()
 
         length = float(input("Longueur du côté du carré : "))
         theta = float(input("Angle horizontal (azimut θ, en degrés) : "))
@@ -153,7 +150,7 @@ def add_shape(space: Space):
     elif shapeType == 2:
         polygon = Polygon(tmpStr, "Rectangle")
         print("Saisissez le point d'origine du rectangle")
-        (x0, y0, z0) = get_coords2()
+        (x0, y0, z0) = get_coords3()
 
         length = float(input("Longueur du rectangle (base) : "))
         width = float(input("Largeur du rectangle (hauteur) : "))
@@ -220,7 +217,7 @@ def add_shape(space: Space):
 
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
-        create_circle(tmpStr, space)
+        polygon = create_circle(tmpStr, space)
 
     else:
         polygon = Polygon(tmpStr, "Polygone")
