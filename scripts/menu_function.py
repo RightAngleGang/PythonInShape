@@ -1,3 +1,5 @@
+import numpy as np
+
 from scripts.Point import Point
 from scripts.Polygon import Polygon
 from scripts.Circle import Circle
@@ -49,33 +51,47 @@ def add_shape(space: Space):
     if shapeType == 1:
         polygon = Polygon(tmpStr, "Carré")
         print("Saisissez le point d'origine du carré")
-        (x0,y0) = get_coords2()
+        (x0, y0, z0) = get_coords2()
+
         length = float(input("Longueur du côté du carré : "))
-        angle = float(input("Angle du carré (en degrés) : "))
+        theta = float(input("Angle horizontal (azimut θ, en degrés) : "))
+        phi = float(input("Angle vertical (élévation φ, en degrés) : "))
 
-        angle_rad = math.radians(angle)
+        # Conversion radians
+        theta = math.radians(theta)
+        phi = math.radians(phi)
 
-        # Vecteur principal (côté orienté)
-        ux = math.cos(angle_rad)
-        uy = math.sin(angle_rad)
+        # --- Vecteur u (premier côté du carré) ---
+        ux = math.cos(phi) * math.cos(theta)
+        uy = math.cos(phi) * math.sin(theta)
+        uz = math.sin(phi)
 
-        # Vecteur perpendiculaire (autre côté)
-        vx = math.cos(angle_rad + math.pi / 2)
-        vy = math.sin(angle_rad + math.pi / 2)
+        u = np.array([ux, uy, uz])
 
-        # 4 sommets du carré (coordonnées nettoyées)
-        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0))
-        p1 = Point(f"{tmpStr}1", clean_coord(x0 + length * ux), clean_coord(y0 + length * uy))
-        p2 = Point(
-            f"{tmpStr}2",
-            clean_coord(x0 + length * ux + length * vx),
-            clean_coord(y0 + length * uy + length * vy),
-        )
-        p3 = Point(f"{tmpStr}3", clean_coord(x0 + length * vx), clean_coord(y0 + length * vy))
+        # --- Vecteur v (perpendiculaire à u) ---
+        # On prend un vecteur de référence pas parallèle à u
+        ref = np.array([0, 0, 1])
+        if abs(np.dot(ref, u)) > 0.99:  # quasi parallèle → on change
+            ref = np.array([0, 1, 0])
+
+        # Produit vectoriel pour obtenir un vecteur perpendiculaire
+        v = np.cross(u, ref)
+        v = v / np.linalg.norm(v)  # normalisation
+
+        # Multiplication par la longueur du côté
+        u *= length
+        v *= length
+
+        # --- Points du carré ---
+        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0), clean_coord(z0))
+        p1 = Point(f"{tmpStr}1", clean_coord(x0 + u[0]), clean_coord(y0 + u[1]), clean_coord(z0 + u[2]))
+        p2 = Point(f"{tmpStr}2", clean_coord(x0 + u[0] + v[0]), clean_coord(y0 + u[1] + v[1]),clean_coord(z0 + u[2] + v[2]))
+        p3 = Point(f"{tmpStr}3", clean_coord(x0 + v[0]), clean_coord(y0 + v[1]), clean_coord(z0 + v[2]))
 
         for p in (p0, p1, p2, p3):
             space.get_point_manager().add_point(p)
             polygon.add_point(p)
+
 
     # ---------- 2) RECTANGLE ----------
     elif shapeType == 2:
