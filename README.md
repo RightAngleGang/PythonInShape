@@ -38,7 +38,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 ##  Espace 3D
 14. Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom  
-15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D  x
+15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D
 16. Calculer et afficher la **distance euclidienne 3D** entre deux points  
 17. Créer et afficher un **carré en 3D**  
 18. Créer et afficher un **triangle en 3D**  
@@ -88,6 +88,7 @@ Nous sommes ainsi à un total de 40 points.
 | Créer et afficher un **cône** | 2 | Arthur |
 | Créer et afficher un **cercle en 3D** | 3 | Arthur |
 | Test et merge | 1 | Arthur |
+| Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D | 2 | Arthur |
 | Créer et afficher un **cube** | 4 | Théo |
 | Créer et afficher une **pyramide** | 3 | Théo |
 | Créer et afficher un **pavé** | 3 | Théo |
