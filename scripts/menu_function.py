@@ -88,14 +88,15 @@ def add_points(space: Space):
 def clean_coord(v: float, eps: float = 1e-9) -> float:
     return 0.0 if abs(v) < eps else v
 
-def add_segment(space: Space, tmpStr: str) -> Polygon:
+def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     polygon = Polygon(tmpStr, "Segment")
     print("Saisissez les 2 points du segment :")
     for i in range(2):
-        p = choose_point(space, get_coords2)
-        space.get_point_manager().add_point(p)
+        p = choose_point(space, allow_2d=True, allow_3d=a_3d)
         polygon.add_point(p)
     return polygon
+
+
 
 def add_shape(space: Space):
     try:
@@ -213,7 +214,7 @@ def add_shape(space: Space):
 
 def add_shape3D(space: Space):
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
