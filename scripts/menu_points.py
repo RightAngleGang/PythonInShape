@@ -84,7 +84,7 @@ def move_point_3d(space: Space):
         point.x = new_x
         point.y = new_y
         point.z = new_z
-        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
+        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}; {new_z}).")
     else:
         raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
         
