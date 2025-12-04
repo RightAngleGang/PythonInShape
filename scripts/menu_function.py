@@ -108,16 +108,6 @@ def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     return polygon
 
 
-def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
-    polygon = Polygon(tmpStr, "Triangle")
-    print("Saisissez les 3 points du triangle :")
-    for i in range(3):
-        print(f"Saisir le point {i+1} du triangle :")
-        p = choose_point(space, allow_2d=True, allow_3d=a_3d)
-        polygon.add_point(p)
-    return polygon
-
-
 
 def add_shape(space: Space):
     try:
@@ -452,6 +442,12 @@ def add_shape3D(space: Space):
         space.get_shape_manager().add_shape(polygon)
         print(f"\nForme 3D créée : {polygon}")
     
+    # ---------- 5) TRIANGLE (3 points) ----------
+    elif shapeType == 5:
+        polygon = add_triangle(space, tmpStr, True)
+        space.get_shape_manager().add_shape(polygon)
+        print(f"\nForme 3D créée : {polygon}")
+
     else:
         print("Type de forme inconnu. Merci de choisir 1, 2, 4 ou 3.")
 
