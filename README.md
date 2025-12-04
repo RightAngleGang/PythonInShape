@@ -85,13 +85,13 @@ Nous sommes ainsi à un total de 40 points.
 | Test et merge | 2 | Colin |
 | Créer et afficher un **carré en 3D** | 2 | Arthur |
 | Créer et afficher un **rectangle en 3D** | 2 | Arthur |
-| Créer et afficher un **cône** | 2 | Arthur |
 | Créer et afficher un **cercle en 3D** | 3 | Arthur |
 | Test et merge | 1 | Arthur |
 | Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D | 2 | Arthur |
 | Créer et afficher un **cube** | 4 | Théo |
 | Créer et afficher une **pyramide** | 3 | Théo |
 | Créer et afficher un **pavé** | 3 | Théo |
+| Créer et afficher un **cône** | 1 | Théo |
 | Mise en forme du poker planning | 2 | Angelo |
 | Mise en forme du Sprint Backlog | 1 | Angelo |
 | Mise en forme de l'User Story et DOD | 3 | Angelo |
@@ -306,33 +306,38 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher une sphère en 3D �
 ---
 
 # **Sprint Review**
-## Objectif
-## Résultat du sprint
 
-Les objectifs du sprint ont été atteints.  
-Les fonctionnalités prévues ont été implémentées et l’architecture du projet est maintenant plus stable et plus maintenable, en préparation du passage à la 3D et aux fonctionnalités avancées.
+En réalité le passage de 2D à 3D s'est avéré être de la réutilisation et adaptation qu'un départ à 0 pour Théo. Ce qui conduit à beaucoup de duplication.
+Un peu plus de refonte pour colin.
+Sauf pour Arthur qui a un ressenti totalement différent pour le cercle.
+Le cercle nécéssitait de repartir de 0, en effet on demande maintenant un rayon, un point et un vecteur, ce qui a néciessité une refonte.
+Arthur à eu un soucis de merge, il a du recreer 2 branches depuis dev. 
+Les objectifs du sprint ont été atteints et les fonctionnalités prévues ont été implémentées.
+Par contre nous nous sommes rendu compte que nous avions oublié lors du poker planning la tache (15.) Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D.
+Arthur à souhaité prendre cette tâche à 2 points.
+Pour soulager Arthur, Théo à accepté de récuperer la création du Cone.
 
-## Points d’amélioration
-
+Penser à vraiment se concerter avant l'ajout de forme pour ne pas créer de conflits ou chercher longtemps quel developeur faire quelle forme.
+Peut-être en maintenant en place une numérotation des formes en place.
 ---
 
 # **Rétrospective**
 
 ## **Ce qui a été mis en place**
 - Le poker planning.
-- L’équipe a choisi de se concentrer sur les applications 2D, dont la gestion complète ou presque des points et formes de bases.
 
 ## **Ce qui a bien fonctionné**
-- Planning et rétrospective avec le client/PO plus fluide avec des questions déjà préparer et une idée du sprint baclog à venir.  
+- Planning et rétrospective avec le client/PO plus libre et apaisée.
+- Bonne entraide au niveau des tickets entre Arthur et Théo.
+- Répartition satisfaisante des tâches entre les membres grâce au poker planning.
 
 ## **Ce qui a posé problème**
-- Les users stories et les dod devaient s'entremeler. 
-- Léger retard sur les tests.
-- Bonne répartition des tâches entre les membres grâce au poker planning sauf pour Colin qui a eu un légé retard à cause d'un soucis personnel.  
-
+- Oublie de "Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D" à cause d'un manque de vigilance.
+- Sprint stressant, la fin du projet commence à se faire sentir.
+- 
 ## **Ce qu’on doit améliorer**
-- Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.  
-- Gestion d'erreurs.
+- Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
+- Etre plus concentré sur le poker planning car nous avons failli dépasser les 20 minutes maximales.
 
 ---
 
