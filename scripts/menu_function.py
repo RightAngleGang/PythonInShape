@@ -97,29 +97,42 @@ def add_shape(space: Space):
     elif shapeType == 2:
         polygon = Polygon(tmpStr, "Rectangle")
         print("Saisissez le point d'origine du rectangle")
-        (x0, y0) = get_coords2()
+        (x0, y0, z0) = get_coords2()
+
         length = float(input("Longueur du rectangle (base) : "))
         width = float(input("Largeur du rectangle (hauteur) : "))
-        angle = float(input("Angle du rectangle (en degrés) : "))
+        theta = float(input("Angle Horizontal (azimut θ, en degrés) : "))
+        phi = float(input("Angle Vertical (élévation φ, en degrés) : "))
 
-        angle_rad = math.radians(angle)
+        # Conversion en radians
+        theta = math.radians(theta)
+        phi = math.radians(phi)
 
-        # Vecteur base
-        ux = math.cos(angle_rad)
-        uy = math.sin(angle_rad)
+        # --- Vecteur u = BASE orientée dans l'espace ---
+        ux = math.cos(phi) * math.cos(theta)
+        uy = math.cos(phi) * math.sin(theta)
+        uz = math.sin(phi)
+        u = np.array([ux, uy, uz])
+        u = u / np.linalg.norm(u)  # normalisation
+        u = u * length  # mise à l'échelle
 
-        # Vecteur hauteur (perpendiculaire)
-        vx = math.cos(angle_rad + math.pi / 2)
-        vy = math.sin(angle_rad + math.pi / 2)
+        # --- Vecteur v = HAUTEUR perpendiculaire à u ---
+        # Vecteur de référence pour fabriquer la perpendiculaire
+        ref = np.array([0, 0, 1])
+        if abs(np.dot(ref, u / length)) > 0.99:
+            ref = np.array([0, 1, 0])
 
-        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0))
-        p1 = Point(f"{tmpStr}1", clean_coord(x0 + length * ux), clean_coord(y0 + length * uy))
-        p2 = Point(
-            f"{tmpStr}2",
-            clean_coord(x0 + length * ux + width * vx),
-            clean_coord(y0 + length * uy + width * vy),
-        )
-        p3 = Point(f"{tmpStr}3", clean_coord(x0 + width * vx), clean_coord(y0 + width * vy))
+        # Produit vectoriel => perpendiculaire
+        v = np.cross(u, ref)
+        v = v / np.linalg.norm(v)
+        v = v * width
+
+        # --- Sommets du rectangle ---
+        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0), clean_coord(z0))
+        p1 = Point(f"{tmpStr}1", clean_coord(x0 + u[0]), clean_coord(y0 + u[1]), clean_coord(z0 + u[2]))
+        p2 = Point(f"{tmpStr}2", clean_coord(x0 + u[0] + v[0]), clean_coord(y0 + u[1] + v[1]),
+                   clean_coord(z0 + u[2] + v[2]))
+        p3 = Point(f"{tmpStr}3", clean_coord(x0 + v[0]), clean_coord(y0 + v[1]), clean_coord(z0 + v[2]))
 
         for p in (p0, p1, p2, p3):
             space.get_point_manager().add_point(p)
