@@ -38,7 +38,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 
 ##  Espace 3D
 14. Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom  
-15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D  
+15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D  x
 16. Calculer et afficher la **distance euclidienne 3D** entre deux points  
 17. Créer et afficher un **carré en 3D**  
 18. Créer et afficher un **triangle en 3D**  
@@ -50,18 +50,18 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 24. Créer et afficher un **pavé**  
 25. Créer et afficher un **cube**  
 26. Créer et afficher une **sphère**
-31. **Éditer les points en 3D** (suppression, translation)  
-32. **Éditer les points des formes en 3D** (suppression points, translation points)  
+31. **Éditer les points en 3D** (suppression, translation)  x
+32. **Éditer les points des formes en 3D** (suppression points, translation points)  x
 
 ## Fonctions avancées
-27. Gérer l’**affichage web** ou **l’export vers Three.js**  
-28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  
+27. Gérer l’**affichage web** ou **l’export vers Three.js**  x
+28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  x
 29. **Importer** les points et formes (Via Json)  
 30. **Exporter** les points et formes (Via Json)
 
 ## Calcul
-33. Calculer l'aire
-33. Calculer le volume 
+33. Calculer l'aire x
+33. Calculer le volume x
 
 ---
 
@@ -77,19 +77,20 @@ Nous sommes ainsi à un total de 40 points.
 
 | Item sprint backlog | Estimation | membre |
 |-------------|------------|------------|
-| Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom | 1 | Dev 1 |
-| Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D | 3 | Dev 2 |
-| Calculer et afficher la **distance euclidienne 3D** entre deux points | 1 | Dev 1 |
-| Créer et afficher un **carré en 3D** | 2 | Dev 2 |
-| Créer et afficher un **triangle en 3D** | 2 | Dev 2 |
-| Créer et afficher un **rectangle en 3D** | 2 | Dev 2 |
-| Créer et afficher un **cercle en 3D** | 3 | Dev 2 |
-| Créer et afficher un **segment en 3D** | 1 | Dev 1 |
-| Créer et afficher un **cône** | 5 | Dev 3 |
-| Créer et afficher une **pyramide** | 5 | Dev 3 |
-| Créer et afficher un **pavé** | 4 | Dev 3 |
-| Créer et afficher un **cube** | 3 | Dev 3 |
-| Créer et afficher une **sphère** | 5 | Dev 3 |
+| Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom | 1 | Colin |
+| Calculer et afficher la **distance euclidienne 3D** entre deux points | 1 | Colin |
+| Créer et afficher un **segment en 3D** | 1 | Colin |
+| Créer et afficher un **triangle en 3D** | 1 | Colin |
+| Créer et afficher une **sphère** | 4 | Colin |
+| Test et merge | 2 | Colin |
+| Créer et afficher un **carré en 3D** | 2 | Arthur |
+| Créer et afficher un **rectangle en 3D** | 2 | Arthur |
+| Créer et afficher un **cône** | 2 | Arthur |
+| Créer et afficher un **cercle en 3D** | 3 | Arthur |
+| Test et merge | 1 | Arthur |
+| Créer et afficher un **cube** | 4 | Théo |
+| Créer et afficher une **pyramide** | 3 | Théo |
+| Créer et afficher un **pavé** | 3 | Théo |
 | Mise en forme du poker planning | 2 | Angelo |
 | Mise en forme du Sprint Backlog | 1 | Angelo |
 | Mise en forme de l'User Story et DOD | 3 | Angelo |
@@ -102,7 +103,6 @@ Nous sommes ainsi à un total de 40 points.
 # **Sprint Backlog — (01/12/2025)**
 
 14. Créer et afficher un **point** dans un espace 3D (coordonnées flottantes) avec retour de son nom  
-15. Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D  
 16. Calculer et afficher la **distance euclidienne 3D** entre deux points  
 17. Créer et afficher un **carré en 3D**  
 18. Créer et afficher un **triangle en 3D**  
@@ -131,18 +131,6 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher un point dans un es
 - Le point et son nom sont affichés de façon textuelle.
 - Les coordonnées sont stockées.
 
-
-## 15. Créer et afficher un polygone en 3D à partir de N points
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un polygone quelconque en 3D à partir de N points choisis afin de représenter une forme libre dans l’espace.
-
-**Definition of Done**
-- L’utilisateur peut sélectionner le type de forme dans le sous-menu "Ajouter une forme" via le menu "Actions de Formes".
-- L’utilisateur choisit N points (N ≥ 3).
-- Le polygone est généré à partir des points sélectionnés.
-- La forme est affichée de façon textuelle.
-- Les coordonnées des points sont stockées.
 
 
 ## 16. Calculer la distance euclidienne entre deux points en 3D
@@ -283,67 +271,12 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher une sphère en 3D �
 
 # **Sprint Review**
 ## Objectif
-
-Mettre en place les fonctionnalités principales en 2D :
-- Création de formes de base
-- Gestion avancée des points
-- Import / export en JSON
-- Amélioration de l’architecture du projet
-
-## Fonctionnalités livrées
-
-### Formes 2D
-- Carré  
-- Triangle  
-- Rectangle  
-- Cercle  
-- Segment  
-
-La création est possible via le menu « Actions de formes ».  
-Les formes sont affichées de manière textuelle et les points sont générés et stockés automatiquement.
-
-
-### Gestion des points
-- Nommage automatique sans doublon  
-- Suppression d’un point  
-- Déplacement (translation)  
-- Renommage  
-- Mise à jour des formes liées  
-
-
-### Import / Export JSON
-- Export des points et formes dans un fichier `.json`  
-- Import d’une scène à partir d’un fichier `.json`  
-- Fonctionnalités intégrées dans le menu « Gestion des données »
-
-
-## Amélioration de la structure du projet
-
-- Refonte des classes `Shape`, `Polygon`, `Circle` et `Space`
-- Mise en place de `PointManager` et `ShapeManager`
-- Correction du `Makefile`
-- Amélioration de la lisibilité (print et méthodes `__str__`)
-- Organisation générale du projet améliorée
-
-
-## Tests et qualité
-
-- Ajout d’un fichier `pytest.ini`
-- Premiers tests unitaires réalisés
-- Tests fonctionnels effectués manuellement
-- Début d’intégration d’outils de qualité (SonarQube)
-
-
 ## Résultat du sprint
 
 Les objectifs du sprint ont été atteints.  
 Les fonctionnalités prévues ont été implémentées et l’architecture du projet est maintenant plus stable et plus maintenable, en préparation du passage à la 3D et aux fonctionnalités avancées.
 
 ## Points d’amélioration
-
-- Augmenter la couverture des tests
-- Renforcer la gestion des erreurs
-- Compléter la documentation
 
 ---
 
