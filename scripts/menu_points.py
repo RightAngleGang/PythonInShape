@@ -1,5 +1,9 @@
+from scripts.Space import Space
 from scripts.utils import get_coords2, get_coords3
+# from scripts.Shape import Shape
 from scripts.Polygon import Polygon
+from scripts.Circle import Circle
+    
 def add_point_2d(space: Space):
     """
     Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
@@ -36,7 +40,9 @@ def remove_point(space: Space):
         for shape in space.get_shape_manager().get_shapes():
             if isinstance(shape, Polygon) and point in shape.points:
                 shape.remove_point(point)
-            # Ajout d'autres types de formes si nécessaire
+            if isinstance(shape, Circle) and point.nom == shape.point.nom:
+                raise ValueError(f"Le point '{tmpStr}' est le centre du Cercle <{shape.nom}>. Suppression impossible.")
+            # Ajouter autres formes
         space.get_point_manager().remove_point(point)
         print(f"Point '{tmpStr}' supprimé avec succès.")
     else:
