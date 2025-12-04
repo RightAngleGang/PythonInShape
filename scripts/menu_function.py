@@ -37,6 +37,62 @@ def add_points(space: Space):
 def clean_coord(v: float, eps: float = 1e-9) -> float:
     return 0.0 if abs(v) < eps else v
 
+def create_circle(tmpStr: str, space):
+    """Crée un cercle 3D orienté dans l’espace avec différentes options."""
+
+    print("Saisissez le centre du cercle :")
+    (px, py, pz) = get_coords2()
+    radius = float(input("Rayon : "))
+
+    # Création du point centre
+    centre = Point(
+        f"{tmpStr}0",
+        clean_coord(px),
+        clean_coord(py),
+        clean_coord(pz)
+    )
+    space.get_point_manager().add_point(centre)
+
+    # Choix de l'orientation du cercle
+    print("\nOrientation du cercle :")
+    print("  1 - Plan XY (par défaut)")
+    print("  2 - Par vecteur normal (nx, ny, nz)")
+    print("  3 - Par angles (azimut θ, élévation φ)")
+    mode = input("Votre choix [1/2/3] : ").strip()
+
+    # Normal par défaut (cercle dans le plan XY)
+    normal = (0.0, 0.0, 1.0)
+
+    if mode == "2":
+        print("Saisissez un vecteur normal au plan :")
+        nx = float(input("nx : "))
+        ny = float(input("ny : "))
+        nz = float(input("nz : "))
+
+        norm = math.sqrt(nx*nx + ny*ny + nz*nz)
+        if norm == 0:
+            print("⚠ Vecteur normal nul → normalisation impossible. Normal = (0,0,1).")
+        else:
+            normal = (nx / norm, ny / norm, nz / norm)
+
+    elif mode == "3":
+        theta = float(input("Azimut θ (°) : "))
+        phi   = float(input("Élévation φ (°) : "))
+
+        theta_rad = math.radians(theta)
+        phi_rad   = math.radians(phi)
+
+        nx = math.cos(phi_rad) * math.cos(theta_rad)
+        ny = math.cos(phi_rad) * math.sin(theta_rad)
+        nz = math.sin(phi_rad)
+
+        normal = (nx, ny, nz)
+
+    # Création finale du cercle orienté
+    circle = Circle(tmpStr, centre, radius, normal)
+    space.get_shape_manager().add_shape(circle)
+
+    print(f"Cercle {tmpStr} créé avec succès.")
 
 def add_shape(space: Space):
     try:
@@ -164,14 +220,7 @@ def add_shape(space: Space):
 
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
-        print("Saisissez l'origine puis le rayon du cercle :")
-        (px, py) = get_coords2()
-        radius = float(input("Rayon : "))
-
-        centre = Point(f"{tmpStr}0", clean_coord(px), clean_coord(py))
-        space.get_point_manager().add_point(centre)
-
-        polygon = Circle(tmpStr, centre, radius)
+        create_circle(tmpStr, space)
 
     else:
         polygon = Polygon(tmpStr, "Polygone")
