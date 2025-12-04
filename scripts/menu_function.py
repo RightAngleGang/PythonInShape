@@ -5,9 +5,60 @@ from scripts.Space import Space
 from scripts.Shape import Shape
 from scripts.utils import get_coords2
 from scripts.utils import get_coords3
-from scripts.utils import choose_point
+from scripts.menu_points import add_point_2d, add_point_3d
 import math
 
+
+def choose_point(space: Space, allow_2d: bool=False, allow_3d: bool=False) -> Point:
+    """
+    Permet à l'utilisateur de choisir ou créer un Point.
+    
+    :param space: L'espace dans lequel le point doit être choisi/créé.
+    :type space: Space
+    :param allow_2d: Indique si la création de points 2D est permise. Par défaut False.
+    :type allow_2d: bool
+    :param allow_3d: Indique si la création de points 3D est permise. Par défaut False.
+    :type allow_3d: bool
+    :return: Le point choisi ou créé.
+    :rtype: Point
+    """
+    while True:
+        print("1. Choisir un point existant")
+        print("2. Créer un nouveau point")
+        choice = input("Choisissez une option (1 ou 2) : ")
+        if choice == '1':
+            ptname = str(input("Donner le nom du point : "))
+            pt = space.get_point_manager().find_point_by_name(ptname)
+            if pt is None:
+                print(f"Aucun point trouvé avec le nom '{ptname}'. Veuillez réessayer.")
+                continue
+            return pt
+        elif choice == '2':
+            if not (allow_2d or allow_3d):
+                raise AssertionError("Aucune option de création de point n'est permise pour cette action.")
+            
+            if not(allow_2d and allow_3d): # une seule option est permise
+                if allow_2d:
+                    ptname = add_point_2d(space)
+                else:
+                    ptname = add_point_3d(space)
+                    
+            else: # les deux options sont permises
+                print("Créer un point 2D ou 3D ?")
+                print("1. Point 2D")
+                print("2. Point 3D")
+                subchoice = input("Choisissez une option (1 ou 2) : ")
+                if subchoice == '1':
+                    ptname = add_point_2d(space)
+                elif subchoice == '2':
+                    ptname = add_point_3d(space)
+            pt = space.get_point_manager().find_point_by_name(ptname)
+            if pt is None:
+                print(f"Erreur lors de la création du point '{ptname}'. Veuillez réessayer.")
+                continue
+            return pt
+        else:
+            print("Option invalide. Veuillez choisir 1 ou 2.")
 
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4)
