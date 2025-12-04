@@ -1,17 +1,32 @@
-from scripts.Polygon import Polygon
 from scripts.Space import Space
-from scripts.utils import get_coords2
+from scripts.utils import get_coords2, get_coords3
+# from scripts.Shape import Shape
+from scripts.Polygon import Polygon
+from scripts.Circle import Circle
     
-def add_point(space: Space):
+def add_point_2d(space: Space):
     """
     Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
     
     :param space:
     :type space: Space
     """
-    coords = get_coords2()
-    pname = space.get_point_manager().add_name_point(coords[0], coords[1])
-    print(f"Point '{pname}' ajouté aux coordonnées ({coords[0]}; {coords[1]}).")
+    x,y = get_coords2()
+    pname = space.get_point_manager().add_name_point(x, y)
+    print(f"Point '{pname}' ajouté aux coordonnées ({x}; {y}).")
+    return pname
+    
+def add_point_3d(space: Space):
+    """
+    Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
+    
+    :param space:
+    :type space: Space
+    """
+    x,y,z = get_coords3()
+    pname = space.get_point_manager().add_name_point(x, y, z)
+    print(f"Point '{pname}' ajouté aux coordonnées ({x}; {y}; {z}).")
+    return pname
     
 
 def remove_point(space: Space):
@@ -27,13 +42,15 @@ def remove_point(space: Space):
         for shape in space.get_shape_manager().get_shapes():
             if isinstance(shape, Polygon) and point in shape.points:
                 shape.remove_point(point)
-            # Ajout d'autres types de formes si nécessaire
+            if isinstance(shape, Circle) and point.nom == shape.point.nom:
+                raise ValueError(f"Le point '{tmpStr}' est le centre du Cercle <{shape.nom}>. Suppression impossible.")
+            # Ajouter autres formes
         space.get_point_manager().remove_point(point)
         print(f"Point '{tmpStr}' supprimé avec succès.")
     else:
         raise ValueError(f"Point '{tmpStr}' introuvable. Suppression impossible.")
         
-def move_point(space: Space):
+def move_point_2d(space: Space):
     """
     Déplace un point dans l'espace en demandant son nom et les nouvelles coordonnées à l'utilisateur.
     
@@ -48,6 +65,26 @@ def move_point(space: Space):
         point.x = new_x
         point.y = new_y
         print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
+    else:
+        raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
+
+
+def move_point_3d(space: Space):
+    """
+    Déplace un point dans l'espace en demandant son nom et les nouvelles coordonnées à l'utilisateur.
+    
+    :param space: Description
+    :type space: Space
+    """
+    tmpStr = str(input("Nom du point à déplacer : "))
+    point = space.get_point_manager().find_point_by_name(tmpStr)
+    if point:
+        print(f"Point actuel : {point}")
+        new_x, new_y, new_z = get_coords3()
+        point.x = new_x
+        point.y = new_y
+        point.z = new_z
+        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}; {new_z}).")
     else:
         raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
         
