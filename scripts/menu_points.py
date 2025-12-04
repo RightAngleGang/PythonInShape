@@ -14,6 +14,7 @@ def add_point_2d(space: Space):
     x,y = get_coords2()
     pname = space.get_point_manager().add_name_point(x, y)
     print(f"Point '{pname}' ajouté aux coordonnées ({x}; {y}).")
+    return pname
     
 def add_point_3d(space: Space):
     """
@@ -25,6 +26,7 @@ def add_point_3d(space: Space):
     x,y,z = get_coords3()
     pname = space.get_point_manager().add_name_point(x, y, z)
     print(f"Point '{pname}' ajouté aux coordonnées ({x}; {y}; {z}).")
+    return pname
     
 
 def remove_point(space: Space):
