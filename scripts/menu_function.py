@@ -5,6 +5,7 @@ from scripts.Space import Space
 from scripts.Shape import Shape
 from scripts.utils import get_coords2
 from scripts.utils import get_coords3
+from scripts.utils import choose_point
 import math
 
 
@@ -36,6 +37,14 @@ def add_points(space: Space):
 def clean_coord(v: float, eps: float = 1e-9) -> float:
     return 0.0 if abs(v) < eps else v
 
+def add_segment(space: Space, tmpStr: str) -> Polygon:
+    polygon = Polygon(tmpStr, "Segment")
+    print("Saisissez les 2 points du segment :")
+    for i in range(2):
+        p = choose_point(space, get_coords2)
+        space.get_point_manager().add_point(p)
+        polygon.add_point(p)
+    return polygon
 
 def add_shape(space: Space):
     try:
@@ -124,15 +133,7 @@ def add_shape(space: Space):
 
     # ---------- 4) SEGMENT (2 points) ----------
     elif shapeType == 4:
-        polygon = Polygon(tmpStr, "Segment")
-        print("Saisissez les 2 points du segment :")
-        for i in range(2):
-            print(f"Saisir le point {i+1} du segment :")
-            (px, py) = get_coords2()
-
-            p = Point(f"{tmpStr}{i}", px, py)
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        polygon = add_segment(space, tmpStr)
 
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
