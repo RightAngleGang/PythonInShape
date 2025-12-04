@@ -98,6 +98,26 @@ def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     return polygon
 
 
+def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
+    polygon = Polygon(tmpStr, "Triangle")
+    print("Saisissez les 3 points du triangle :")
+    for i in range(3):
+        print(f"Saisir le point {i+1} du triangle :")
+        p = choose_point(space, allow_2d=True, allow_3d=a_3d)
+        polygon.add_point(p)
+    return polygon
+
+
+def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
+    polygon = Polygon(tmpStr, "Triangle")
+    print("Saisissez les 3 points du triangle :")
+    for i in range(3):
+        print(f"Saisir le point {i+1} du triangle :")
+        p = choose_point(space, allow_2d=True, allow_3d=a_3d)
+        polygon.add_point(p)
+    return polygon
+
+
 
 def add_shape(space: Space):
     try:
@@ -174,15 +194,7 @@ def add_shape(space: Space):
 
     # ---------- 3) TRIANGLE (3 points) ----------
     elif shapeType == 3:
-        polygon = Polygon(tmpStr, "Triangle")
-        print("Saisissez les 3 points du triangle :")
-        for i in range(3):
-            print(f"Saisir le point {i+1} du triangle :")
-            (px, py) = get_coords2()
-
-            p = Point(f"{tmpStr}{i}", px, py)
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        polygon = add_triangle(space, tmpStr)
 
     # ---------- 4) SEGMENT (2 points) ----------
     elif shapeType == 4:
