@@ -433,8 +433,14 @@ def add_shape3D(space: Space):
         space.get_shape_manager().add_shape(polygon)
         print(f"\nForme 3D créée : {polygon}")
 
+    # ---------- 4) SEGMENT ----------
+    elif shapeType == 4:
+        polygon = add_segment(space, tmpStr, True)
+        space.get_shape_manager().add_shape(polygon)
+        print(f"\nForme 3D créée : {polygon}")
+    
     else:
-        print("Type de forme inconnu. Merci de choisir 1, 2 ou 3.")
+        print("Type de forme inconnu. Merci de choisir 1, 2, 4 ou 3.")
 
 
 
