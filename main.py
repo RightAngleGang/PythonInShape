@@ -44,7 +44,12 @@ ACTIONS_SHAPE = [
     ("Lister les formes", lambda: show_shapes(sm)),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
-
+ACTIONS_SHAPE3D = [
+    ("Ajouter une forme 3D", lambda: add_shape3D(sm)),
+    ("Lister les formes", lambda: show_shapes(sm)),
+    #("Lister les formes", lambda: show_shapes(sm)),
+    #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
+]
 ACTIONS_DATA = [
     ("Exporter les données de l'espace vers un fichier JSON", lambda: export_space_data(sm)),
     ("Importer les données de l'espace depuis un fichier JSON", lambda: import_space_data(sm)),
@@ -57,6 +62,7 @@ ACTIONS_BASIC = [
     # ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
     #("Afficher les données de l'espace", lambda: display_space_data(sm)),
     ("Gestion des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
+    ("Gestion des Formes 3D ▶", lambda: menu_loop("--- MENU FORMES 3D ---", ACTIONS_SHAPE3D)),
     ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
     ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
