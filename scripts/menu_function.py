@@ -92,6 +92,7 @@ def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     polygon = Polygon(tmpStr, "Segment")
     print("Saisissez les 2 points du segment :")
     for i in range(2):
+        print(f"Saisir le point {i+1} du triangle :")
         p = choose_point(space, allow_2d=True, allow_3d=a_3d)
         polygon.add_point(p)
     return polygon
