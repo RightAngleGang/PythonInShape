@@ -3,6 +3,7 @@ from scripts.Space import Space
 
 def export_space_data(space: Space):
     filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
+    filename += ".json" if not filename.endswith(".json") else ""
     try:
         space.export_to_json(filename)
         print(f"Données de l'espace exportées avec succès vers '{filename}'.")
@@ -12,6 +13,7 @@ def export_space_data(space: Space):
 
 def import_space_data(space: Space):
     filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
+    filename += ".json" if not filename.endswith(".json") else ""
     try:
         space.import_from_json(filename)
         print(f"Données de l'espace importées avec succès depuis '{filename}'.")
