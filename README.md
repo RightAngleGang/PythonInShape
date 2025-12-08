@@ -60,6 +60,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 30. **Exporter** les points et formes (Via Json)
 33. **Importer** les points et formes 3D (Via Json)
 34. **Exporter** les points et formes 3D (Via Json)
+35. Réattribution automatique d'une catégorie de forme selon ses proprités géométrique après modification x
 
 
 ## Calcul
@@ -127,7 +128,7 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher un cône en 3D à p
 - La forme est affichée de façon textuelle.
 - Les coordonnées sont stockées.
 
-## 31. Éditer les points en 3D (suppression, translation)
+## 31. Éditer les points en 3D (suppression, translation) x
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir modifier ou supprimer un point en 3D afin de corriger ou ajuster sa position dans l’espace.
@@ -142,7 +143,7 @@ En tant qu’utilisateur, je veux pouvoir modifier ou supprimer un point en 3D a
 - Les modifications sont **enregistrées**.
 
 
-## 32. Éditer les points des formes en 3D (suppression, translation)
+## 32. Éditer les points des formes en 3D (suppression, translation) x
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir modifier ou supprimer les points composant une forme 3D afin de faire évoluer sa géométrie.
@@ -161,13 +162,13 @@ En tant qu’utilisateur, je veux pouvoir modifier ou supprimer les points compo
 ## 33. Importer les points et formes 3D (JSON)
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir importer des points et des formes 3D à partir d’un fichier JSON afin de récupérer rapidement des données existantes.
+En tant qu’utilisateur, je veux pouvoir importer des points et des formes à partir d’un fichier JSON afin de récupérer rapidement des données existantes.
 
 **Definition of Done**
 - L’utilisateur sélectionne **Gestion des données → Importer (JSON)**.
 - Le programme lit un fichier JSON valide contenant :
   - des points
-  - des formes 2D/3D
+  - des formes
 - Les données sont chargées dans le système.
 - Un message de confirmation est affiché.
 - En cas d’erreur, un message explicite est affiché.
@@ -176,16 +177,17 @@ En tant qu’utilisateur, je veux pouvoir importer des points et des formes 3D �
 ## 34. Exporter les points et formes 3D (JSON)
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir exporter mes points et formes 3D dans un fichier JSON afin de sauvegarder et réutiliser mes données.
+En tant qu’utilisateur, je veux pouvoir exporter mes points et formes dans un fichier JSON afin de sauvegarder et réutiliser mes données.
 
 **Definition of Done**
 - L’utilisateur sélectionne **Gestion des données → Exporter (JSON)**.
+- L'utilisateur choisi un fichier qui est créé ou écrasé
 - Tous les points et formes sont convertis au format JSON.
 - Un fichier est généré et sauvegardé.
 - Un message de confirmation est affiché.
 
 
-## 35. Calculer l’aire d’une forme
+## 35. Calculer l’aire d’une forme x
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir calculer l’aire d’une forme afin d’obtenir une information géométrique utile.
@@ -198,7 +200,7 @@ En tant qu’utilisateur, je veux pouvoir calculer l’aire d’une forme afin d
 - Si la forme n’a pas d’aire calculable → message d’erreur.
 
 
-## 36. Calculer le volume d’une forme 3D
+## 36. Calculer le volume d’une forme 3D x
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir calculer le volume d’une forme 3D afin d’analyser ses propriétés spatiales.
@@ -214,7 +216,7 @@ En tant qu’utilisateur, je veux pouvoir calculer le volume d’une forme 3D af
 - En cas d’erreur → message explicite.
 
 
-## 37. Scale (mise à l’échelle) d’une forme
+## 37. Scale (mise à l’échelle) d’une forme x
 
 **User Story**  
 En tant qu’utilisateur, je veux pouvoir appliquer un facteur d’échelle à une forme afin d’en modifier les dimensions proportionnellement.
@@ -231,18 +233,14 @@ En tant qu’utilisateur, je veux pouvoir appliquer un facteur d’échelle à u
 
 # **Sprint Review**
 
-En réalité le passage de 2D à 3D s'est avéré être de la réutilisation et adaptation qu'un départ à 0 pour Théo. Ce qui conduit à beaucoup de duplication.
-Un peu plus de refonte pour colin.
-Sauf pour Arthur qui a un ressenti totalement différent pour le cercle.
-Le cercle nécéssitait de repartir de 0, en effet on demande maintenant un rayon, un point et un vecteur, ce qui a néciessité une refonte.
-Arthur à eu un soucis de merge, il a du recreer 2 branches depuis dev. 
-Les objectifs du sprint ont été atteints et les fonctionnalités prévues ont été implémentées.
-Par contre nous nous sommes rendu compte que nous avions oublié lors du poker planning la tache (15.) Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D.
-Arthur à souhaité prendre cette tâche à 2 points cependant mais il n'a pas réussi à tout finir car il a eu un soucis de merge.
-Pour soulager Arthur, Théo à accepté de récuperer la création du Conne mais n'a pas pu le finir dans le temps imparti.
+Ce sprint à pu compenser la charge importante du sprint précédent.
+Le fait que notre soit déjà organisé a permis de facilement reprendre l'inportation et l'exportation
+On a pu constater que le refactor était nécéssaire afin de notamenent fix les erreurs.
+merge un peu chiant.
+Théo à eu des soçucis d'application de fromules maths dans espace 3D du aux angles dans l'espace.
+Refactor terminal, editer points 3D et dans les formes pour colin
 
-Penser à vraiment se concerter avant l'ajout de forme pour ne pas créer de conflits ou chercher longtemps quel developeur faire quelle forme.
-Peut-être en maintenant en place une numérotation des formes en place.
+Faire enum.
 ---
 
 # **Rétrospective**
@@ -252,12 +250,13 @@ Peut-être en maintenant en place une numérotation des formes en place.
 
 ## **Ce qui a bien fonctionné**
 - Planning et rétrospective avec le client/PO plus libre et apaisée.
-- Bonne entraide au niveau des tickets entre Arthur et Théo.
+- Répartition plus légère des tickets.
+- Sprint moins stressant.
 
 ## **Ce qui a posé problème**
-- Répartition satisfaisante des tâches entre les membres grâce au poker planning.
 - Oublie de "Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D" à cause d'un manque de vigilance.
 - Sprint stressant, la fin du projet commence à se faire sentir.
+- trop de tickets pour théo (il a pas finin scale pour le moment).
 - 
 ## **Ce qu’on doit améliorer**
 - Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
