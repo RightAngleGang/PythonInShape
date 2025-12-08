@@ -8,6 +8,7 @@ from scripts.Sphere import Sphere
 from scripts.Shape import Shape
 from scripts.Cone import Cone
 from scripts.menu_points import add_point_2d, add_point_3d
+from scripts.imp_exp import export_space_data, import_space_data
 from scripts.utils import get_coords2, get_coords3
 import math
 
@@ -64,11 +65,11 @@ def choose_point(space: Space, allow_2d: bool=False, allow_3d: bool=False) -> Po
             print("Option invalide. Veuillez choisir 1 ou 2.")
 
 def add_points(space: Space):
-    space.get_point_manager().add_name_point(1.2, 3.4)
-    space.get_point_manager().add_name_point(5.6, 7.8)
-    space.get_point_manager().add_name_point(9.0, 1.2)
-    space.get_point_manager().add_name_point(3.4, 5.6)
-    space.get_point_manager().add_name_point(7.8, 9.0)
+    space.get_point_manager().add_name_point(1.2, 3.4, 5.6)
+    space.get_point_manager().add_name_point(5.6, 7.8, 9.0)
+    space.get_point_manager().add_name_point(9.0, 1.2, 3.4)
+    space.get_point_manager().add_name_point(3.4, 5.6, 7.8)
+    space.get_point_manager().add_name_point(7.8, 9.0, 1.2)
 
     polygon = Polygon("Triangle", "Triangle")
     polygon.add_point(space.get_point_manager().find_point_by_name("P1"))
@@ -87,7 +88,17 @@ def add_points(space: Space):
         polygon.add_point(p)
     space.get_shape_manager().add_shape(polygon)
 
-
+    #ajout d'une pyramide pour la démo
+    pyramid = Polygon("DemoPyramid", "Pyramide")
+    p0 = Point("DemoPyramid0", 0.0, 0.0, 0.0)
+    p1 = Point("DemoPyramid1", 1.0, 0.0, 0.0)
+    p2 = Point("DemoPyramid2", 1.0, 1.0, 0.0)
+    p3 = Point("DemoPyramid3", 0.0, 1.0, 0.0)
+    p4 = Point("DemoPyramid4", 0.5, 0.5, 1.0)
+    for p in (p0, p1, p2, p3, p4):
+        space.get_point_manager().add_point(p)
+        pyramid.add_point(p)
+    space.get_shape_manager().add_shape(pyramid)
 def clean_coord(v: float, eps: float = 1e-9) -> float:
     return 0.0 if abs(v) < eps else v
 
@@ -845,19 +856,3 @@ def euclidean_distance(space: Space):
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
 
 
-def export_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
-    try:
-        space.export_to_json(filename)
-        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'exportation des données : {e}")
-
-
-def import_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
-    try:
-        space.import_from_json(filename)
-        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'importation des données : {e}")

@@ -6,9 +6,11 @@ class Polygon(Shape):
     points: list[Point]
     type: str
     
-    def __init__(self, nom: str, type: str):
+    def __init__(self, nom: str, type: str, points=None):
         super().__init__(nom)
-        self.points = []
+        if points is None:
+            points = []
+        self.points = [point for point in points]
         self.type = type
 
     def __str__(self):
