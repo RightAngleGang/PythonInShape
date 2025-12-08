@@ -385,7 +385,7 @@ def add_shape(space: Space):
 
 def add_shape3D(space: Space):
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5),, Sphere (7) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Sphere (4), Cône (5) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
@@ -394,148 +394,18 @@ def add_shape3D(space: Space):
 
     # ---------- 1) CUBE ----------
     if shapeType == 1:
-        polygon = Polygon(tmpStr, "Cube")
+        shape = add_cube(space, tmpStr)
 
-        print("Saisissez le point d'origine du cube (x, y, z)")
-        x0, y0, z0 = get_coords3()
-
-        length = float(input("Longueur de l'arête du cube : "))
-
-        azimut = float(input("Angle azimutal dans le plan XY (en degrés) : "))
-        elevation = float(input("Angle d'élévation par rapport au plan XY (en degrés) : "))
-
-        azimut_rad = math.radians(azimut)
-        elev_rad = math.radians(elevation)
-
-        # Vecteur directeur principal u (orientation de la première arête)
-        ux = math.cos(elev_rad) * math.cos(azimut_rad)
-        uy = math.cos(elev_rad) * math.sin(azimut_rad)
-        uz = math.sin(elev_rad)
-
-        # On choisit un vecteur "quelconque" non colinéaire à u
-        if abs(ux) < 0.9:
-            ax, ay, az = 1.0, 0.0, 0.0
-        else:
-            ax, ay, az = 0.0, 1.0, 0.0
-
-        # v = vecteur perpendiculaire à u (normalisé)
-        vx = ay * uz - az * uy
-        vy = az * ux - ax * uz
-        vz = ax * uy - ay * ux
-        nv = math.sqrt(vx*vx + vy*vy + vz*vz)
-        vx, vy, vz = vx / nv, vy / nv, vz / nv
-
-        # w = u × v (troisième direction orthogonale)
-        wx = uy * vz - uz * vy
-        wy = uz * vx - ux * vz
-        wz = ux * vy - uy * vx
-
-        def make_point(idx, dx, dy, dz):
-            return Point(
-                f"{tmpStr}{idx}",
-                clean_coord(x0 + dx),
-                clean_coord(y0 + dy),
-                clean_coord(z0 + dz),
-            )
-
-        # base (face 0-1-2-3)
-        p0 = make_point(0, 0, 0, 0)
-        p1 = make_point(1, length * ux,        length * uy,        length * uz)
-        p2 = make_point(2, length * (ux+vx),   length * (uy+vy),   length * (uz+vz))
-        p3 = make_point(3, length * vx,        length * vy,        length * vz)
-
-        # face du haut (0-1-2-3 + w)
-        p4 = make_point(4, length * wx,              length * wy,              length * wz)
-        p5 = make_point(5, length * (ux+wx),         length * (uy+wy),         length * (uz+wz))
-        p6 = make_point(6, length * (ux+vx+wx),      length * (uy+vy+wy),      length * (uz+vz+wz))
-        p7 = make_point(7, length * (vx+wx),         length * (vy+wy),         length * (vz+wz))
-
-        for p in (p0, p1, p2, p3, p4, p5, p6, p7):
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
-
-        space.get_shape_manager().add_shape(polygon)
-        print(f"\nForme 3D créée : {polygon}")
 
     # ---------- 2) PAVÉ DROIT ----------
     elif shapeType == 2:
-        polygon = Polygon(tmpStr, "Pavé")
-
-        print("Saisissez le point d'origine du pavé (x, y, z)")
-        x0, y0, z0 = get_coords3()
-
-        L = float(input("Longueur : "))
-        W = float(input("Largeur : "))
-        H = float(input("Hauteur : "))
-
-        azimut = float(input("Angle azimutal dans le plan XY (en degrés) : "))
-        elevation = float(input("Angle d'élévation par rapport au plan XY (en degrés) : "))
-
-        azimut_rad = math.radians(azimut)
-        elev_rad = math.radians(elevation)
-
-        # Vecteur directeur principal u
-        ux = math.cos(elev_rad) * math.cos(azimut_rad)
-        uy = math.cos(elev_rad) * math.sin(azimut_rad)
-        uz = math.sin(elev_rad)
-
-        # Vecteur non colinéaire pour fabriquer v
-        if abs(ux) < 0.9:
-            ax, ay, az = 1.0, 0.0, 0.0
-        else:
-            ax, ay, az = 0.0, 1.0, 0.0
-
-        # v perpendiculaire à u
-        vx = ay * uz - az * uy
-        vy = az * ux - ax * uz
-        vz = ax * uy - ay * ux
-        nv = math.sqrt(vx*vx + vy*vy + vz*vz)
-        vx, vy, vz = vx / nv, vy / nv, vz / nv
-
-        # w = u × v
-        wx = uy * vz - uz * vy
-        wy = uz * vx - ux * vz
-        wz = ux * vy - uy * vx
-
-        def make_point(idx, dx, dy, dz):
-            return Point(
-                f"{tmpStr}{idx}",
-                clean_coord(x0 + dx),
-                clean_coord(y0 + dy),
-                clean_coord(z0 + dz),
-            )
-
-        # base (0-1-2-3) dans le plan (u, v)
-        p0 = make_point(0, 0,          0,          0)
-        p1 = make_point(1, L * ux,     L * uy,     L * uz)
-        p2 = make_point(2, L * ux + W * vx,
-                           L * uy + W * vy,
-                           L * uz + W * vz)
-        p3 = make_point(3, W * vx,     W * vy,     W * vz)
-
-        # face du haut (translatée de H * w)
-        p4 = make_point(4, H * wx,                    H * wy,                    H * wz)
-        p5 = make_point(5, L * ux + H * wx,
-                           L * uy + H * wy,
-                           L * uz + H * wz)
-        p6 = make_point(6, L * ux + W * vx + H * wx,
-                           L * uy + W * vy + H * wy,
-                           L * uz + W * vz + H * wz)
-        p7 = make_point(7, W * vx + H * wx,
-                           W * vy + H * wy,
-                           W * vz + H * wz)
-
-        for p in (p0, p1, p2, p3, p4, p5, p6, p7):
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
-
-        space.get_shape_manager().add_shape(polygon)
-        print(f"\nForme 3D créée : {polygon}")
+        shape = add_pave_droit(space, tmpStr)
 
     # ---------- 3) PYRAMIDE À BASE CARRÉE ----------
     elif shapeType == 3:
-        polygon = Polygon(tmpStr, "Pyramide")
+        shape = add_pyramide(space, tmpStr)
 
+<<<<<<< HEAD
         print("Saisissez le point d'origine de la base (x, y, z)")
         x0, y0, z0 = get_coords3()
 
@@ -668,26 +538,22 @@ def add_shape3D(space: Space):
         space.get_shape_manager().add_shape(cone)
         print(f"\nForme 3D créée : {cone}")
     # ---------- 4) SEGMENT ----------
+=======
+    # ---------- 4) SPHERE (1 pt + 1 rayon) ----------
+>>>>>>> 37c6332 (♻️ Moved functions to add 3D shapes)
     elif shapeType == 4:
-        polygon = add_segment(space, tmpStr, True)
-        space.get_shape_manager().add_shape(polygon)
-        print(f"\nForme 3D créée : {polygon}")
-    
-    # ---------- 5) TRIANGLE (3 points) ----------
-    elif shapeType == 5:
-        polygon = add_triangle(space, tmpStr, True)
-        space.get_shape_manager().add_shape(polygon)
-        print(f"\nForme 3D créée : {polygon}")
-
-
-    # ---------- 7) SPHERE (1 pt + 1 rayon) ----------
-    elif shapeType == 7:
         shape = add_sphere(space, tmpStr)
-        space.get_shape_manager().add_shape(shape)
-        print(f"\nForme 3D créée : {shape}")
+        
+    # ---------- 5) CÔNE (1 pt + 1 rayon + 1 hauteur) ----------
+    elif shapeType == 5:
+        shape = add_cone(space, tmpStr)
 
     else:
-        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 7.")
+        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 5.")
+        
+    space.get_shape_manager().add_shape(shape)
+    print(f"\nForme 3D créée : {shape}")
+    
 
 def show_shapes(space: Space):
     shapes = space.get_shape_manager().get_shapes()
