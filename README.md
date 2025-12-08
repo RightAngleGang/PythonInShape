@@ -7,7 +7,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 - Colin Palazzetti Rubera
 - Théo Torres
 
-# Sprint 3
+# Sprint 4
 
 **lien vers Github**
 [README Sprint 2][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
