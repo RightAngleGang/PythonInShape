@@ -44,59 +44,34 @@ class Space:
 
     def import_from_json(self, filename):
         """Importe les données de l'espace depuis un fichier JSON, même format que export_to_json"""
+        import json
+
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        # Réinitialiser les managers
+        # Clear existing data
         self.pointManager = PointManager()
         self.shapeManager = ShapeManager()
 
-        # ---------- 1) Import des points ----------
+        # Import points
+        point_map = {}
         for point_data in data.get("points", []):
             point = Point(
-                point_data["name"],
-                point_data["x"],
-                point_data["y"],
+                point_data["name"], point_data["x"], point_data["y"], point_data.get("z", 0)
             )
             self.pointManager.add_point(point)
+            point_map[point.nom] = point
 
-        # ---------- 2) Import des formes ----------
+        # Import shapes
         for shape_data in data.get("shapes", []):
             shape_type = shape_data.get("type")
-
-            # --- POLYGON (Carré, Rectangle, Triangle, Segment, etc.) ---
             if shape_type == "Polygon":
-                subtype = shape_data.get("subtype", "Polygon")
-                shape = Polygon(shape_data["name"], subtype)
-
-                for point_name in shape_data.get("points", []):
-                    point = self.pointManager.find_point_by_name(point_name)
-                    if point:
-                        shape.add_point(point)
-                    else:
-                        print(
-                            f"Attention: le point '{point_name}' n'existe pas dans "
-                            f"l'espace et ne peut pas être ajouté à la forme '{shape.nom}'."
-                        )
-                self.shapeManager.add_shape(shape)
-
-            # --- CERCLE ---
+                points = [point_map[name] for name in shape_data["points"]]
+                shape = Polygon(shape_data["name"], points)
             elif shape_type == "Circle":
-                center_name = shape_data.get("center")
-                radius = shape_data.get("radius")
-
-                center_point = self.pointManager.find_point_by_name(center_name)
-                if center_point is None:
-                    print(
-                        f"Attention: le centre '{center_name}' du cercle '{shape_data.get('name')}' "
-                        f"n'existe pas dans l'espace. Cercle ignoré."
-                    )
-                    continue
-
-                shape = Circle(shape_data["name"], center_point, radius)
-                self.shapeManager.add_shape(shape)
-
-            # --- SHAPE générique (fallback) ---
+                center_point = point_map[shape_data["center"]]
+                shape = Circle(shape_data["name"], center_point, shape_data["radius"])
             else:
-                shape = Shape(shape_data["name"])
-                self.shapeManager.add_shape(shape)
+                continue  # Unknown shape type, skip
+
+            self.shapeManager.add_shape(shape)
