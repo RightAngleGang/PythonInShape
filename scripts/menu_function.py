@@ -98,8 +98,7 @@ def add_points(space: Space):
     for p in (p0, p1, p2, p3, p4):
         space.get_point_manager().add_point(p)
         pyramid.add_point(p)
-
-
+    space.get_shape_manager().add_shape(pyramid)
 def clean_coord(v: float, eps: float = 1e-9) -> float:
     return 0.0 if abs(v) < eps else v
 
