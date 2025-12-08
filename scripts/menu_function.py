@@ -7,57 +7,8 @@ from scripts.Cone import Cone
 from scripts.utils import get_coords2, get_coords3, clean_coord
 import math
 
-
-def choose_point(space: Space, allow_2d: bool=False, allow_3d: bool=False) -> Point:
-    """
-    Permet à l'utilisateur de choisir ou créer un Point.
-    
-    :param space: L'espace dans lequel le point doit être choisi/créé.
-    :type space: Space
-    :param allow_2d: Indique si la création de points 2D est permise. Par défaut False.
-    :type allow_2d: bool
-    :param allow_3d: Indique si la création de points 3D est permise. Par défaut False.
-    :type allow_3d: bool
-    :return: Le point choisi ou créé.
-    :rtype: Point
-    """
-    while True:
-        print("1. Choisir un point existant")
-        print("2. Créer un nouveau point")
-        choice = input("Choisissez une option (1 ou 2) : ")
-        if choice == '1':
-            ptname = str(input("Donner le nom du point : "))
-            pt = space.get_point_manager().find_point_by_name(ptname)
-            if pt is None:
-                print(f"Aucun point trouvé avec le nom '{ptname}'. Veuillez réessayer.")
-                continue
-            return pt
-        elif choice == '2':
-            if not (allow_2d or allow_3d):
-                raise AssertionError("Aucune option de création de point n'est permise pour cette action.")
-            
-            if not(allow_2d and allow_3d): # une seule option est permise
-                if allow_2d:
-                    ptname = add_point_2d(space)
-                else:
-                    ptname = add_point_3d(space)
-                    
-            else: # les deux options sont permises
-                print("Créer un point 2D ou 3D ?")
-                print("1. Point 2D")
-                print("2. Point 3D")
-                subchoice = input("Choisissez une option (1 ou 2) : ")
-                if subchoice == '1':
-                    ptname = add_point_2d(space)
-                elif subchoice == '2':
-                    ptname = add_point_3d(space)
-            pt = space.get_point_manager().find_point_by_name(ptname)
-            if pt is None:
-                print(f"Erreur lors de la création du point '{ptname}'. Veuillez réessayer.")
-                continue
-            return pt
-        else:
-            print("Option invalide. Veuillez choisir 1 ou 2.")
+from scripts.functions.shape_2d import add_carre, add_rectangle, add_triangle, add_segment, add_circle, add_polygon
+from scripts.functions.shape_3d import add_cube, add_pave_droit, add_pyramide, add_sphere, add_cone
 
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4, 5.6)
@@ -83,6 +34,7 @@ def add_points(space: Space):
         polygon.add_point(p)
     space.get_shape_manager().add_shape(polygon)
 
+<<<<<<< HEAD
     #ajout d'une pyramide pour la démo
     pyramid = Polygon("DemoPyramid", "Pyramide")
     p0 = Point("DemoPyramid0", 0.0, 0.0, 0.0)
@@ -390,6 +342,8 @@ def create_polygon(tmpStr: str, space: Space):
     return polygon
 
 
+=======
+>>>>>>> 4a8c4e1 (♻️ Functions to add 2D shapes moved)
 def add_shape(space: Space):
     try:
         shapeType = int(input("Type de forme : Carré/Rectangle/Triangle/Segment/Cercle (entrez un nombre 1-5) : "))
@@ -401,125 +355,33 @@ def add_shape(space: Space):
 
     # ---------- 1) CARRÉ ----------
     if shapeType == 1:
-        polygon = Polygon(tmpStr, "Carré")
-        print("Saisissez le point d'origine du carré")
-        (x0, y0, z0) = get_coords3()
-
-        length = float(input("Longueur du côté du carré : "))
-        theta = float(input("Angle horizontal (azimut θ, en degrés) : "))
-        phi = float(input("Angle vertical (élévation φ, en degrés) : "))
-
-        # Conversion radians
-        theta = math.radians(theta)
-        phi = math.radians(phi)
-
-        # --- Vecteur u (premier côté du carré) ---
-        ux = math.cos(phi) * math.cos(theta)
-        uy = math.cos(phi) * math.sin(theta)
-        uz = math.sin(phi)
-
-        u = np.array([ux, uy, uz])
-
-        # --- Vecteur v (perpendiculaire à u) ---
-        # On prend un vecteur de référence pas parallèle à u
-        ref = np.array([0, 0, 1])
-        if abs(np.dot(ref, u)) > 0.99:  # quasi parallèle → on change
-            ref = np.array([0, 1, 0])
-
-        # Produit vectoriel pour obtenir un vecteur perpendiculaire
-        v = np.cross(u, ref)
-        v = v / np.linalg.norm(v)  # normalisation
-
-        # Multiplication par la longueur du côté
-        u *= length
-        v *= length
-
-        # --- Points du carré ---
-        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0), clean_coord(z0))
-        p1 = Point(f"{tmpStr}1", clean_coord(x0 + u[0]), clean_coord(y0 + u[1]), clean_coord(z0 + u[2]))
-        p2 = Point(f"{tmpStr}2", clean_coord(x0 + u[0] + v[0]), clean_coord(y0 + u[1] + v[1]),
-                   clean_coord(z0 + u[2] + v[2]))
-        p3 = Point(f"{tmpStr}3", clean_coord(x0 + v[0]), clean_coord(y0 + v[1]), clean_coord(z0 + v[2]))
-
-        for p in (p0, p1, p2, p3):
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
-
+        shape = add_carre(space, tmpStr)
 
     # ---------- 2) RECTANGLE ----------
     elif shapeType == 2:
-        polygon = Polygon(tmpStr, "Rectangle")
-        print("Saisissez le point d'origine du rectangle")
-        (x0, y0, z0) = get_coords3()
-
-        length = float(input("Longueur du rectangle (base) : "))
-        width = float(input("Largeur du rectangle (hauteur) : "))
-        theta = float(input("Angle Horizontal (azimut θ, en degrés) : "))
-        phi = float(input("Angle Vertical (élévation φ, en degrés) : "))
-
-        # Conversion en radians
-        theta = math.radians(theta)
-        phi = math.radians(phi)
-
-        # --- Vecteur u = BASE orientée dans l'espace ---
-        ux = math.cos(phi) * math.cos(theta)
-        uy = math.cos(phi) * math.sin(theta)
-        uz = math.sin(phi)
-        u = np.array([ux, uy, uz])
-        u = u / np.linalg.norm(u)  # normalisation
-        u = u * length  # mise à l'échelle
-
-        # --- Vecteur v = HAUTEUR perpendiculaire à u ---
-        # Vecteur de référence pour fabriquer la perpendiculaire
-        ref = np.array([0, 0, 1])
-        if abs(np.dot(ref, u / length)) > 0.99:
-            ref = np.array([0, 1, 0])
-
-        # Produit vectoriel => perpendiculaire
-        v = np.cross(u, ref)
-        v = v / np.linalg.norm(v)
-        v = v * width
-
-        # --- Sommets du rectangle ---
-        p0 = Point(f"{tmpStr}0", clean_coord(x0), clean_coord(y0), clean_coord(z0))
-        p1 = Point(f"{tmpStr}1", clean_coord(x0 + u[0]), clean_coord(y0 + u[1]), clean_coord(z0 + u[2]))
-        p2 = Point(f"{tmpStr}2", clean_coord(x0 + u[0] + v[0]), clean_coord(y0 + u[1] + v[1]),
-                   clean_coord(z0 + u[2] + v[2]))
-        p3 = Point(f"{tmpStr}3", clean_coord(x0 + v[0]), clean_coord(y0 + v[1]), clean_coord(z0 + v[2]))
-
-        for p in (p0, p1, p2, p3):
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        shape = add_rectangle(space, tmpStr)
 
     # ---------- 3) TRIANGLE (3 points) ----------
     elif shapeType == 3:
-        polygon = add_triangle(space, tmpStr)
+        shape = add_triangle(space, tmpStr)
 
     # ---------- 4) SEGMENT (2 points) ----------
     elif shapeType == 4:
-        polygon = Polygon(tmpStr, "Segment")
-        print("Saisissez les 2 points du segment :")
-        for i in range(2):
-            print(f"Saisir le point {i + 1} du segment :")
-            (px, py) = get_coords2()
-
-            p = Point(f"{tmpStr}{i}", px, py)
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        shape = add_segment(space, tmpStr)
 
     # ---------- 4) SEGMENT (2 points) ----------
     elif shapeType == 4:
-        polygon = add_segment(space, tmpStr)
+        shape = add_segment(space, tmpStr)
 
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
-        polygon = create_circle(tmpStr, space)
+        shape = add_circle(tmpStr, space)
 
     else:
-        polygon = create_polygon(tmpStr, space)
+        shape = add_polygon(tmpStr, space)
 
-    space.get_shape_manager().add_shape(polygon)
-    print(f"\nForme créée : {polygon}")
+    space.get_shape_manager().add_shape(shape)
+    print(f"\nForme créée : {shape}")
 
 def add_shape3D(space: Space):
     try:
