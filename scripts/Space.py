@@ -4,7 +4,6 @@ from scripts.Point import Point
 from scripts.Shape import Shape
 from scripts.Polygon import Polygon
 from scripts.Circle import Circle
-from scripts.Cone import Cone
 import json
 
 

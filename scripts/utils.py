@@ -1,5 +1,5 @@
 from scripts.Space import Space
-from scripts.Point import Point
+from scripts.shapes.Point import Point
 
 def get_coords2() -> tuple[float, float]:
     """

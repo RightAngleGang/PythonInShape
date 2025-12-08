@@ -1,8 +1,8 @@
 from scripts.Space import Space
 from scripts.utils import get_coords2, get_coords3
-# from scripts.Shape import Shape
-from scripts.Polygon import Polygon
-from scripts.Circle import Circle
+# from scripts.shapes.Shape import Shape
+from scripts.shapes.Polygon import Polygon
+from scripts.shapes.Circle import Circle
     
 def add_point_2d(space: Space):
     """

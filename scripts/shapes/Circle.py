@@ -1,7 +1,7 @@
 import math
 
-from scripts.Shape import Shape
-from scripts.Point import Point
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Point import Point
 
 class Circle(Shape):
     """Cercle dans l'espace 3D"""
