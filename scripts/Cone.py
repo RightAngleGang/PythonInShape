@@ -19,5 +19,5 @@ class Cone(Circle):
             "name": self.nom,
             "center": self.point.nom,
             "radius": self.radius,
-            "apex": self.apex
+            "apex": self.apex.nom
         }

@@ -4,6 +4,7 @@ from scripts.Point import Point
 from scripts.Shape import Shape
 from scripts.Polygon import Polygon
 from scripts.Circle import Circle
+from scripts.Cone import Cone
 import json
 
 
@@ -96,6 +97,29 @@ class Space:
                 shape = Circle(shape_data["name"], center_point, radius)
                 self.shapeManager.add_shape(shape)
 
+            # --- CONE ---
+            elif shape_type == "Cone":
+                center_name = shape_data.get("center")
+                radius = shape_data.get("radius")
+                apex_name = shape_data.get("apex")
+
+                center_point = self.pointManager.find_point_by_name(center_name)
+                if center_point is None:
+                    print(
+                        f"Attention: le centre '{center_name}' du cone '{shape_data.get('name')}' "
+                        f"n'existe pas dans l'espace. Cone ignoré."
+                    )
+                    continue
+                apex_point = self.pointManager.find_point_by_name(apex_name)
+                if apex_point is None:
+                    print(
+                        f"Attention: le sommet '{apex_name}' du cone '{shape_data.get('name')}' "
+                        f"n'existe pas dans l'espace. Cone ignoré."
+                    )
+                    continue
+
+                shape = Cone(shape_data["name"], center_point, radius, apex_point)
+                self.shapeManager.add_shape(shape)
             # --- SHAPE générique (fallback) ---
             else:
                 shape = Shape(shape_data["name"])
