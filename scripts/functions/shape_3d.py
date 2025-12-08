@@ -156,8 +156,7 @@ def add_sphere(space: Space, tmpStr: str) -> Sphere:
             break
         except ValueError:
             print("Entrée invalide. Veuillez saisir un nombre valide pour le rayon.")
-    radius = float(input("Rayon : "))
-
+    
     return Sphere(tmpStr, centre, radius)
 
 def add_pyramide(space: Space, tmpStr: str) -> Polygon:
@@ -230,10 +229,65 @@ def add_pyramide(space: Space, tmpStr: str) -> Polygon:
         
     return polygon
 
-def add_cone(space: Space, tmpStr: str) -> Shape:
-    print("Fonction non encore implémentée.")
-    pass
+def add_cone(space: Space, tmpStr: str) -> Cone:
+
+    print("Saisissez le point d'origine (centre de la base) du cône (x, y, z)")
+    x0, y0, z0 = get_coords3()
+
+    radius = float(input("Rayon de la base du cône : "))
+    height = float(input("Hauteur du cône (dans la direction w) : "))
+
+    azimut = float(input("Angle azimutal dans le plan XY (en degrés, direction u) : "))
+    elevation = float(input("Angle d'élévation par rapport au plan XY (en degrés, définit w) : "))
+
+    azimut_rad = math.radians(azimut)
+    elev_rad = math.radians(elevation)
+
+    # ----- VECTEURS u, v, w -----
+
+    # u = direction de référence dans le plan de la base
+    ux = math.cos(elev_rad) * math.cos(azimut_rad)
+    uy = math.cos(elev_rad) * math.sin(azimut_rad)
+    uz = math.sin(elev_rad)
+
+    # vecteur non-colinéaire
+    if abs(ux) < 0.9:
+        ax, ay, az = 1.0, 0.0, 0.0
+    else:
+        ax, ay, az = 0.0, 1.0, 0.0
+
+    # v = perpendiculaire à u (normalisée)
+    vx = ay * uz - az * uy
+    vy = az * ux - ax * uz
+    vz = ax * uy - ay * ux
+    nv = math.sqrt(vx*vx + vy*vy + vz*vz)
+    vx, vy, vz = vx / nv, vy / nv, vz / nv
+
+    # w = u × v
+    wx = uy * vz - uz * vy
+    wy = uz * vx - ux * vz
+    wz = ux * vy - uy * vx
+
+    # ----- BASE DU CÔNE : un Circle -----
+
+    center_point = Point(
+        f"{tmpStr}_base",
+        clean_coord(x0),
+        clean_coord(y0),
+        clean_coord(z0)
+    )
 
 
+    # ----- SOMMET DU CÔNE -----
 
+    apex = Point(
+        f"{tmpStr}_apex",
+        clean_coord(x0 + height * wx),
+        clean_coord(y0 + height * wy),
+        clean_coord(z0 + height * wz),
+    )
+    cone = Cone(f"{tmpStr}", center_point, radius, apex)
+    space.get_point_manager().add_point(apex)
+    space.get_point_manager().add_point(center_point)
 
+    return cone

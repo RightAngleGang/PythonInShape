@@ -1,9 +1,9 @@
 from scripts.PointManager import PointManager
 from scripts.ShapeManager import ShapeManager
-from scripts.Point import Point
-from scripts.Shape import Shape
-from scripts.Polygon import Polygon
-from scripts.Circle import Circle
+from scripts.shapes.Point import Point
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Polygon import Polygon
+from scripts.shapes.Circle import Circle
 import json
 
 
