@@ -3,7 +3,7 @@ from scripts.Point import Point
 
 
 class Cone(Circle):
-    """Ensemble de points formant une forme fermée"""
+    """Cône dans l'espace 3D avec une base circulaire et un sommet"""
     apex: Point
     def __init__(self, nom: str, point: Point, radius: float, apex: Point):
         super().__init__(nom, point, radius)
