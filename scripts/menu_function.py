@@ -3,7 +3,7 @@ import numpy as np
 from scripts.Space import Space 
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
-from scripts.Cone import Cone
+from scripts.shapes.Cone import Cone
 from scripts.utils import get_coords2, get_coords3, clean_coord
 import math
 

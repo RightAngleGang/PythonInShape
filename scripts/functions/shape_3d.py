@@ -4,8 +4,7 @@ from scripts.Space import Space
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
 from scripts.shapes.Sphere import Sphere
-from scripts.shapes.Circle import Circle
-from scripts.shapes.Shape import Shape
+from scripts.shapes.Cone import Cone
 from scripts.menu_points import choose_point
 from scripts.utils import get_coords2, get_coords3, clean_coord
 
