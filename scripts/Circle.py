@@ -32,7 +32,7 @@ class Circle(Shape):
     def export_to_json(self):
         """Export le cercle au format JSON"""
         return {
-            "type": "Circle3D",
+            "type": "Circle",
             "name": self.nom,
             "center": self.point.nom,
             "radius": self.radius,

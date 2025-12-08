@@ -68,7 +68,7 @@ class Space:
             shape_type = shape_data.get("type")
             if shape_type == "Polygon":
                 points = [point_map[name] for name in shape_data["points"]]
-                shape = Polygon(shape_data["name"], points)
+                shape = Polygon(shape_data["name"],"Polygon", points)
             elif shape_type == "Circle":
                 center_point = point_map[shape_data["center"]]
                 shape = Circle(shape_data["name"], center_point, shape_data["radius"])
