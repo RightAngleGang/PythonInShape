@@ -24,7 +24,7 @@ def menu_loop(title: str, actions: list[tuple[str, callable]]):
             actions[idx][1]()  # exécute la fonction liée
         except (ValueError, IndexError):
             print("Entrée invalide.")
-
+            print(ValueError)
 # --- Actions concrètes ---
 ACTIONS_CREATION_POINTS = [
     #("Créer un point", lambda: add_point_shape(sm)),      # si ta fonction ne prend pas sm
