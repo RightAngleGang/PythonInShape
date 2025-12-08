@@ -4,6 +4,7 @@ from scripts.Point import Point
 from scripts.Polygon import Polygon
 from scripts.Circle import Circle
 from scripts.Space import Space
+from scripts.Sphere import Sphere
 from scripts.Shape import Shape
 from scripts.menu_points import add_point_2d, add_point_3d
 from scripts.utils import get_coords2, get_coords3
@@ -108,6 +109,21 @@ def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
         polygon.add_point(p)
     return polygon
 
+def add_sphere(space: Space, tmpStr: str) -> Sphere:
+    print("Saisissez l'origine puis le rayon de la sphere :")
+    centre = choose_point(space, allow_3d=True)
+    while True:
+        try:
+            radius = float(input("Rayon : "))
+            if radius <= 0:
+                print("Le rayon doit être un nombre positif. Veuillez réessayer.")
+                continue
+            break
+        except ValueError:
+            print("Entrée invalide. Veuillez saisir un nombre valide pour le rayon.")
+    radius = float(input("Rayon : "))
+
+    return Sphere(tmpStr, centre, radius)
 
 def create_circle(tmpStr: str, space):
     """Crée un cercle 3D orienté dans l’espace avec différentes options."""
@@ -500,7 +516,7 @@ def add_shape(space: Space):
 
 def add_shape3D(space: Space):
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5),, Sphere (7) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
@@ -731,8 +747,15 @@ def add_shape3D(space: Space):
         space.get_shape_manager().add_shape(polygon)
         print(f"\nForme 3D créée : {polygon}")
 
+
+    # ---------- 7) SPHERE (1 pt + 1 rayon) ----------
+    elif shapeType == 7:
+        shape = add_sphere(space, tmpStr)
+        space.get_shape_manager().add_shape(shape)
+        print(f"\nForme 3D créée : {shape}")
+
     else:
-        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 5.")
+        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 7.")
 
 def show_shapes(space: Space):
     shapes = space.get_shape_manager().get_shapes()
