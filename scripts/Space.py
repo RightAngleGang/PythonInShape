@@ -4,6 +4,7 @@ from scripts.Point import Point
 from scripts.Shape import Shape
 from scripts.Polygon import Polygon
 from scripts.Circle import Circle
+from scripts.Cone import Cone
 import json
 
 
@@ -72,6 +73,5 @@ class Space:
                 center_point = point_map[shape_data["center"]]
                 shape = Circle(shape_data["name"], center_point, shape_data["radius"])
             else:
-                continue  # Unknown shape type, skip
-
-            self.shapeManager.add_shape(shape)
+                shape = Shape(shape_data["name"])
+                self.shapeManager.add_shape(shape)
