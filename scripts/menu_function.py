@@ -798,7 +798,7 @@ def add_shape3D(space: Space):
         space.get_point_manager().add_point(apex)
         space.get_point_manager().add_point(center_point)
         space.get_shape_manager().add_shape(cone)
-
+        print(f"\nForme 3D créée : {cone}")
     # ---------- 4) SEGMENT ----------
     elif shapeType == 4:
         polygon = add_segment(space, tmpStr, True)
