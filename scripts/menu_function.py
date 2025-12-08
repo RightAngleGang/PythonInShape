@@ -93,6 +93,17 @@ def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     polygon = Polygon(tmpStr, "Segment")
     print("Saisissez les 2 points du segment :")
     for i in range(2):
+        print(f"Saisir le point {i+1} du triangle :")
+        p = choose_point(space, allow_2d=True, allow_3d=a_3d)
+        polygon.add_point(p)
+    return polygon
+
+
+def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
+    polygon = Polygon(tmpStr, "Triangle")
+    print("Saisissez les 3 points du triangle :")
+    for i in range(3):
+        print(f"Saisir le point {i+1} du triangle :")
         p = choose_point(space, allow_2d=True, allow_3d=a_3d)
         polygon.add_point(p)
     return polygon
@@ -328,15 +339,7 @@ def add_shape(space: Space):
 
     # ---------- 3) TRIANGLE (3 points) ----------
     elif shapeType == 3:
-        polygon = Polygon(tmpStr, "Triangle")
-        print("Saisissez les 3 points du triangle :")
-        for i in range(3):
-            print(f"Saisir le point {i+1} du triangle :")
-            (px, py) = get_coords2()
-
-            p = Point(f"{tmpStr}{i}", px, py)
-            space.get_point_manager().add_point(p)
-            polygon.add_point(p)
+        polygon = add_triangle(space, tmpStr)
 
     # ---------- 4) SEGMENT (2 points) ----------
     elif shapeType == 4:
@@ -354,7 +357,7 @@ def add_shape(space: Space):
 
 def add_shape3D(space: Space):
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
@@ -579,8 +582,14 @@ def add_shape3D(space: Space):
         space.get_shape_manager().add_shape(polygon)
         print(f"\nForme 3D créée : {polygon}")
     
+    # ---------- 5) TRIANGLE (3 points) ----------
+    elif shapeType == 5:
+        polygon = add_triangle(space, tmpStr, True)
+        space.get_shape_manager().add_shape(polygon)
+        print(f"\nForme 3D créée : {polygon}")
+
     else:
-        print("Type de forme inconnu. Merci de choisir 1, 2, 4 ou 3.")
+        print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 5.")
 
 
 def show_shapes(space: Space):
