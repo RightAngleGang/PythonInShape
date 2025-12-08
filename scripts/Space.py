@@ -72,6 +72,10 @@ class Space:
             elif shape_type == "Circle":
                 center_point = point_map[shape_data["center"]]
                 shape = Circle(shape_data["name"], center_point, shape_data["radius"])
+            elif shape_type == "Cone":
+                center_point = point_map[shape_data["center"]]
+                apex_point = point_map[shape_data["apex"]]
+                shape = Cone(shape_data["name"], center_point, shape_data["radius"], apex_point)
             else:
                 shape = Shape(shape_data["name"])
-                self.shapeManager.add_shape(shape)
+            self.shapeManager.add_shape(shape)
