@@ -3,6 +3,7 @@ from scripts.Space import Space
 import sys
 from scripts.menu_function import *
 import scripts.menu_points as mp
+from scripts.functions.calc_points import euclidean_distance
 
 sm = Space()
 

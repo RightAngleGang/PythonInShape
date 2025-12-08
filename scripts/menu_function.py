@@ -564,6 +564,7 @@ def show_shapes(space: Space):
         print(shape)
 
 
+<<<<<<< HEAD
 def euclidean_distance(space: Space):
     tmpP1 = str(input("Nom du 1er point : "))
     tmpP2 = str(input("Nom du 2eme point : "))
@@ -579,3 +580,21 @@ def euclidean_distance(space: Space):
     print(f"La distance entre les points est : {p1.distance_to(p2)}")
 
 
+=======
+def export_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
+    try:
+        space.export_to_json(filename)
+        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'exportation des données : {e}")
+
+
+def import_space_data(space: Space):
+    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
+    try:
+        space.import_from_json(filename)
+        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
+    except Exception as e:
+        print(f"Erreur lors de l'importation des données : {e}")
+>>>>>>> df47e0c (♻️Moved function to calc the euclidian distance)
