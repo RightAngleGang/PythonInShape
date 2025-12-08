@@ -58,10 +58,13 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  x
 29. **Importer** les points et formes (Via Json)  
 30. **Exporter** les points et formes (Via Json)
+33. **Importer** les points et formes 3D (Via Json) x
+34. **Exporter** les points et formes 3D (Via Json) x
+
 
 ## Calcul
-33. Calculer l'aire x
-33. Calculer le volume x
+35. Calculer l'aire x
+36. Calculer le volume x
 
 ---
 
@@ -314,8 +317,8 @@ Le cercle nécéssitait de repartir de 0, en effet on demande maintenant un rayo
 Arthur à eu un soucis de merge, il a du recreer 2 branches depuis dev. 
 Les objectifs du sprint ont été atteints et les fonctionnalités prévues ont été implémentées.
 Par contre nous nous sommes rendu compte que nous avions oublié lors du poker planning la tache (15.) Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D.
-Arthur à souhaité prendre cette tâche à 2 points.
-Pour soulager Arthur, Théo à accepté de récuperer la création du Cone.
+Arthur à souhaité prendre cette tâche à 2 points cependant mais il n'a pas réussi à tout finir car il a eu un soucis de merge.
+Pour soulager Arthur, Théo à accepté de récuperer la création du Conne mais n'a pas pu le finir dans le temps imparti.
 
 Penser à vraiment se concerter avant l'ajout de forme pour ne pas créer de conflits ou chercher longtemps quel developeur faire quelle forme.
 Peut-être en maintenant en place une numérotation des formes en place.
@@ -329,9 +332,9 @@ Peut-être en maintenant en place une numérotation des formes en place.
 ## **Ce qui a bien fonctionné**
 - Planning et rétrospective avec le client/PO plus libre et apaisée.
 - Bonne entraide au niveau des tickets entre Arthur et Théo.
-- Répartition satisfaisante des tâches entre les membres grâce au poker planning.
 
 ## **Ce qui a posé problème**
+- Répartition satisfaisante des tâches entre les membres grâce au poker planning.
 - Oublie de "Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D" à cause d'un manque de vigilance.
 - Sprint stressant, la fin du projet commence à se faire sentir.
 - 
@@ -350,6 +353,8 @@ Peut-être en maintenant en place une numérotation des formes en place.
 - Création et configuration de l’environnement de développement  
 - Écriture des premiers tests unitaires
 - Refacor coté back avec Managers
+- Mettre à jour l'affichage dans le terminal.
+- Diminuer la dépendance entre 
 
 ## _Consignes pour le compte rendu des développeurs_ :
 
