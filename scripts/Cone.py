@@ -1,17 +1,28 @@
 from scripts.Circle import Circle
 from scripts.Point import Point
-
+import numpy as np
+import math
 
 class Cone(Circle):
     """Cône dans l'espace 3D avec une base circulaire et un sommet"""
     apex: Point
     def __init__(self, nom: str, point: Point, radius: float, apex: Point):
-        super().__init__(nom, point, radius)
+        super().__init__(nom, point, radius, [0.0,0.0,1.0])
         self.apex = apex
 
     def __str__(self):
         return f"{self.nom} (Cone): [origine: {self.point}, rayon: {self.radius}, apex: {self.apex}]"
 
+    def compute(self) -> float:
+        area_base = math.pi * (self.radius ** 2)
+
+        height = self.apex.distance_to(self.point)
+        volume = (1/3) * area_base * height
+
+        return float(volume)
+
+
+    
     def export_to_json(self):
         """Export le Cone au format JSON"""
         return {

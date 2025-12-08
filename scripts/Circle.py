@@ -29,6 +29,9 @@ class Circle(Shape):
             f"normal: {self.normal}]"
         )
 
+    def compute(self) -> float:
+        return math.pi * (self.radius ** 2), 1
+    
     def export_to_json(self):
         """Export le cercle au format JSON"""
         return {

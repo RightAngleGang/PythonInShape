@@ -44,11 +44,13 @@ ACTIONS_GESTION_POINTS = [
 ACTIONS_SHAPE = [
     ("Ajouter une forme", lambda: add_shape(sm)),
     ("Lister les formes", lambda: show_shapes(sm)),
+    ("Calculer l'air/volume d'une forme", lambda: get_area(sm)),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
 ACTIONS_SHAPE3D = [
     ("Ajouter une forme 3D", lambda: add_shape3D(sm)),
     ("Lister les formes", lambda: show_shapes(sm)),
+    ("Calculer le volume/air d'une forme", lambda: get_area(sm)),
     #("Lister les formes", lambda: show_shapes(sm)),
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]

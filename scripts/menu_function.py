@@ -383,7 +383,7 @@ def create_polygon(tmpStr: str, space: Space):
 
     return polygon
 
-
+    
 def add_shape(space: Space):
     try:
         shapeType = int(input("Type de forme : Carré/Rectangle/Triangle/Segment/Cercle (entrez un nombre 1-5) : "))
@@ -516,6 +516,7 @@ def add_shape(space: Space):
     print(f"\nForme créée : {polygon}")
 
 def add_shape3D(space: Space):
+
     try:
         shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5),, Sphere (7) : "))
     except ValueError:
@@ -821,6 +822,16 @@ def add_shape3D(space: Space):
     else:
         print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 7.")
 
+def get_area(space: Space):
+    count = len(space.get_shape_manager().get_shapes())
+    show_shapes(space)
+    shapeIndex = int(input(f"Selectionnez la forme voulu pour avoir son aire/volume (0-{count - 1})"))
+    
+    value = space.get_shape_manager().get_shapes()[shapeIndex].compute()
+    print(f"L'air est {value}")
+
+def get_voulme(space: Space):
+    pass
 def show_shapes(space: Space):
     shapes = space.get_shape_manager().get_shapes()
     if not shapes:
