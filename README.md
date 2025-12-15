@@ -134,11 +134,13 @@ En tant qu’utilisateur, je veux pouvoir créer et afficher un cône en 3D à p
 En tant qu’utilisateur, je veux pouvoir modifier ou supprimer un point en 3D afin de corriger ou ajuster sa position dans l’espace.
 
 **Definition of Done**
-- L’utilisateur sélectionne **Gestion des Points → Éditer un point**.
-- Une liste des points existants est affichée.
+- L’utilisateur sélectionne **Gestion des Points**.
+- L’utilisateur sélectionne un point.
 - L’utilisateur peut :
   - **Supprimer un point**
   - **Translater un point** via un vecteur (dx, dy, dz)
+  - **Redéfinir les coordonnées du point**
+  - **Redéfinir le nom du point**
 - Le point mis à jour est affiché.
 - Les modifications sont **enregistrées**.
 
@@ -150,11 +152,9 @@ En tant qu’utilisateur, je veux pouvoir modifier ou supprimer les points compo
 
 **Definition of Done**
 - L’utilisateur sélectionne **Gestion des Formes 3D → Éditer une forme**.
-- Une liste des formes existantes est affichée.
 - L’utilisateur sélectionne une forme.
 - L’utilisateur peut :
   - supprimer un ou plusieurs points de la forme
-  - translater un ou plusieurs points de la forme (dx, dy, dz)
 - La nouvelle forme est affichée.
 - Les modifications sont **enregistrées**.
 
