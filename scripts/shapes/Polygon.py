@@ -1,12 +1,11 @@
 from scripts.shapes.Shape import Shape
 from scripts.shapes.Point import Point
 from scripts.shapes.ShapeType import ShapeType
-import numpy as np
 
 class Polygon(Shape):
     """Ensemble de points formant une forme fermée"""
     points: list[Point]
-    type: str
+    supertype: str
     
     def __init__(self, nom: str, type: str, points=None):
         super().__init__(nom)
@@ -15,6 +14,12 @@ class Polygon(Shape):
             points = []
         self.points = [point for point in points]
         self.type = type
+        self._supertype()
+
+    def _supertype(self):
+        """Définit le supertype du polygone en fonction de son type"""
+        
+        
 
     def __str__(self):
         return f"{self.nom} ({self.type}): [{'; '.join(str(p) for p in self.points)}]"
@@ -199,4 +204,18 @@ class Polygon(Shape):
             "subtype": self.type,       # Carré / Rectangle / Triangle / Segment
             "points": [point.nom for point in self.points],
         }
+        
+    def area(self) -> float:
+        """Calcul de l'aire du polygone (formule de Shoelace)"""
+        n = len(self.points)
+        if n < 3:
+            return 0.0  # Pas de surface si forme colinéaire
+
+        if self
+        area = 0.0
+        for i in range(n):
+            j = (i + 1) % n
+            area += self.points[i].x * self.points[j].y
+            area -= self.points[j].x * self.points[i].y
+        return abs(area) / 2.0
         

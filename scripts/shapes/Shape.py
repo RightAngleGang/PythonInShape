@@ -18,6 +18,10 @@ class Shape:
     def area(self) -> float:
         """Calcule l'aire de la forme"""
         return 0.0
+    
+    def volume(self) -> float:
+        """Calcule le volume de la forme"""
+        return 0.0
 
     def export_to_json(self):
         return {

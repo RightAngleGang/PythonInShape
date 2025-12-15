@@ -23,6 +23,9 @@ class Circle(Sphere):
             f"[centre: {self.point}, rayon: {self.radius}, "
             f"normal: {self.normal}]"
         )
+        
+    def area(self) -> float:
+        return math.pi * (self.radius ** 2)
 
     def compute(self) -> str:
         return f"L'air est {math.pi * (self.radius ** 2)}"
