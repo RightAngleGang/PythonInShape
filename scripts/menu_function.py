@@ -1,5 +1,7 @@
 import numpy as np
 
+from scripts.Space import Space 
+from scripts.shapes.Shape import Shape
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
 from scripts.shapes.Circle import Circle
@@ -378,10 +380,11 @@ def create_polygon(tmpStr: str, space: Space):
 
         p = Point(f"{tmpStr}{i}", clean_coord(px), clean_coord(py), clean_coord(pz))
         space.get_point_manager().add_point(p)
-        polygon.add_point(p)
-
-    return polygon
-
+        pyramid.add_point(p)
+    space.get_shape_manager().add_shape(pyramid)
+    
+    shape = Shape("Test")
+    space.get_shape_manager().add_shape(shape)
     
 def add_shape(space: Space):
     try:
@@ -839,35 +842,12 @@ def show_shapes(space: Space):
     for shape in shapes:
         print(shape)
 
+def edit_shape(space: Space):
+    shape_name = input("Enter the name of the shape to edit: ")
+    shape = space.get_shape_manager().find_shape_by_name(shape_name)
+    if not shape:
+        raise ValueError(f"Shape with name '{shape_name}' not found.")
 
-def euclidean_distance(space: Space):
-    tmpP1 = str(input("Nom du 1er point : "))
-    tmpP2 = str(input("Nom du 2eme point : "))
-    p1 = space.get_point_manager().find_point_by_name(tmpP1)
-    p2 = space.get_point_manager().find_point_by_name(tmpP2)
-
-    if p1 is None:
-        print(f"Point '{tmpP1}' introuvable dans l'espace. Impossible de calculer la distance.")
-        return
-    if p2 is None:
-        print(f"Point '{tmpP2}' introuvable dans l'espace. Impossible de calculer la distance.")
-        return
-    print(f"La distance entre les points est : {p1.distance_to(p2)}")
-
-
-def export_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour exporter les données de l'espace (.json) : ")
-    try:
-        space.export_to_json(filename)
-        print(f"Données de l'espace exportées avec succès vers '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'exportation des données : {e}")
-
-
-def import_space_data(space: Space):
-    filename = input("Entrez le nom du fichier pour importer les données de l'espace (.json) : ")
-    try:
-        space.import_from_json(filename)
-        print(f"Données de l'espace importées avec succès depuis '{filename}'.")
-    except Exception as e:
-        print(f"Erreur lors de l'importation des données : {e}")
+    print(f"Editing shape: {shape}")
+    
+    print("Shape editing functionality is not yet implemented.")
