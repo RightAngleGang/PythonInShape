@@ -110,7 +110,7 @@ Nous sommes ainsi à un total de 40 points.
 34. **Exporter** les points et formes 3D (Via Json)
 35. Calculer l'aire
 36. Calculer le volume
-37. Scale de formes
+
 
 ---
 # **User Story** et **Definition of Done – Sprint (3D)**
@@ -216,18 +216,6 @@ En tant qu’utilisateur, je veux pouvoir calculer le volume d’une forme 3D af
 - En cas d’erreur → message explicite.
 
 
-## 37. Scale (mise à l’échelle) d’une forme x
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir appliquer un facteur d’échelle à une forme afin d’en modifier les dimensions proportionnellement.
-
-**Definition of Done**
-- L’utilisateur sélectionne une forme existante.
-- Il saisit un **coefficient de scale** (ex : 0.5, 2, 3…).
-- Les dimensions de la forme sont automatiquement recalculées.
-- La nouvelle forme est affichée.
-- Les nouvelles coordonnées sont mises à jour et **enregistrées**.
-
 
 ---
 
@@ -239,9 +227,10 @@ On a pu constater que le refactor était nécéssaire afin de notamenent fix les
 merge un peu chiant.
 Théo à eu des souçis d'application de fromules mathématiques à cause de la dissociation dans la gestion des types d'objets.
 Cepdendant il a réussi à appliquer le volume et l'air pour chaque forme.
-Refactor terminal, editer points 3D et dans les formes pour colin
+Refactor terminal, editer points 3D et dans les formes pour colin.
+Colin a structuré et enrichi le menu console en réorganisant les menus, en ajoutant la gestion des translations et de l’édition des formes (via un ShapeType), en permettant la modification des attributs selon le type (polygone, sphère, cercle, cône), tout en gérant l’ajout/retrait de points et en conservant les contraintes des polygones particuliers (carré, rectangle).
+Colin à également mis en plus un enum pour gerer les prints.
 
-Faire enum.
 ---
 
 # **Rétrospective**
@@ -263,7 +252,6 @@ Faire enum.
 - Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
 - Accentuer la communication interne pour la gestion de merge.
 
-
 ---
 
 # **interne**
@@ -279,6 +267,7 @@ Faire enum.
   
 - Diminuer la dépendance entre les fonctions (fichiers trop gros)
 - refactor le terminal
+- Enum pour les prints
 - Corriger SonarQube
 
 ## _Consignes pour le compte rendu des développeurs_ :
