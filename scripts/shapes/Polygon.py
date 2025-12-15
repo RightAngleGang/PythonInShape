@@ -1,5 +1,6 @@
 from scripts.shapes.Shape import Shape
 from scripts.shapes.Point import Point
+from scripts.shapes.ShapeType import ShapeType
 import numpy as np
 
 class Polygon(Shape):
@@ -9,6 +10,7 @@ class Polygon(Shape):
     
     def __init__(self, nom: str, type: str, points=None):
         super().__init__(nom)
+        self.type = ShapeType.Polygon
         if points is None:
             points = []
         self.points = [point for point in points]

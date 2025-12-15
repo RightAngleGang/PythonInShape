@@ -1,20 +1,15 @@
 import math
 
-from scripts.shapes.Shape import Shape
+from scripts.shapes.Sphere import Sphere
 from scripts.shapes.Point import Point
 
-class Circle(Shape):
+class Circle(Sphere):
     """Cercle dans l'espace 3D"""
-    point: Point          # centre 3D
-    radius: float         # rayon
     normal: tuple[float, float, float]  # vecteur normal au plan du cercle
 
     def __init__(self, nom: str, point: Point, radius: float,
                  normal: tuple[float, float, float]):
-        super().__init__(nom)
-        self.point = point
-        self.radius = radius
-
+        super().__init__(nom, point, radius)
         # Normalisation de la normale
         nx, ny, nz = normal
         norm = math.sqrt(nx*nx + ny*ny + nz*nz)

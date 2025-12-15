@@ -3,9 +3,9 @@ from scripts.shape.ShapeType import ShapeType
 class Shape:
     """Forme géométrique de base"""
     nom: str
-    type: ShapeType
+    type: st.ShapeType
 
-    def __init__(self, nom: str, type=ShapeType.unknown):
+    def __init__(self, nom: str, type=st.ShapeType.unknown):
         self.nom = nom
         self.type = type
 
@@ -24,3 +24,12 @@ class Shape:
             "type": "{self.type}",
             "name": self.nom,
         }
+        
+    def is_a(self, toCheck: st.ShapeType) -> bool:
+        """Vérifie si la forme est d'un type donné"""
+        current = self.type
+        while current in st.PARENTS:
+            if current == toCheck:
+                return True
+            current = st.PARENTS[current]
+        return current == toCheck
