@@ -26,9 +26,6 @@ class Circle(Sphere):
         
     def area(self) -> float:
         return math.pi * (self.radius ** 2)
-
-    def compute(self) -> str:
-        return f"L'air est {math.pi * (self.radius ** 2)}"
     
     def export_to_json(self):
         """Export le cercle au format JSON"""
