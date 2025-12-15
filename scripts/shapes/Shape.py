@@ -28,8 +28,10 @@ class Shape:
     def is_a(self, toCheck: st.ShapeType) -> bool:
         """Vérifie si la forme est d'un type donné"""
         current = self.type
+        if current == toCheck:
+            return True
         while current in st.PARENTS:
+            current = st.PARENTS[current]
             if current == toCheck:
                 return True
-            current = st.PARENTS[current]
-        return current == toCheck
+        return False
