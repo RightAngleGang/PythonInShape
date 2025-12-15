@@ -151,21 +151,22 @@ class Polygon(Shape):
         return f"L'air est {float(area)}", float(area)
 
     def _compute_pyramid_volume(self) -> float:
-        apex = self.points[0]       # sommet
-        base_points = self.points[1:]
+        if len(self.points) < 5:
+            raise ValueError("Une pyramide carrée doit avoir 5 points (4 base + 1 sommet).")
+
+        base_points = self.points[:4]   # b0,b1,b2,b3
+        apex = self.points[4]           # sommet
 
         # aire de la base
         base_polygon = Polygon(self.nom + "_base", "Polygone")
         base_polygon.points = base_points
         _, area_base = base_polygon._compute_polygon_area()
 
-        # hauteur = distance du sommet au plan de la base
-        # Pour obtenir le plan : normal via les 3 premiers points
+        # normal du plan de base (3 points de base)
         p1, p2, p3 = base_points[:3]
-
         v1 = np.array([p2.x - p1.x, p2.y - p1.y, getattr(p2, "z", 0.0) - getattr(p1, "z", 0.0)])
         v2 = np.array([p3.x - p1.x, p3.y - p1.y, getattr(p3, "z", 0.0) - getattr(p1, "z", 0.0)])
-        
+
         normal = np.cross(v1, v2)
         normal = normal / np.linalg.norm(normal)
 
@@ -174,8 +175,8 @@ class Polygon(Shape):
 
         height = abs(np.dot((p_apex - p1_v), normal))
 
-        # Volume pyramide
-        volume = (1./3.) * area_base * height
+        volume = float((1.0/3.0) * area_base * height)
+
         return f"Le volume est {float(volume)}"
 
     def add_point(self, point: Point):
