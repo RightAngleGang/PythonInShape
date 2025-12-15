@@ -150,6 +150,8 @@ def edit_shape(space: Space):
         match choice:
             case '1':
                 point = choose_point(space)
+                shape.add_point(point)
+                print(f"Point {point} added to shape '{shape_name}'.")
             case '2':
                 point_name = input("Enter the name of the point to remove:")
                 point = space.get_point_manager().find_point_by_name(point_name)
