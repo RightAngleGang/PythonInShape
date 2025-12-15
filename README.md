@@ -67,6 +67,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 35. Calculer l'aire
 36. Calculer le volume
 37. Scale de formes *
+38. Deplacement forme *
 
 ---
 
