@@ -47,6 +47,7 @@ ACTIONS_SHAPE = [
     ("Ajouter une forme 2D", lambda: add_shape(sm)),
     ("Ajouter une forme 3D", lambda: add_shape3D(sm)),
     ("Lister les formes", lambda: show_shapes(sm)),
+    ("Modifier une forme", lambda: edit_shape(sm)),
     #("Supprimer une forme", lambda: sm.get_shape_manager().remove_interactive()),
 ]
 
