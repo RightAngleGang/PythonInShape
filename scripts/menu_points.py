@@ -107,8 +107,12 @@ def choose_point(space: Space, allow_2d: bool=False, allow_3d: bool=False) -> Po
             if not (allow_2d or allow_3d):
                 raise AssertionError("Aucune option de création de point n'est permise pour cette action.")
             
-            add_point(space)
-            
+            pname = add_point(space)
+            pt = space.get_point_manager().find_point_by_name(pname)
+            if pt is None:
+                print(f"Erreur: le point '{pname}' n'a pas pu être retrouvé après création.")
+                continue
+            return pt
         else:
             print("Option invalide. Veuillez choisir 1 ou 2.")
             
