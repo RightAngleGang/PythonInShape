@@ -1,6 +1,3 @@
-from scripts.Space import Space
-from scripts.shapes.Point import Point
-
 def get_coords2() -> tuple[float, float]:
     """
     Demande à l'utilisateur de saisir des coordonnées au format x;y et les retourne sous forme de tuple de floats.

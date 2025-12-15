@@ -3,9 +3,6 @@ import numpy as np
 from scripts.Space import Space 
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
-from scripts.shapes.Cone import Cone
-from scripts.utils import get_coords2, get_coords3, clean_coord
-import math
 
 from scripts.functions.shape_2d import add_carre, add_rectangle, add_triangle, add_segment, add_circle, add_polygon
 from scripts.functions.shape_3d import add_cube, add_pave_droit, add_pyramide, add_sphere, add_cone
