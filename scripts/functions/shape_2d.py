@@ -244,3 +244,4 @@ def add_rectangle(space: Space, tmpStr: str) -> Polygon:
     for p in (p0, p1, p2, p3):
         space.get_point_manager().add_point(p)
         polygon.add_point(p)
+    return polygon
