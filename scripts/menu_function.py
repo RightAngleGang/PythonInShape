@@ -174,7 +174,7 @@ def edit_shape(space: Space):
             allowed_choices.append(3)
             
             if isinstance(shape, Cone):
-                print(f"4. Height (⚠️ Moves {shape.apex}])")
+                print(f"4. Height (⚠️ Moves {shape.apex})")
                 allowed_choices.append(4)
                 
         try:
