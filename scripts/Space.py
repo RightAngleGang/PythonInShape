@@ -40,6 +40,9 @@ class Space:
 
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
+        #also export it in three-json-viewer folder
+        with open("three-json-viewer/data.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
 
     def import_from_json(self, filename):
         """Importe les données de l'espace depuis un fichier JSON, même format que export_to_json"""

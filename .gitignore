@@ -212,3 +212,19 @@ node_modules/
 .DS_Store
 .env
 test.json
+
+#three-json-viewer/data.json --- IGNORE ---
+three-json-viewer/node_modules/
+three-json-viewer/.DS_Store
+three-json-viewer/.env
+three-json-viewer/.vscode/
+three-json-viewer/.idea/
+three-json-viewer/.pnp.cjs
+three-json-viewer/.pnp.loader.mjs
+three-json-viewer/.pnp.js
+three-json-viewer/.pnp.data.json
+three-json-viewer/src/counter.js
+three-json-viewer/src/javascript.svg
+three-json-viewer/package-lock.json
+three-json-viewer/data.json
+three-json-viewer/public/vite.svg
