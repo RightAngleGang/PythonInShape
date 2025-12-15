@@ -44,16 +44,16 @@ ACTIONS_GESTION_POINTS = [
 ]
 
 ACTIONS_SHAPE = [
-    ("Ajouter une forme", lambda: add_shape(sm)),
-    ("Lister les formes", lambda: show_shapes(sm)),
-    #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
-]
-ACTIONS_SHAPE3D = [
+    ("Ajouter une forme 2D", lambda: add_shape(sm)),
     ("Ajouter une forme 3D", lambda: add_shape3D(sm)),
     ("Lister les formes", lambda: show_shapes(sm)),
-    #("Lister les formes", lambda: show_shapes(sm)),
-    #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
+    #("Supprimer une forme", lambda: sm.get_shape_manager().remove_interactive()),
 ]
+
+ACTIONS_CALC = [
+    ("Calculer la distance entre 2 points", lambda: euclidean_distance(sm)),
+]
+
 ACTIONS_DATA = [
     ("Exporter les données de l'espace vers un fichier JSON", lambda: spaceData.export_space_data(sm)),
     ("Importer les données de l'espace depuis un fichier JSON", lambda: spaceData.import_space_data(sm)),
@@ -61,13 +61,9 @@ ACTIONS_DATA = [
 
 ACTIONS_BASIC = [
     ("Gestion des Points ▶", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_GESTION_POINTS)),
-    ("Calculer la distance euclidienne entre 2 points", lambda: euclidean_distance(sm)),
-   #("Supprimer un point", lambda: sm.remove_point_interactive()),
-    # ("Créer / choisir un point", lambda: menu_loop("--- MENU POINTS ---", ACTIONS_CREATION_POINTS)),
-    #("Afficher les données de l'espace", lambda: display_space_data(sm)),
     ("Gestion des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
-    ("Gestion des Formes 3D ▶", lambda: menu_loop("--- MENU FORMES 3D ---", ACTIONS_SHAPE3D)),
     ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
+    ("Calculs ▶", lambda: menu_loop("--- MENU CALCULS ---", ACTIONS_CALC)),
     ("DEV / ADD POINTS", lambda: add_points(sm)),
 ]
 
