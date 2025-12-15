@@ -49,13 +49,13 @@ ACTIONS_SHAPE = [
     ("Ajouter une forme 3D", lambda: mf.add_shape3D(sm)),
     ("Lister les formes", lambda: mf.show_shapes(sm)),
     ("Modifier une forme", lambda: mf.edit_shape(sm)),
+    ("Scale une forme", lambda: mf.scale_shape(sm)),
+    ("Déplacer une forme", lambda: mf.move_shape(sm)),
     #("Supprimer une forme", lambda: sm.get_shape_manager().remove_interactive()),
 ]
 
 ACTIONS_CALC = [
-    ("Calculer la distance entre 2 points", lambda: mc.euclidean_distance(sm)),
-    ("Calculer l'aire d'une forme", lambda: mc.get_area(sm)),
-    ("Calculer le volume d'une forme 3D", lambda: mc.get_volume(sm)),
+    ("Calculer la distance entre 2 points", lambda: euclidean_distance(sm)),
 ]
 
 ACTIONS_DATA = [

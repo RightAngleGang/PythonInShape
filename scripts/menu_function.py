@@ -120,12 +120,9 @@ def add_shape3D(space: Space):
     elif shapeType == 5:
         shape = add_cone(space, tmpStr)
 
-    # ---------- 6) CÔNE ----------
-    elif shapeType == 6:
-        shape = add_cone(space, tmpStr)
-
     else:
         print("Type de forme inconnu. Merci de choisir un nombre entre 1 et 5.")
+        return
         
     space.get_shape_manager().add_shape(shape)
     print(f"\nForme 3D créée : {shape}")
@@ -228,3 +225,171 @@ def edit_shape(space: Space):
         
     
     print("Shape editing functionality is not yet implemented.")
+
+
+def _get_point_coords(p: Point):
+    x = float(p.x)
+    y = float(p.y)
+    z = float(getattr(p, "z", 0.0))
+    return x, y, z
+
+def _set_point_coords(p: Point, x: float, y: float, z: float):
+    p.x = float(x)
+    p.y = float(y)
+    # si ton Point est 2D (pas de z), on évite de créer z si tu veux.
+    if hasattr(p, "z"):
+        p.z = float(z)
+
+def _translate_point(p: Point, dx: float, dy: float, dz: float):
+    x, y, z = _get_point_coords(p)
+    _set_point_coords(p, x + dx, y + dy, z + dz)
+
+def _scale_point_about(p: Point, cx: float, cy: float, cz: float, s: float):
+    x, y, z = _get_point_coords(p)
+    nx = cx + s * (x - cx)
+    ny = cy + s * (y - cy)
+    nz = cz + s * (z - cz)
+    _set_point_coords(p, nx, ny, nz)
+
+def _shape_points(shape: Shape) -> list[Point]:
+    """Retourne la liste des points qui définissent la forme."""
+    if isinstance(shape, Polygon):
+        return list(shape.points)
+
+    # Circle / Sphere ont un point "centre"
+    if isinstance(shape, (Circle, Sphere)):
+        return [shape.point]
+
+    # Cone : centre de base + apex (d'après ton code de création)
+    if isinstance(shape, Cone):
+        pts = []
+        if hasattr(shape, "point"):  # au cas où
+            pts.append(shape.point)
+        if hasattr(shape, "apex"):
+            pts.append(shape.apex)
+        # certains cones peuvent stocker center_point
+        if hasattr(shape, "center_point"):
+            pts.append(shape.center_point)
+        # dédoublonnage
+        uniq = []
+        seen = set()
+        for p in pts:
+            if p is None:
+                continue
+            key = (id(p))
+            if key not in seen:
+                seen.add(key)
+                uniq.append(p)
+        return uniq
+
+    return []
+
+
+def move_shape(space: Space):
+    """Déplace une forme (translation)."""
+    shape_name = input("Nom de la forme à déplacer : ").strip()
+    shape = space.get_shape_manager().find_shape_by_name(shape_name)
+    if not shape:
+        print(f"Shape '{shape_name}' introuvable.")
+        return
+
+    try:
+        dx = float(input("x : "))
+        dy = float(input("y : "))
+        dz = float(input("z (0 si 2D) : "))
+    except ValueError:
+        print("Entrée invalide (x/y/z).")
+        return
+
+    pts = _shape_points(shape)
+
+    # Polygon => tous les points
+    if pts:
+        for p in pts:
+            _translate_point(p, dx, dy, dz)
+
+    # si shape a des attributs "radius" (Circle/Sphere/Cone) => pas affecté par translation
+    print(f"✅ Forme '{shape_name}' déplacée de ({dx}, {dy}, {dz}).")
+    print(f"Nouvelle forme : {shape}")
+
+
+def scale_shape(space: Space):
+    """Scale une forme (mise à l’échelle) autour d’un pivot."""
+    shape_name = input("Nom de la forme à scale : ").strip()
+    shape = space.get_shape_manager().find_shape_by_name(shape_name)
+    if not shape:
+        print(f"Shape '{shape_name}' introuvable.")
+        return
+
+    try:
+        s = float(input("Facteur de scale (ex: 2 = double, 0.5 = moitié) : "))
+        if s <= 0:
+            print("Le facteur doit être > 0.")
+            return
+    except ValueError:
+        print("Entrée invalide (facteur).")
+        return
+
+    # Choix pivot
+    print("Pivot du scale :")
+    print("  1 - Centre automatique (recommandé)")
+    print("  2 - Choisir un point existant (dans l'espace)")
+    print("  3 - Coordonnées (x,y,z)")
+    mode = input("Votre choix [1/2/3] : ").strip()
+
+    # --- déterminer pivot (cx,cy,cz) ---
+    cx = cy = cz = 0.0
+
+    if mode == "2":
+        pivot = choose_point(space, allow_2d=True, allow_3d=True)
+        cx, cy, cz = _get_point_coords(pivot)
+
+    elif mode == "3":
+        try:
+            cx = float(input("cx : "))
+            cy = float(input("cy : "))
+            cz = float(input("cz (0 si 2D) : "))
+        except ValueError:
+            print("Coordonnées pivot invalides.")
+            return
+
+    else:
+        # centre automatique
+        if isinstance(shape, Polygon) and shape.points:
+            xs, ys, zs = [], [], []
+            for p in shape.points:
+                x, y, z = _get_point_coords(p)
+                xs.append(x); ys.append(y); zs.append(z)
+            cx = sum(xs) / len(xs)
+            cy = sum(ys) / len(ys)
+            cz = sum(zs) / len(zs)
+
+        elif isinstance(shape, (Circle, Sphere)):
+            cx, cy, cz = _get_point_coords(shape.point)
+
+        elif isinstance(shape, Cone):
+            # pivot = centre de base si on l’a
+            if hasattr(shape, "point"):
+                cx, cy, cz = _get_point_coords(shape.point)
+            elif hasattr(shape, "center_point"):
+                cx, cy, cz = _get_point_coords(shape.center_point)
+            else:
+                # fallback: apex si rien d'autre
+                cx, cy, cz = _get_point_coords(shape.apex)
+
+        else:
+            # fallback global
+            cx = cy = cz = 0.0
+
+    # --- scale les points géométriques ---
+    pts = _shape_points(shape)
+    for p in pts:
+        _scale_point_about(p, cx, cy, cz, s)
+
+    # --- scale aussi les dimensions (radius) si nécessaire ---
+    # Circle / Sphere / Cone ont un radius
+    if hasattr(shape, "radius"):
+        shape.radius = float(shape.radius) * s
+
+    print(f"✅ Forme '{shape_name}' scalée par {s} autour de ({cx}, {cy}, {cz}).")
+    print(f"Nouvelle forme : {shape}")
