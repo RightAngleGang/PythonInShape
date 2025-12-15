@@ -1,23 +1,11 @@
 from scripts.Space import Space
-from scripts.utils import get_coords2, get_coords3
+from scripts.utils import get_coords3
 # from scripts.shapes.Shape import Shape
 from scripts.shapes.Polygon import Polygon
 from scripts.shapes.Point import Point
 from scripts.shapes.Circle import Circle
     
-def add_point_2d(space: Space):
-    """
-    Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
-    
-    :param space:
-    :type space: Space
-    """
-    x,y = get_coords2()
-    pname = space.get_point_manager().add_name_point(x, y)
-    print(f"Point '{pname}' ajouté aux coordonnées ({x}; {y}).")
-    return pname
-    
-def add_point_3d(space: Space):
+def add_point(space: Space):
     """
     Ajoute un point dans l'espace aux coordonnées spécifiées par l'utilisateur. Nom choisi par le gestionnaire de points.
     
@@ -50,27 +38,9 @@ def remove_point(space: Space):
         print(f"Point '{tmpStr}' supprimé avec succès.")
     else:
         raise ValueError(f"Point '{tmpStr}' introuvable. Suppression impossible.")
-        
-def move_point_2d(space: Space):
-    """
-    Déplace un point dans l'espace en demandant son nom et les nouvelles coordonnées à l'utilisateur.
-    
-    :param space: Description
-    :type space: Space
-    """
-    tmpStr = str(input("Nom du point à déplacer : "))
-    point = space.get_point_manager().find_point_by_name(tmpStr)
-    if point:
-        print(f"Point actuel : {point}")
-        new_x, new_y = get_coords2()
-        point.x = new_x
-        point.y = new_y
-        print(f"Point '{tmpStr}' déplacé vers ({new_x}; {new_y}).")
-    else:
-        raise ValueError(f"Point '{tmpStr}' introuvable. Déplacement impossible.")
 
 
-def move_point_3d(space: Space):
+def move_point(space: Space):
     """
     Déplace un point dans l'espace en demandant son nom et les nouvelles coordonnées à l'utilisateur.
     
@@ -137,25 +107,25 @@ def choose_point(space: Space, allow_2d: bool=False, allow_3d: bool=False) -> Po
             if not (allow_2d or allow_3d):
                 raise AssertionError("Aucune option de création de point n'est permise pour cette action.")
             
-            if not(allow_2d and allow_3d): # une seule option est permise
-                if allow_2d:
-                    ptname = add_point_2d(space)
-                else:
-                    ptname = add_point_3d(space)
-                    
-            else: # les deux options sont permises
-                print("Créer un point 2D ou 3D ?")
-                print("1. Point 2D")
-                print("2. Point 3D")
-                subchoice = input("Choisissez une option (1 ou 2) : ")
-                if subchoice == '1':
-                    ptname = add_point_2d(space)
-                elif subchoice == '2':
-                    ptname = add_point_3d(space)
-            pt = space.get_point_manager().find_point_by_name(ptname)
-            if pt is None:
-                print(f"Erreur lors de la création du point '{ptname}'. Veuillez réessayer.")
-                continue
-            return pt
+            add_point(space)
+            
         else:
             print("Option invalide. Veuillez choisir 1 ou 2.")
+            
+def translate_point(space: Space):
+    """
+    Translate un point dans l'espace en demandant son nom et les valeurs de translation à l'utilisateur.
+    
+    :param space: Description
+    :type space: Space
+    """
+    tmpStr = str(input("Nom du point à translater : "))
+    point = space.get_point_manager().find_point_by_name(tmpStr)
+    if point:
+        print(f"Point actuel : {point}")
+        print("Entrez le vecteur de translation :")
+        dx, dy, dz = get_coords3()
+        point.translate(dx, dy, dz)
+        print(f"Point '{tmpStr}' translaté de ({dx}; {dy}; {dz}) vers ({point.x}; {point.y}; {point.z}).")
+    else:
+        raise ValueError(f"Point '{tmpStr}' introuvable. Translation impossible.")

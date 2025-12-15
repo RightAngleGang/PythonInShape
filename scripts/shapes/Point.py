@@ -19,6 +19,12 @@ class Point():
         if not isinstance(other, Point):
             return False
         return self.x == other.x and self.y == other.y and self.z == other.z
+    
+    def translate(self, dx: float, dy: float, dz: float=0.0) -> None:
+        """Translate le point selon les deltas fournis"""
+        self.x += dx
+        self.y += dy
+        self.z += dz
 
     def distance_to(self, other: "Point") -> float:
         """Calcule la distance entre ce point et un autre point"""
