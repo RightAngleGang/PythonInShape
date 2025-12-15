@@ -178,15 +178,7 @@ En tant qu’utilisateur, je veux pouvoir déplacer une forme entière dans l’
 
 # **Sprint Review**
 
-Ce sprint à pu compenser la charge importante du sprint précédent.
-Le fait que notre soit déjà organisé a permis de facilement reprendre l'inportation et l'exportation des points 3D par Arthur.
-On a pu constater que le refactor était nécéssaire afin de notamenent fix les erreurs.
-merge un peu chiant.
-Théo à eu des souçis d'application de fromules mathématiques à cause de la dissociation dans la gestion des types d'objets.
-Cepdendant il a réussi à appliquer le volume et l'air pour chaque forme.
-Refactor terminal, editer points 3D et dans les formes pour colin.
-Colin a structuré et enrichi le menu console en réorganisant les menus, en ajoutant la gestion des translations et de l’édition des formes (via un ShapeType), en permettant la modification des attributs selon le type (polygone, sphère, cercle, cône), tout en gérant l’ajout/retrait de points et en conservant les contraintes des polygones particuliers (carré, rectangle).
-Colin à également mis en plus un enum pour gerer les prints.
+Dans ce dernier sprint 
 
 ---
 
@@ -194,21 +186,25 @@ Colin à également mis en plus un enum pour gerer les prints.
 
 ## **Ce qui a été mis en place**
 - Le poker planning.
+- Un ou deux tickets maximum par personne, afin de se concentrer sur des tâches à forte plus value.
 
 ## **Ce qui a bien fonctionné**
 - Planning et rétrospective avec le client/PO plus libre et apaisée.
-- Répartition plus légère des tickets.
+- Répartition plus légère de tickets.
 - Sprint moins stressant.
-- Globalement les taches ont été fini juste à temps, le sprint était mieux géré de mon côté du côté d'Arthur que Théo ou Colin car leurs backlogs était plus lourd. 
+  
+- Globalement les taches ont été fini juste à temps, le sprint était mieux géré de mon côté du côté d'Arthur que Théo ou Colin car leurs backlogs était plus lourd. *
 
 ## **Ce qui a posé problème**
 - La période créer de la fatigue au sein de l'équipe.
-- Sprint moins stressant mais plus lourd, la fin du projet commence à se faire sentir.
+- Sprint moins stressant mais plus lourd, la fin du projet commence à se faire sentir. *
+- Théo à du s'absenter pour raison personnelle
 
 ## **Ce qu’on doit améliorer**
 - Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
 - Accentuer la communication interne pour la gestion de merge.
-
+- On aurait du noter tous les choix techniques (plus ou moins interne) décidés par chaque développeurs avec on sans le PO,
+  afin de centraliser l'information et pouvoir casser l'opacité du fonctionnement interne.
 ---
 
 # **interne**
