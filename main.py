@@ -5,6 +5,7 @@ from scripts.menu_function import *
 import scripts.menu_points as mp
 from scripts.functions.calc_points import euclidean_distance
 import scripts.imp_exp as spaceData
+import scripts.three_visualize as threeViz
 
 
 sm = Space()
@@ -57,6 +58,7 @@ ACTIONS_CALC = [
 ACTIONS_DATA = [
     ("Exporter les données de l'espace vers un fichier JSON", lambda: spaceData.export_space_data(sm)),
     ("Importer les données de l'espace depuis un fichier JSON", lambda: spaceData.import_space_data(sm)),
+    ("Afficher les données dans three.js", lambda: threeViz.show_data(sm)),
 ]
 
 ACTIONS_BASIC = [
