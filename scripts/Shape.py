@@ -19,7 +19,7 @@ class Shape:
         return 0.0
 
     @abstractmethod
-    def compute() -> float:
+    def compute() -> str:
         pass
     
     def export_to_json(self):

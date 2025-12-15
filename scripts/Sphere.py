@@ -1,6 +1,6 @@
 from scripts.Shape import Shape
 from scripts.Point import Point
-
+import math
 
 class Sphere(Shape):
     """Ensemble de points formant une forme fermée"""
@@ -12,6 +12,10 @@ class Sphere(Shape):
         self.point = point
         self.radius = radius
 
+    def compute(self) -> str:
+        volume = (4 / 3) * math.pi * (self.radius ** 3)
+        return f"Le volume est {float(volume)}"
+    
     def __str__(self):
         return f"{self.nom} (Sphere): [origine: {self.point}, rayon: {self.radius}]"
 

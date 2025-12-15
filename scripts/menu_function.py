@@ -122,7 +122,6 @@ def add_sphere(space: Space, tmpStr: str) -> Sphere:
             break
         except ValueError:
             print("Entrée invalide. Veuillez saisir un nombre valide pour le rayon.")
-    radius = float(input("Rayon : "))
 
     return Sphere(tmpStr, centre, radius)
 
@@ -518,7 +517,7 @@ def add_shape(space: Space):
 def add_shape3D(space: Space):
 
     try:
-        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5),, Sphere (7) : "))
+        shapeType = int(input("Type de forme 3D : Cube (1), Pavé droit (2), Pyramide (3), Segment (4), Triangle (5), Cone (6), Sphere (7) : "))
     except ValueError:
         print("Entrée invalide, merci de saisir un nombre.")
         return
@@ -825,10 +824,10 @@ def add_shape3D(space: Space):
 def get_area(space: Space):
     count = len(space.get_shape_manager().get_shapes())
     show_shapes(space)
-    shapeIndex = int(input(f"Selectionnez la forme voulu pour avoir son aire/volume (0-{count - 1})"))
+    shapeIndex = int(input(f"Selectionnez la forme voulu pour avoir son aire/volume (0-{count - 1}) : "))
     
     value = space.get_shape_manager().get_shapes()[shapeIndex].compute()
-    print(f"L'air est {value}")
+    print(value)
 
 def get_voulme(space: Space):
     pass

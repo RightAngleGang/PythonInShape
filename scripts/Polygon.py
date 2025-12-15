@@ -25,7 +25,7 @@ class Polygon(Shape):
         
         return len(self.points) == len(value.points)
 
-    def compute(self):
+    def compute(self) -> str:
         """
         Calcule l'aire OU le volume en fonction du type de forme.
         Retourne un float (aire ou volume).
@@ -35,7 +35,7 @@ class Polygon(Shape):
 
         # ----------- SEGMENT → pas d’aire, pas de volume -----------
         if self.type == "Segment":
-            return 0.0
+            return f"L'air est de 0"
 
         # ----------- TRIANGLE / CARRÉ / RECTANGLE / POLYGONE 3D -----------
         if self.type in ("Triangle", "Carré", "Rectangle", "Polygone"):
@@ -76,7 +76,7 @@ class Polygon(Shape):
         # Volume du parallélépipède → pour un cube, c’est juste la bonne valeur
         volume = abs(np.dot(v1, np.cross(v2, v3)))
 
-        return float(volume)
+        return f"Le volume est {float(volume)}"
 
     def _compute_pave_volume(self) -> float:
         if len(self.points) < 4:
@@ -122,7 +122,8 @@ class Polygon(Shape):
             return 0.0
 
         volume = abs(mixed_product)
-        return float(volume)
+        return f"Le volume est {float(volume)}"
+        
 
     def _compute_polygon_area(self) -> float:
         n = len(self.points)
@@ -146,7 +147,7 @@ class Polygon(Shape):
             area_vector += np.cross(v_i, v_next)
 
         area = 0.5 * np.linalg.norm(area_vector)
-        return float(area)
+        return f"L'air est {float(area)}"
 
     def _compute_pyramid_volume(self) -> float:
         apex = self.points[0]       # sommet
@@ -174,8 +175,7 @@ class Polygon(Shape):
 
         # Volume pyramide
         volume = (1/3) * area_base * height
-        return float(volume)
-
+        return f"Le volume est {float(volume)}"
 
     def add_point(self, point: Point):
         if point in self.points:
