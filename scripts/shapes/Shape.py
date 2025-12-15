@@ -1,3 +1,6 @@
+from abc import abstractmethod
+
+
 class Shape:
     """Forme géométrique de base"""
     nom: str
@@ -15,6 +18,10 @@ class Shape:
         """Calcule l'aire de la forme"""
         return 0.0
 
+    @abstractmethod
+    def compute() -> str:
+        pass
+    
     def export_to_json(self):
         return {
             "type": "Shape",

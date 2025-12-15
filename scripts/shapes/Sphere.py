@@ -1,5 +1,6 @@
 from scripts.shapes.Shape import Shape
 from scripts.shapes.Point import Point
+import math
 
 
 class Sphere(Shape):
@@ -12,6 +13,10 @@ class Sphere(Shape):
         self.point = point
         self.radius = radius
 
+    def compute(self) -> str:
+        volume = (4 / 3) * math.pi * (self.radius ** 3)
+        return f"Le volume est {float(volume)}"
+    
     def __str__(self):
         return f"{self.nom} (Sphere): [origine: {self.point}, rayon: {self.radius}]"
 
