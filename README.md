@@ -54,20 +54,20 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 32. **Éditer les points des formes en 3D** (suppression points, translation points) 
 
 ## Fonctions avancées
-27. Gérer l’**affichage web** ou **l’export vers Three.js**  x
+27. Gérer l’**affichage web** ou **l’export vers Three.js** 
 28. Déterminer l’**appartenance d’une forme à un espace** et les **intersections** entre formes  x
 29. **Importer** les points et formes (Via Json)  
 30. **Exporter** les points et formes (Via Json)
 33. **Importer** les points et formes 3D (Via Json)
 34. **Exporter** les points et formes 3D (Via Json)
-35. Réattribution automatique d'une catégorie de forme selon ses proprités géométrique après modification x
+35. Réattribution automatique d'une catégorie de forme selon ses proprités géométrique après modification 
 
 
 ## Calcul
 35. Calculer l'aire
 36. Calculer le volume
-37. Scale de formes *
-38. Deplacement forme *
+37. Scale de formes
+38. Deplacement de formes
 
 ---
 
@@ -83,17 +83,10 @@ Nous sommes ainsi à un total de 40 points.
 
 | Item sprint backlog | Estimation | membre |
 |-------------|------------|------------|
-| Créer et afficher un **cône** | 3 | Théo |
-| Calcul air | 3 | Théo |
-| Calcul volume | 4 | Théo |
-| Éditer les points en 3D | 1 | Colin |
-| Éditer les points des formes en 3D | 2 | Colin |
-| fix le segment | 1 | Colin |
-| refactor terminal | 2 | Colin |
-| refactor backend (separation des fonctions) | 4 | Colin |
-| Import des points 3D | 4 | Arthur |
-| Export des points 3D | 4 | Arthur |
-| tests | 2 | Arthur |
+| Scale de formes | 7 | Théo |
+| Deplacement de formes | 5 | Théo |
+| Réattribution automatique d'une catégorie de forme selon ses proprités géométrique après modification | 10 | Colin |
+| Gérer l’**affichage web** ou **l’export vers Three.js** | 10 | Arthur |
 | Mise en forme du poker planning | 2 | Angelo |
 | Mise en forme du Sprint Backlog | 1 | Angelo |
 | Mise en forme de l'User Story et DOD | 3 | Angelo |
@@ -103,120 +96,83 @@ Nous sommes ainsi à un total de 40 points.
 
 ---
 
-# **Sprint Backlog — (01/12/2025)**
-22. Créer et afficher un **cône**  
-31. **Éditer les points en 3D** (suppression, translation) 
-32. **Éditer les points des formes en 3D** (suppression points, translation points) 
-33. **Importer** les points et formes 3D (Via Json)
-34. **Exporter** les points et formes 3D (Via Json)
-35. Calculer l'aire
-36. Calculer le volume
+# **Sprint Backlog — (15/12/2025)**
+27. Gérer l’**affichage web** ou **l’export vers Three.js** 
+35. Réattribution automatique d'une catégorie de forme selon ses proprités géométrique après modification 
+37. Scale de formes
+38. Deplacement de formes
 
 
 ---
 # **User Story** et **Definition of Done – Sprint (3D)**
 
-## 22. Créer et afficher un cône
+## 27. Gérer l’affichage web ou l’export vers Three.js
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir créer et afficher un cône en 3D à partir d’un centre de base, d’un rayon et d’une hauteur afin de représenter un solide géométrique.
+En tant qu’utilisateur, je veux pouvoir visualiser mes points et formes dans une interface web ou exporter la scène vers Three.js afin d’obtenir un rendu 3D interactif.
 
 **Definition of Done**
-- L’utilisateur sélectionne "Cône" dans le sous-menu "Ajouter une forme".
-- Un point définit le centre de la base.
-- Un rayon et une hauteur définissent le cône.
-- 2 angles définissent l'orientation
-- La forme est affichée de façon textuelle.
-- Les coordonnées sont stockées.
-
-## 31. Éditer les points en 3D (suppression, translation) x
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir modifier ou supprimer un point en 3D afin de corriger ou ajuster sa position dans l’espace.
-
-**Definition of Done**
-- L’utilisateur sélectionne **Gestion des Points**.
-- L’utilisateur sélectionne un point.
-- L’utilisateur peut :
-  - **Supprimer un point**
-  - **Translater un point** via un vecteur (dx, dy, dz)
-  - **Redéfinir les coordonnées du point**
-  - **Redéfinir le nom du point**
-- Le point mis à jour est affiché.
-- Les modifications sont **enregistrées**.
-
-
-## 32. Éditer les points des formes en 3D (suppression, translation) x
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir modifier ou supprimer les points composant une forme 3D afin de faire évoluer sa géométrie.
-
-**Definition of Done**
-- L’utilisateur sélectionne **Gestion des Formes 3D → Éditer une forme**.
-- L’utilisateur sélectionne une forme.
-- L’utilisateur peut :
-  - supprimer un ou plusieurs points de la forme
-- La nouvelle forme est affichée.
-- Les modifications sont **enregistrées**.
-
-
-## 33. Importer les points et formes 3D (JSON)
-
-**User Story**  
-En tant qu’utilisateur, je veux pouvoir importer des points et des formes à partir d’un fichier JSON afin de récupérer rapidement des données existantes.
-
-**Definition of Done**
-- L’utilisateur sélectionne **Gestion des données → Importer (JSON)**.
-- Le programme lit un fichier JSON valide contenant :
-  - des points
-  - des formes
-- Les données sont chargées dans le système.
+- L’utilisateur sélectionne **Gestion des données → Affichage Web / Export Three.js**.
+- Le système propose :
+  - un affichage web interne (si disponible)
+  - un export compatible **Three.js**
+- Les données exportées incluent :
+  - points (x, y, z, nom)
+  - formes (type, sommets, dimensions, angles)
+- Un fichier ou une structure Three.js valide est générée.
+- Les formes sont correctement positionnées et orientées dans la scène.
 - Un message de confirmation est affiché.
 - En cas d’erreur, un message explicite est affiché.
 
-
-## 34. Exporter les points et formes 3D (JSON)
+## 35. Réattribution automatique d’une catégorie de forme après modification
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir exporter mes points et formes dans un fichier JSON afin de sauvegarder et réutiliser mes données.
+En tant qu’utilisateur, je veux que le système requalifie automatiquement une forme après modification de sa géométrie afin qu’elle conserve une catégorie cohérente avec ses propriétés géométriques.
 
 **Definition of Done**
-- L’utilisateur sélectionne **Gestion des données → Exporter (JSON)**.
-- L'utilisateur choisi un fichier qui est créé ou écrasé
-- Tous les points et formes sont convertis au format JSON.
-- Un fichier est généré et sauvegardé.
-- Un message de confirmation est affiché.
+- Une modification géométrique est appliquée à une forme (édition de points, scale, déplacement).
+- Le système analyse les propriétés de la forme :
+  - nombre de sommets
+  - longueurs des arêtes
+  - angles
+  - coplanarité / symétrie
+- Si les propriétés correspondent à une forme connue :
+  - Rectangle → Carré
+  - Pavé → Cube
+  - Polygone → Carré / Rectangle
+- La catégorie de la forme est automatiquement mise à jour.
+- La nouvelle catégorie est affichée.
+- Les données sont enregistrées.
 
-
-## 35. Calculer l’aire d’une forme x
+## 37. Scale (mise à l’échelle) d’une forme
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir calculer l’aire d’une forme afin d’obtenir une information géométrique utile.
+En tant qu’utilisateur, je veux pouvoir appliquer un facteur d’échelle à une forme afin d’en modifier les dimensions proportionnellement.
 
 **Definition of Done**
 - L’utilisateur sélectionne une forme existante.
-- Le système détermine le type de forme (2D ou face d’une 3D).
-- L’aire est calculée automatiquement.
-- Le résultat est affiché.
-- Si la forme n’a pas d’aire calculable → message d’erreur.
+- Il saisit :
+  - un **coefficient de scale** (ex : 0.5, 2, 3…)
+  - un **point d’origine du scale** (x, y, z)
+- Les coordonnées des sommets sont recalculées selon le facteur et le point d’origine.
+- Les dimensions de la forme sont mises à jour.
+- La forme mise à l’échelle est affichée.
+- Les nouvelles coordonnées sont enregistrées.
+- La requalification automatique de la forme est déclenchée si nécessaire.
 
-
-## 36. Calculer le volume d’une forme 3D x
+## 38. Déplacement (translation) d’une forme
 
 **User Story**  
-En tant qu’utilisateur, je veux pouvoir calculer le volume d’une forme 3D afin d’analyser ses propriétés spatiales.
+En tant qu’utilisateur, je veux pouvoir déplacer une forme entière dans l’espace 3D afin de modifier sa position sans changer sa géométrie.
 
 **Definition of Done**
-- L’utilisateur sélectionne une forme 3D existante.
-- Le volume est calculé en fonction du type de forme :
-  - Cube / Pavé : L × l × h
-  - Cône : (1/3) × π × r² × h
-  - Pyramide : (1/3) × aireBase × h
-  - Sphère : (4/3) × π × r³
-- Le résultat est affiché.
-- En cas d’erreur → message explicite.
-
-
+- L’utilisateur sélectionne une forme existante.
+- Il saisit un vecteur de translation :
+  - (dx, dy, dz)
+- Tous les points composant la forme sont déplacés du même vecteur.
+- La géométrie de la forme est conservée.
+- La forme déplacée est affichée.
+- Les nouvelles coordonnées sont enregistrées.
 
 ---
 
