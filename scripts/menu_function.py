@@ -165,21 +165,21 @@ def edit_shape(space: Space):
     
     if isinstance(shape, Sphere):
         print("What would you like to edit?")
-        allowed = [1, 2]
+        allowed_choices = [1, 2]
         print("1. Center Point (change the point)")
         print("2. Radius")
         
         if isinstance(shape, Circle):
             print("3. Normal Vector (orientation)")
-            allowed.append(3)
+            allowed_choices.append(3)
             
             if isinstance(shape, Cone):
                 print(f"4. Height (⚠️ Moves {shape.apex}])")
-                allowed.append(4)
+                allowed_choices.append(4)
                 
         try:
             edit_choice = int(input("Enter the number of the attribute to edit: "))
-            if edit_choice not in allowed:
+            if edit_choice not in allowed_choices:
                 raise ValueError("Invalid choice.")
         except ValueError:
             print("Invalid input. No changes made.")
