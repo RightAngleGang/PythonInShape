@@ -146,7 +146,7 @@ def edit_shape(space: Space):
 
     print(f"Editing shape: {shape}")
     if isinstance(shape, Polygon):
-        choice = input("Do you want to add (1) or remove (2) points?")
+        choice = input("Do you want to add (1) or remove (2) points? ")
         match choice:
             case '1':
                 point = choose_point(space)
