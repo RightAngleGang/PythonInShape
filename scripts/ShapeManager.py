@@ -1,4 +1,4 @@
-from scripts.Shape import Shape
+from scripts.shapes.Shape import Shape
 
 class ShapeManager:
     """Espace contenant des formes géométriques"""

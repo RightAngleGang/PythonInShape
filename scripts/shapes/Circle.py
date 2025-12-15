@@ -1,7 +1,7 @@
 import math
 
-from scripts.Shape import Shape
-from scripts.Point import Point
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Point import Point
 
 class Circle(Shape):
     """Cercle dans l'espace 3D"""
@@ -35,7 +35,7 @@ class Circle(Shape):
     def export_to_json(self):
         """Export le cercle au format JSON"""
         return {
-            "type": "Circle3D",
+            "type": "Circle",
             "name": self.nom,
             "center": self.point.nom,
             "radius": self.radius,

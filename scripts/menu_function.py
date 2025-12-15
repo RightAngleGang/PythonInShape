@@ -1,12 +1,12 @@
 import numpy as np
 
-from scripts.Point import Point
-from scripts.Polygon import Polygon
-from scripts.Circle import Circle
+from scripts.shapes.Point import Point
+from scripts.shapes.Polygon import Polygon
+from scripts.shapes.Circle import Circle
 from scripts.Space import Space
-from scripts.Sphere import Sphere
-from scripts.Shape import Shape
-from scripts.Cone import Cone
+from scripts.shapes.Sphere import Sphere
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Cone import Cone
 from scripts.menu_points import add_point_2d, add_point_3d
 from scripts.utils import get_coords2, get_coords3
 import math

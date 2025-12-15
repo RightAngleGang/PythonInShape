@@ -1,6 +1,7 @@
-from scripts.Shape import Shape
-from scripts.Point import Point
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Point import Point
 import math
+
 
 class Sphere(Shape):
     """Ensemble de points formant une forme fermée"""

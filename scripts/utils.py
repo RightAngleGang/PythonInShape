@@ -1,6 +1,3 @@
-from scripts.Space import Space
-from scripts.Point import Point
-
 def get_coords2() -> tuple[float, float]:
     """
     Demande à l'utilisateur de saisir des coordonnées au format x;y et les retourne sous forme de tuple de floats.
@@ -33,3 +30,5 @@ def get_coords3() -> tuple[float, float, float]:
     except ValueError:
         raise ValueError("Les coordonnées doivent être des nombres valides.")
     
+def clean_coord(v: float, eps: float = 1e-9) -> float:
+    return 0.0 if abs(v) < eps else v

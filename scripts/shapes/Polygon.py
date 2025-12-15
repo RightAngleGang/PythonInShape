@@ -1,5 +1,5 @@
-from scripts.Shape import Shape
-from scripts.Point import Point
+from scripts.shapes.Shape import Shape
+from scripts.shapes.Point import Point
 import numpy as np
 
 class Polygon(Shape):
@@ -7,9 +7,11 @@ class Polygon(Shape):
     points: list[Point]
     type: str
     
-    def __init__(self, nom: str, type: str):
+    def __init__(self, nom: str, type: str, points=None):
         super().__init__(nom)
-        self.points = []
+        if points is None:
+            points = []
+        self.points = [point for point in points]
         self.type = type
 
     def __str__(self):
@@ -61,19 +63,18 @@ class Polygon(Shape):
         return 0.0
 
     def _compute_cube_volume(self) -> float:
-        if len(self.points) < 4:
-            raise ValueError("Un cube doit avoir au moins 4 points (origine + 3 autres).")
+        if len(self.points) < 5:
+            raise ValueError("Un cube doit avoir au moins 5 points (p0 + p1 + p3 + p4).")
 
         p0 = self.points[0]
-        p1 = self.points[1]
-        p2 = self.points[2]
-        p3 = self.points[3]
+        p1 = self.points[1]  # p0 + u
+        p3 = self.points[3]  # p0 + v
+        p4 = self.points[4]  # p0 + w
 
         v1 = np.array([p1.x - p0.x, p1.y - p0.y, getattr(p1, "z", 0.0) - getattr(p0, "z", 0.0)])
-        v2 = np.array([p2.x - p0.x, p2.y - p0.y, getattr(p2, "z", 0.0) - getattr(p0, "z", 0.0)])
-        v3 = np.array([p3.x - p0.x, p3.y - p0.y, getattr(p3, "z", 0.0) - getattr(p0, "z", 0.0)])
+        v2 = np.array([p3.x - p0.x, p3.y - p0.y, getattr(p3, "z", 0.0) - getattr(p0, "z", 0.0)])
+        v3 = np.array([p4.x - p0.x, p4.y - p0.y, getattr(p4, "z", 0.0) - getattr(p0, "z", 0.0)])
 
-        # Volume du parallélépipède → pour un cube, c’est juste la bonne valeur
         volume = abs(np.dot(v1, np.cross(v2, v3)))
 
         return f"Le volume est {float(volume)}"
@@ -147,7 +148,7 @@ class Polygon(Shape):
             area_vector += np.cross(v_i, v_next)
 
         area = 0.5 * np.linalg.norm(area_vector)
-        return f"L'air est {float(area)}"
+        return f"L'air est {float(area)}", float(area)
 
     def _compute_pyramid_volume(self) -> float:
         apex = self.points[0]       # sommet
@@ -156,7 +157,7 @@ class Polygon(Shape):
         # aire de la base
         base_polygon = Polygon(self.nom + "_base", "Polygone")
         base_polygon.points = base_points
-        area_base = base_polygon._compute_polygon_area()
+        _, area_base = base_polygon._compute_polygon_area()
 
         # hauteur = distance du sommet au plan de la base
         # Pour obtenir le plan : normal via les 3 premiers points
@@ -174,7 +175,7 @@ class Polygon(Shape):
         height = abs(np.dot((p_apex - p1_v), normal))
 
         # Volume pyramide
-        volume = (1/3) * area_base * height
+        volume = (1./3.) * area_base * height
         return f"Le volume est {float(volume)}"
 
     def add_point(self, point: Point):

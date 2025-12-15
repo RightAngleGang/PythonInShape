@@ -3,6 +3,9 @@ from scripts.Space import Space
 import sys
 from scripts.menu_function import *
 import scripts.menu_points as mp
+from scripts.functions.calc_points import euclidean_distance
+import scripts.imp_exp as spaceData
+
 
 sm = Space()
 
@@ -55,8 +58,8 @@ ACTIONS_SHAPE3D = [
     #("Supprimer un polygone", lambda: sm.get_shape_manager().remove_polygon_interactive()),
 ]
 ACTIONS_DATA = [
-    ("Exporter les données de l'espace vers un fichier JSON", lambda: export_space_data(sm)),
-    ("Importer les données de l'espace depuis un fichier JSON", lambda: import_space_data(sm)),
+    ("Exporter les données de l'espace vers un fichier JSON", lambda: spaceData.export_space_data(sm)),
+    ("Importer les données de l'espace depuis un fichier JSON", lambda: spaceData.import_space_data(sm)),
 ]
 
 ACTIONS_BASIC = [

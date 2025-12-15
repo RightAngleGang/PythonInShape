@@ -1,4 +1,4 @@
-from scripts.Point import Point
+from scripts.shapes.Point import Point
 from scripts.PointManager import PointManager
 
 def test_add_point():
