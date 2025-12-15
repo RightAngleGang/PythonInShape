@@ -71,10 +71,6 @@ def add_shape(space: Space):
     elif shapeType == 4:
         shape = add_segment(space, tmpStr)
 
-    # ---------- 4) SEGMENT (2 points) ----------
-    elif shapeType == 4:
-        shape = add_segment(space, tmpStr)
-
     # ---------- 5) CERCLE ----------
     elif shapeType == 5:
         shape = add_circle(tmpStr, space)
