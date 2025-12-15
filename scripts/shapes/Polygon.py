@@ -18,6 +18,10 @@ class Polygon(Shape):
 
     def _supertype(self):
         """Définit le supertype du polygone en fonction de son type"""
+        # Segment → 2 points
+        if len(self.points) == 2:
+            return ShapeType.Segment
+        
         
         
 
