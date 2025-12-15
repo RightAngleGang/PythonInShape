@@ -66,7 +66,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 ## Calcul
 35. Calculer l'aire
 36. Calculer le volume
-37. Scale de formes
+37. Scale de formes *
 
 ---
 
@@ -234,10 +234,11 @@ En tant qu’utilisateur, je veux pouvoir appliquer un facteur d’échelle à u
 # **Sprint Review**
 
 Ce sprint à pu compenser la charge importante du sprint précédent.
-Le fait que notre soit déjà organisé a permis de facilement reprendre l'inportation et l'exportation
+Le fait que notre soit déjà organisé a permis de facilement reprendre l'inportation et l'exportation des points 3D par Arthur.
 On a pu constater que le refactor était nécéssaire afin de notamenent fix les erreurs.
 merge un peu chiant.
-Théo à eu des soçucis d'application de fromules maths dans espace 3D du aux angles dans l'espace.
+Théo à eu des souçis d'application de fromules mathématiques à cause de la dissociation dans la gestion des types d'objets.
+Cepdendant il a réussi à appliquer le volume et l'air pour chaque forme.
 Refactor terminal, editer points 3D et dans les formes pour colin
 
 Faire enum.
@@ -252,15 +253,16 @@ Faire enum.
 - Planning et rétrospective avec le client/PO plus libre et apaisée.
 - Répartition plus légère des tickets.
 - Sprint moins stressant.
+- Globalement les taches ont été fini juste à temps, le sprint était mieux géré de mon côté du côté d'Arthur que Théo ou Colin car leurs backlogs était plus lourd. 
 
 ## **Ce qui a posé problème**
-- Oublie de "Créer et afficher un **polygone quelconque** à partir de **N points choisis** dans un espace 3D" à cause d'un manque de vigilance.
-- Sprint stressant, la fin du projet commence à se faire sentir.
-- trop de tickets pour théo (il a pas finin scale pour le moment).
-- 
+- La période créer de la fatigue au sein de l'équipe.
+- Sprint moins stressant mais plus lourd, la fin du projet commence à se faire sentir.
+
 ## **Ce qu’on doit améliorer**
 - Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
-- Etre plus concentré sur le poker planning car nous avons failli dépasser les 20 minutes maximales.
+- Accentuer la communication interne pour la gestion de merge.
+
 
 ---
 
