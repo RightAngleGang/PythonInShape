@@ -1,7 +1,7 @@
 import pytest
 from scripts.menu_points import *
 from scripts.Space import Space
-from scripts.Point import Point
+from scripts.shapes.Point import Point
 
 
 

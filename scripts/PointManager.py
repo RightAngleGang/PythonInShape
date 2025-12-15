@@ -1,4 +1,4 @@
-from scripts.Point import Point
+from scripts.shapes.Point import Point
 
 class PointManager:
     """Gestionnaire de points dans un espace 2D"""
