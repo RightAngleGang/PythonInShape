@@ -216,7 +216,8 @@ def edit_shape(space: Space):
                     print("Invalid vector components. No changes made.")
             case 4:
                 try:
-                    new_height = float(input("Enter new height: "))
+                    # new_height = float(input("Enter new height: "))
+                    input("Enter new height: ")
                     print(f"Cette partie n'est pas implémentée.")
                 except ValueError:
                     print("Invalid height. No changes made.")
