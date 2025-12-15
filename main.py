@@ -35,10 +35,9 @@ ACTIONS_CREATION_POINTS = [
 ]
 
 ACTIONS_GESTION_POINTS = [
-    ("Ajouter un point 2D", lambda: mp.add_point_2d(sm)),
-    ("Ajouter un point 3D", lambda: mp.add_point_3d(sm)),
-    ("Déplacer un point 2D", lambda: mp.move_point_2d(sm)),
-    ("Déplacer un point 3D", lambda: mp.move_point_3d(sm)),
+    ("Ajouter un point", lambda: mp.add_point(sm)),
+    ("Déplacer un point", lambda: mp.move_point(sm)),
+    ("Translater un point", lambda: mp.translate_point(sm)),
     ("Lister les points", lambda: sm.list_points()),
     ("Renommer un point", lambda: mp.rename_point(sm)),
     ("Supprimer un point", lambda: mp.remove_point(sm)),
