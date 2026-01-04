@@ -12,6 +12,9 @@ class Point():
         self.y = float(y)  
         self.z = float(z)  
     
+    def as_tuple(self) -> tuple[float, float, float]:
+        return (self.x, self.y, self.z)
+    
     def __str__(self) -> str:
         return f"{self.nom}({self.x:.3f};{self.y:.3f};{self.z:.3f})"
     

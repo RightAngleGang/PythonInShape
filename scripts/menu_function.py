@@ -132,12 +132,11 @@ def add_shape3D(space: Space):
     
 
 def show_shapes(space: Space):
-    shapes = space.get_shape_manager().get_shapes()
-    if not shapes:
+    sm = space.get_shape_manager()
+    if sm.number_of_shapes() == 0:
         print("No shapes available.")
         return
-    for shape in shapes:
-        print(shape)
+    print(sm)
 
 def edit_shape(space: Space):
     shape_name = input("Enter the name of the shape to edit: ")

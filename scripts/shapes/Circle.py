@@ -23,9 +23,12 @@ class Circle(Sphere):
             f"[centre: {self.point}, rayon: {self.radius}, "
             f"normal: {self.normal}]"
         )
-
-    def compute(self) -> str:
-        return f"L'air est {math.pi * (self.radius ** 2)}"
+        
+    def area(self) -> float:
+        return math.pi * (self.radius ** 2)
+    
+    def volume(self) -> float:
+        return 0.0 # Un cercle n'a pas de volume (Sphere parente en a un)
     
     def export_to_json(self):
         """Export le cercle au format JSON"""
