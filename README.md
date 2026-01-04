@@ -7,7 +7,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 - Colin Palazzetti Rubera
 - Théo Torres
 
-# Sprint 4
+# Sprint 5
 
 **lien vers Github**
 [README Sprint][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
@@ -178,7 +178,21 @@ En tant qu’utilisateur, je veux pouvoir déplacer une forme entière dans l’
 
 # **Sprint Review**
 
-Dans ce dernier sprint 
+Dans ce dernier sprint, nous avons finalisé le cœur fonctionnel du projet et ouvert la bibliothèque vers l'extérieur.
+
+### **Bilan Technique**
+1.  **Visualisation (Ticket 27) :** L'objectif d'Arthur a été atteint. Nous ne sommes plus limités à l'affichage textuel dans le terminal. L'export Three.js permet désormais de visualiser concrètement les formes 3D créées.
+2.  **Manipulation (Tickets 37 & 38) :** Théo a implémenté les transformations affines essentielles. Le déplacement et le redimensionnement fonctionnent et mettent à jour les coordonnées des objets.
+3.  **Intelligence Géométrique (Ticket 35) :** Colin a livré la fonctionnalité de mutation dynamique des objets (ex: un pavé devenant cube), validant l'aspect polymorphe du projet.
+
+Le MVP (Minimum Viable Product) est livré et fonctionnel.
+
+### **Bilan Humain et Contexte**
+Au-delà de la technique, ce sprint de clôture a représenté un véritable défi managérial et humain.
+
+* **Difficulté de mobilisation :** Il a été particulièrement laborieux de maintenir l'engagement de l'équipe jusqu'à la fin. Le rôle de Scrum Master a nécessité beaucoup plus d'énergie pour "pousser" les développements et s'assurer que chacun fournisse sa part, malgré une baisse de régime évidente.
+* **Intérêt du sujet :** Avec le recul, le sujet du projet (bibliothèque géométrique) s'est avéré moins stimulant que prévu. L'aspect très mathématique et abstrait, manquant parfois d'application concrète immédiate ("fun factor"), a rendu l'investissement personnel plus difficile à susciter chez les développeurs.
+* **Fatigue contextuelle :** Ce sprint s'inscrit dans un contexte global de fin de semestre très dense. La fatigue mentale accumulée par l'ensemble du groupe a pesé sur la productivité. Terminer ce projet a demandé de puiser dans nos dernières réserves de motivation, transformant ce sprint en une épreuve d'endurance plutôt qu'en une phase d'innovation enthousiaste.
 
 ---
 
@@ -189,22 +203,16 @@ Dans ce dernier sprint
 - Un ou deux tickets maximum par personne, afin de se concentrer sur des tâches à forte plus value.
 
 ## **Ce qui a bien fonctionné**
-- Planning et rétrospective avec le client/PO plus libre et apaisée.
-- Répartition plus légère de tickets.
+- Planning et rétrospective avec le client/PO s'est déroulé naturelement, nous avons pu exposer nos pistes de travail (visibles dans backolog) qui on été acceptés.
+- Moins de tickets mais ils sont plus gros et importants.
 - Sprint moins stressant.
   
 - Globalement les taches ont été fini juste à temps, le sprint était mieux géré de mon côté du côté d'Arthur que Théo ou Colin car leurs backlogs était plus lourd. *
 
 ## **Ce qui a posé problème**
 - La période créer de la fatigue au sein de l'équipe.
-- Sprint moins stressant mais plus lourd, la fin du projet commence à se faire sentir. *
-- Théo à du s'absenter pour raison personnelle
+- Sprint moins stressant mais tous aussi crucial car il conclut la matière.
 
-## **Ce qu’on doit améliorer**
-- Continuer de préparer à l’avance les questions à poser au client/PO pour gagner du temps.
-- Accentuer la communication interne pour la gestion de merge.
-- On aurait du noter tous les choix techniques (plus ou moins interne) décidés par chaque développeurs avec on sans le PO,
-  afin de centraliser l'information et pouvoir casser l'opacité du fonctionnement interne.
 ---
 
 # **interne**
