@@ -1,5 +1,4 @@
 import builtins
-import pytest
 
 from scripts.imp_exp import export_space_data, import_space_data
 from scripts.Space import Space
