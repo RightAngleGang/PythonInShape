@@ -127,7 +127,11 @@ class Polygon(Shape):
         return perimeter
         
     def area(self) -> float:
-        """Calcul de l'aire du polygone (formule de Shoelace)"""
+        """Calcul de l'aire du polygone.
+
+        Utilise une formule spécifique pour les triangles, carrés et rectangles,
+        et la formule de Shoelace pour le cas général d'un polygone.
+        """
         n = len(self.points)
         if n < 3:
             return 0.0  # Pas de surface si forme colinéaire
