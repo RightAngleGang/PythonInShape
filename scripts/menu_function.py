@@ -24,14 +24,14 @@ def add_points(space: Space):
     space.get_point_manager().add_name_point(3.4, 5.6, 7.8)
     space.get_point_manager().add_name_point(7.8, 9.0, 1.2)
 
-    polygon = Polygon("Triangle", "Triangle")
+    polygon = Polygon("Triangle")
     polygon.add_point(space.get_point_manager().find_point_by_name("P1"))
     polygon.add_point(space.get_point_manager().find_point_by_name("P2"))
     polygon.add_point(space.get_point_manager().find_point_by_name("P3"))
     space.get_shape_manager().add_shape(polygon)
 
     # ajout d'une forme pour la démo
-    polygon = Polygon("DemoSquare", "Carré")
+    polygon = Polygon(DemoSquare)
     p0 = Point("DemoSquare0", 0.0, 0.0)
     p1 = Point("DemoSquare1", 0.0, 1.0)
     p2 = Point("DemoSquare2", 1.0, 1.0)
@@ -42,7 +42,7 @@ def add_points(space: Space):
     space.get_shape_manager().add_shape(polygon)
 
     #ajout d'une pyramide pour la démo
-    pyramid = Polygon("DemoPyramid", "Pyramide")
+    pyramid = Polygon(DemoPyramid)
     p0 = Point("DemoPyramid0", 0.0, 0.0, 0.0)
     p1 = Point("DemoPyramid1", 1.0, 0.0, 0.0)
     p2 = Point("DemoPyramid2", 1.0, 1.0, 0.0)

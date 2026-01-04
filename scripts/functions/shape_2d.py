@@ -9,7 +9,7 @@ from scripts.menu_points import choose_point
 from scripts.utils import get_coords2, get_coords3, clean_coord
 
 def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
-    polygon = Polygon(tmpStr, ShapeType.Segment)
+    polygon = Polygon(tmpStr)
     print("Saisissez les 2 points du segment :")
     for i in range(2):
         print(f"Saisir le point {i+1} du segment :")
@@ -18,7 +18,7 @@ def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     return polygon
 
 def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
-    polygon = Polygon(tmpStr, ShapeType.Triangle)
+    polygon = Polygon(tmpStr)
     print("Saisissez les 3 points du triangle :")
     for i in range(3):
         print(f"Saisir le point {i+1} du triangle :")
@@ -154,7 +154,7 @@ def add_polygon(tmpStr: str, space: Space):
     return polygon
 
 def add_carre(space: Space, tmpStr: str) -> Polygon:
-    polygon = Polygon(tmpStr, ShapeType.Square)
+    polygon = Polygon(tmpStr)
     print("Saisissez le point d'origine du carré")
     (x0, y0, z0) = get_coords3()
 
@@ -202,7 +202,7 @@ def add_carre(space: Space, tmpStr: str) -> Polygon:
 
 def add_rectangle(space: Space, tmpStr: str) -> Polygon:
     
-    polygon = Polygon(tmpStr, ShapeType.Rectangle)
+    polygon = Polygon(tmpStr)
     print("Saisissez le point d'origine du rectangle")
     (x0, y0, z0) = get_coords3()
 
