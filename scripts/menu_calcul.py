@@ -10,5 +10,8 @@ def get_area(space: Space):
     value = space.get_shape_manager().get_shapes()[shapeIndex].compute()
     print(value)
 
-def get_voulme(space: Space):
+def get_volume(space: Space):
     pass
+
+# Backwards-compatible alias for the previous misspelled name
+get_voulme = get_volume
