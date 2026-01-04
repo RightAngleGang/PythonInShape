@@ -281,7 +281,12 @@ def move_shape(space: Space):
         return
 
     print("Vecteur de translation :")
-    dx, dy, dz = get_coords3()
+    try:
+        dx, dy, dz = get_coords3()
+    except ValueError as e:
+        print(f"Erreur de coordonnées : {e}")
+        print("La forme n'a pas été déplacée. Veuillez réessayer avec des coordonnées valides.")
+        return
 
     pts = _shape_points(shape)
 
