@@ -10,7 +10,7 @@ CERI M1 IA PDDL - Projet de bibliothèque de calcul géométrique
 # Sprint 3
 
 **lien vers Github**
-[README Sprint 2][(https://github.com/conception-logicielle-CERI/parseur-pdf/edit/sprint-4/README_sprint4.md](https://github.com/RightAngleGang/PythonInShape/blob/sprint1-scrum/README.md))
+[README Sprint 3][(https://github.com/RightAngleGang/PythonInShape/tree/sprint3-scrum)](https://github.com/RightAngleGang/PythonInShape/tree/sprint3-scrum)
 
 ## **Rôles**
 
