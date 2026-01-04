@@ -14,6 +14,3 @@ def add_project_root_to_syspath():
   project_root = os.path.abspath(os.path.join(here, ".."))
   if project_root not in sys.path:
     sys.path.insert(0, project_root)
-
-
-
