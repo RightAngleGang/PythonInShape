@@ -1,4 +1,4 @@
-import ShapeType as st
+import scripts.shapes.ShapeType as st
 
 class Shape:
     """Forme géométrique de base"""
