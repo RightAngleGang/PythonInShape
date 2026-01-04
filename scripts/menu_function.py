@@ -42,7 +42,7 @@ def add_points(space: Space):
     space.get_shape_manager().add_shape(polygon)
 
     #ajout d'une pyramide pour la démo
-    pyramid = Polygon(DemoPyramid)
+    pyramid = Polygon("DemoPyramid")
     p0 = Point("DemoPyramid0", 0.0, 0.0, 0.0)
     p1 = Point("DemoPyramid1", 1.0, 0.0, 0.0)
     p2 = Point("DemoPyramid2", 1.0, 1.0, 0.0)
