@@ -9,7 +9,6 @@ from scripts.shapes.Circle import Circle
 from scripts.shapes.Sphere import Sphere
 from scripts.shapes.Cone import Cone
 from scripts.shapes.Shape import Shape
-from scripts.Space import Space
 from scripts.menu_function import add_shape, add_shape3D, show_shapes
 
 
