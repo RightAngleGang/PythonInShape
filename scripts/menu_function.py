@@ -263,7 +263,7 @@ def _shape_points(shape: Shape) -> list[Point]:
         for p in pts:
             if p is None:
                 continue
-            key = (id(p))
+            key = id(p)
             if key not in seen:
                 seen.add(key)
                 uniq.append(p)
