@@ -138,6 +138,9 @@ class Polygon(Shape):
         Utilise une formule spécifique pour les triangles, carrés et rectangles,
         et la triangulation avec produits vectoriels pour le cas général.
         Fonctionne pour les polygones 2D et 3D.
+        
+        Note: La triangulation suppose un polygone convexe. Pour les polygones
+        concaves, le résultat peut être incorrect.
         """
         n = len(self.points)
         if n < 3:
@@ -163,11 +166,12 @@ class Polygon(Shape):
         for i in range(1, n - 1):
             p1 = self.points[i]
             p2 = self.points[i + 1]
-            total_area += self._triangle_area_from_points(p0, p1, p2)
+            total_area += Polygon._triangle_area_from_points(p0, p1, p2)
         
         return total_area
         
-    def _triangle_area_from_points(self, p1: Point, p2: Point, p3: Point) -> float:
+    @staticmethod
+    def _triangle_area_from_points(p1: Point, p2: Point, p3: Point) -> float:
         """
         Calcule l'aire du triangle formé par trois points via le produit vectoriel.
         Fonctionne en 2D (z=0) et en 3D.
@@ -208,4 +212,4 @@ class Polygon(Shape):
         Fonctionne en 2D (z=0) et en 3D.
         """
         p1, p2, p3 = self.points
-        return self._triangle_area_from_points(p1, p2, p3)
+        return Polygon._triangle_area_from_points(p1, p2, p3)
