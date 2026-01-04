@@ -1,12 +1,20 @@
 import numpy as np
+import math
 
 from scripts.Space import Space 
+from scripts.shapes.Shape import Shape
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
+from scripts.shapes.Circle import Circle
+from scripts.shapes.Cone import Cone
+from scripts.shapes.Sphere import Sphere
+
+from scripts.shapes.ShapeType import ShapeType
 
 
 from scripts.functions.shape_2d import add_carre, add_rectangle, add_triangle, add_segment, add_circle, add_polygon
 from scripts.functions.shape_3d import add_cube, add_pave_droit, add_pyramide, add_sphere, add_cone
+from scripts.menu_points import choose_point
 
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4, 5.6)
@@ -43,6 +51,9 @@ def add_points(space: Space):
         space.get_point_manager().add_point(p)
         pyramid.add_point(p)
     space.get_shape_manager().add_shape(pyramid)
+    
+    shape = Shape("Test")
+    space.get_shape_manager().add_shape(shape)
     
 def add_shape(space: Space):
     try:
@@ -127,3 +138,94 @@ def show_shapes(space: Space):
         return
     for shape in shapes:
         print(shape)
+
+def edit_shape(space: Space):
+    shape_name = input("Enter the name of the shape to edit: ")
+    shape = space.get_shape_manager().find_shape_by_name(shape_name)
+    if not shape:
+        raise ValueError(f"Shape with name '{shape_name}' not found.")
+
+    print(f"Editing shape: {shape}")
+    if isinstance(shape, Polygon):
+        choice = input("Do you want to add (1) or remove (2) points? ")
+        match choice:
+            case '1':
+                point = choose_point(space)
+                shape.add_point(point)
+                print(f"Point {point} added to shape '{shape_name}'.")
+            case '2':
+                point_name = input("Enter the name of the point to remove:")
+                point = space.get_point_manager().find_point_by_name(point_name)
+                if not point:
+                    raise ValueError(f"Point with name '{point_name}' not found.")
+                shape.remove_point(point)
+                print(f"Point '{point_name}' removed from shape '{shape_name}'.")
+            case _:
+                print("Invalid choice. No changes made.")
+        return
+    
+    if isinstance(shape, Sphere):
+        print("What would you like to edit?")
+        allowed_choices = [1, 2]
+        print("1. Center Point (change the point)")
+        print("2. Radius")
+        
+        if isinstance(shape, Circle):
+            print("3. Normal Vector (orientation)")
+            allowed_choices.append(3)
+            
+            if isinstance(shape, Cone):
+                print(f"4. Height (⚠️ Moves {shape.apex})")
+                allowed_choices.append(4)
+                
+        try:
+            edit_choice = int(input("Enter the number of the attribute to edit: "))
+            if edit_choice not in allowed_choices:
+                raise ValueError("Invalid choice.")
+        except ValueError:
+            print("Invalid input. No changes made.")
+            return
+        
+        match edit_choice:
+            case 1:
+                new_point = choose_point(space)
+                shape.point = new_point
+                print(f"Center point updated to {new_point}.")
+            case 2:
+                try:
+                    new_radius = float(input("Enter new radius: "))
+                    shape.radius = new_radius
+                    print(f"Radius updated to {new_radius}.")
+                except ValueError:
+                    print("Invalid radius. No changes made.")
+            case 3:
+                try:
+                    theta = float(input("Azimut θ (°) : "))
+                    phi   = float(input("Élévation φ (°) : "))
+
+                    theta_rad = math.radians(theta)
+                    phi_rad   = math.radians(phi)
+
+                    nx = math.cos(phi_rad) * math.cos(theta_rad)
+                    ny = math.cos(phi_rad) * math.sin(theta_rad)
+                    nz = math.sin(phi_rad)
+
+                    normal = (nx, ny, nz)
+                    
+                    shape.normal = normal
+                except ValueError:
+                    print("Invalid vector components. No changes made.")
+            case 4:
+                try:
+                    # new_height = float(input("Enter new height: "))
+                    input("Enter new height: ")
+                    print(f"Cette partie n'est pas implémentée.")
+                except ValueError:
+                    print("Invalid height. No changes made.")
+
+        
+        
+        
+        
+    
+    print("Shape editing functionality is not yet implemented.")
