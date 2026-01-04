@@ -1,6 +1,5 @@
 import builtins
 import math
-import pytest
 
 from scripts.Space import Space
 from scripts.shapes.Point import Point
