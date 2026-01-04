@@ -8,7 +8,7 @@ class ShapeType(Enum):
     Cone = "Cone"
     Sphere = "Sphere"
     Rectangle = "Rectangle"
-    Square = "Carré"
+    Square = "Square"
     Triangle = "Triangle"
     
     def __str__(self) -> str:
