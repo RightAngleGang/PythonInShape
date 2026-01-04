@@ -1,0 +1,341 @@
+{
+    "points": [
+        {
+            "name": "cube10",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        {
+            "name": "cube11",
+            "x": 3.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        {
+            "name": "cube12",
+            "x": 3.0,
+            "y": 0.0,
+            "z": -3.0
+        },
+        {
+            "name": "cube13",
+            "x": 0.0,
+            "y": 0.0,
+            "z": -3.0
+        },
+        {
+            "name": "cube14",
+            "x": 0.0,
+            "y": 3.0,
+            "z": 0.0
+        },
+        {
+            "name": "cube15",
+            "x": 3.0,
+            "y": 3.0,
+            "z": 0.0
+        },
+        {
+            "name": "cube16",
+            "x": 3.0,
+            "y": 3.0,
+            "z": -3.0
+        },
+        {
+            "name": "cube17",
+            "x": 0.0,
+            "y": 3.0,
+            "z": -3.0
+        },
+        {
+            "name": "pavedroit0",
+            "x": 2.0,
+            "y": 2.0,
+            "z": 3.0
+        },
+        {
+            "name": "pavedroit1",
+            "x": 6.0,
+            "y": 2.0,
+            "z": 3.0
+        },
+        {
+            "name": "pavedroit2",
+            "x": 6.0,
+            "y": 2.0,
+            "z": 0.0
+        },
+        {
+            "name": "pavedroit3",
+            "x": 2.0,
+            "y": 2.0,
+            "z": 0.0
+        },
+        {
+            "name": "pavedroit4",
+            "x": 2.0,
+            "y": 5.0,
+            "z": 3.0
+        },
+        {
+            "name": "pavedroit5",
+            "x": 6.0,
+            "y": 5.0,
+            "z": 3.0
+        },
+        {
+            "name": "pavedroit6",
+            "x": 6.0,
+            "y": 5.0,
+            "z": 0.0
+        },
+        {
+            "name": "pavedroit7",
+            "x": 2.0,
+            "y": 5.0,
+            "z": 0.0
+        },
+        {
+            "name": "pyr0",
+            "x": 10.0,
+            "y": 10.0,
+            "z": 10.0
+        },
+        {
+            "name": "pyr1",
+            "x": 12.0,
+            "y": 10.0,
+            "z": 10.0
+        },
+        {
+            "name": "pyr2",
+            "x": 12.0,
+            "y": 10.0,
+            "z": 8.0
+        },
+        {
+            "name": "pyr3",
+            "x": 10.0,
+            "y": 10.0,
+            "z": 8.0
+        },
+        {
+            "name": "pyr4",
+            "x": 11.0,
+            "y": 12.0,
+            "z": 9.0
+        },
+        {
+            "name": "P1",
+            "x": 8.0,
+            "y": 0.0,
+            "z": 3.0
+        },
+        {
+            "name": "cone_apex",
+            "x": -1.0,
+            "y": -3.0,
+            "z": -1.0
+        },
+        {
+            "name": "cone_base",
+            "x": -1.0,
+            "y": -1.0,
+            "z": -1.0
+        },
+        {
+            "name": "carr0",
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        {
+            "name": "carr1",
+            "x": 3.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        {
+            "name": "carr2",
+            "x": 3.0,
+            "y": -1.0,
+            "z": 1.0
+        },
+        {
+            "name": "carr3",
+            "x": 1.0,
+            "y": -1.0,
+            "z": 1.0
+        },
+        {
+            "name": "rect0",
+            "x": 2.0,
+            "y": 2.0,
+            "z": 2.0
+        },
+        {
+            "name": "rect1",
+            "x": 4.0,
+            "y": 2.0,
+            "z": 2.0
+        },
+        {
+            "name": "rect2",
+            "x": 4.0,
+            "y": 1.0,
+            "z": 2.0
+        },
+        {
+            "name": "rect3",
+            "x": 2.0,
+            "y": 1.0,
+            "z": 2.0
+        },
+        {
+            "name": "P2",
+            "x": 4.0,
+            "y": 4.0,
+            "z": 4.0
+        },
+        {
+            "name": "P3",
+            "x": 5.0,
+            "y": 5.0,
+            "z": 5.0
+        },
+        {
+            "name": "P4",
+            "x": 9.0,
+            "y": 9.0,
+            "z": 9.0
+        },
+        {
+            "name": "P5",
+            "x": -2.0,
+            "y": -2.0,
+            "z": -2.0
+        },
+        {
+            "name": "P6",
+            "x": 5.0,
+            "y": 4.0,
+            "z": 3.0
+        },
+        {
+            "name": "circle0",
+            "x": 4.0,
+            "y": 4.0,
+            "z": 18.0
+        }
+    ],
+    "shapes": [
+        {
+            "type": "Polygon",
+            "name": "cube1",
+            "subtype": "Polygon",
+            "points": [
+                "cube10",
+                "cube11",
+                "cube12",
+                "cube13",
+                "cube14",
+                "cube15",
+                "cube16",
+                "cube17"
+            ]
+        },
+        {
+            "type": "Polygon",
+            "name": "pavedroit",
+            "subtype": "Polygon",
+            "points": [
+                "pavedroit0",
+                "pavedroit1",
+                "pavedroit2",
+                "pavedroit3",
+                "pavedroit4",
+                "pavedroit5",
+                "pavedroit6",
+                "pavedroit7"
+            ]
+        },
+        {
+            "type": "Polygon",
+            "name": "pyr",
+            "subtype": "Polygon",
+            "points": [
+                "pyr0",
+                "pyr1",
+                "pyr2",
+                "pyr3",
+                "pyr4"
+            ]
+        },
+        {
+            "type": "Sphere",
+            "name": "sphere",
+            "center": "P1",
+            "radius": 3.0
+        },
+        {
+            "type": "Cone",
+            "name": "cone",
+            "center": "cone_base",
+            "radius": 2.0,
+            "apex": "cone_apex"
+        },
+        {
+            "type": "Polygon",
+            "name": "carr",
+            "subtype": "Polygon",
+            "points": [
+                "carr0",
+                "carr1",
+                "carr2",
+                "carr3"
+            ]
+        },
+        {
+            "type": "Polygon",
+            "name": "rect",
+            "subtype": "Polygon",
+            "points": [
+                "rect0",
+                "rect1",
+                "rect2",
+                "rect3"
+            ]
+        },
+        {
+            "type": "Polygon",
+            "name": "tri",
+            "subtype": "Polygon",
+            "points": [
+                "P2",
+                "P3",
+                "P4"
+            ]
+        },
+        {
+            "type": "Polygon",
+            "name": "seg",
+            "subtype": "Polygon",
+            "points": [
+                "P5",
+                "P6"
+            ]
+        },
+        {
+            "type": "Circle",
+            "name": "circle",
+            "center": "circle0",
+            "radius": 2.0,
+            "normal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        }
+    ]
+}

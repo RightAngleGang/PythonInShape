@@ -11,6 +11,7 @@ from scripts.shapes.Sphere import Sphere
 
 from scripts.shapes.ShapeType import ShapeType
 
+
 from scripts.functions.shape_2d import add_carre, add_rectangle, add_triangle, add_segment, add_circle, add_polygon
 from scripts.functions.shape_3d import add_cube, add_pave_droit, add_pyramide, add_sphere, add_cone
 from scripts.menu_points import choose_point
