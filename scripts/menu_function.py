@@ -31,7 +31,7 @@ def add_points(space: Space):
     space.get_shape_manager().add_shape(polygon)
 
     # ajout d'une forme pour la démo
-    polygon = Polygon(DemoSquare)
+    polygon = Polygon("DemoSquare")
     p0 = Point("DemoSquare0", 0.0, 0.0)
     p1 = Point("DemoSquare1", 0.0, 1.0)
     p2 = Point("DemoSquare2", 1.0, 1.0)
