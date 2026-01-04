@@ -233,7 +233,7 @@
         {
             "type": "Polygon",
             "name": "cube1",
-            "subtype": "Cube",
+            "subtype": "Polygon",
             "points": [
                 "cube10",
                 "cube11",
@@ -248,7 +248,7 @@
         {
             "type": "Polygon",
             "name": "pavedroit",
-            "subtype": "Pav\u00e9",
+            "subtype": "Polygon",
             "points": [
                 "pavedroit0",
                 "pavedroit1",
@@ -263,7 +263,7 @@
         {
             "type": "Polygon",
             "name": "pyr",
-            "subtype": "Pyramide",
+            "subtype": "Polygon",
             "points": [
                 "pyr0",
                 "pyr1",
@@ -288,7 +288,7 @@
         {
             "type": "Polygon",
             "name": "carr",
-            "subtype": "Carr\u00e9",
+            "subtype": "Polygon",
             "points": [
                 "carr0",
                 "carr1",
@@ -299,7 +299,7 @@
         {
             "type": "Polygon",
             "name": "rect",
-            "subtype": "Rectangle",
+            "subtype": "Polygon",
             "points": [
                 "rect0",
                 "rect1",
@@ -310,7 +310,7 @@
         {
             "type": "Polygon",
             "name": "tri",
-            "subtype": "Triangle",
+            "subtype": "Polygon",
             "points": [
                 "P2",
                 "P3",
@@ -320,7 +320,7 @@
         {
             "type": "Polygon",
             "name": "seg",
-            "subtype": "Segment",
+            "subtype": "Polygon",
             "points": [
                 "P5",
                 "P6"

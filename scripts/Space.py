@@ -32,19 +32,41 @@ class Space:
         self.pointManager.list_points()
 
     def export_to_json(self, filename):
-        """Export the space data to a JSON file"""
+        """Export the space data to a JSON file with support for Enums and NumPy"""
         import json
+        import numpy as np
+        from enum import Enum
 
+        # 1. Collect the raw data
         data = {
             "points": self.pointManager.export_to_json(),
             "shapes": self.shapeManager.export_to_json(),
         }
 
+        # 2. Define a "translator" for non-standard types
+        def json_serial(obj):
+            """JSON serializer for objects not serializable by default json code"""
+            if isinstance(obj, Enum):
+                return obj.name  # Converts ShapeType.POLYGON to "POLYGON"
+            if isinstance(obj, np.ndarray):
+                return obj.tolist() # Converts NumPy arrays to lists
+            if isinstance(obj, (np.integer, np.floating)):
+                return obj.item()   # Converts np.int64/float64 to standard Python int/float
+            return str(obj)         # Fallback to string if all else fails
+
+        # 3. Export to the provided filename
         with open(filename, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
-        #also export it in three-json-viewer folder
-        with open("three-json-viewer/data.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
+            json.dump(data, f, indent=4, default=json_serial)
+
+        # 4. Also export to the three-json-viewer folder for the visualizer
+        viewer_path = "three-json-viewer/public/data.json" # Best practice is /public
+        try:
+            with open(viewer_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=4, default=json_serial)
+        except FileNotFoundError:
+            # Fallback if public/ doesn't exist
+            with open("three-json-viewer/data.json", "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=4, default=json_serial)
 
     def import_from_json(self, filename):
         """Importe les données de l'espace depuis un fichier JSON, même format que export_to_json"""
