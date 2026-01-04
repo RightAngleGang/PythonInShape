@@ -285,10 +285,15 @@ def move_shape(space: Space):
 
     pts = _shape_points(shape)
 
+    if not pts:
+        # Aucun point associé à cette forme : type non supporté ou forme vide
+        print(f"Aucun point trouvé pour la forme '{shape_name}'. "
+              f"Translation non appliquée (type non supporté ou forme sans points).")
+        return
+
     # Polygon => tous les points
-    if pts:
-        for p in pts:
-            p.translate(dx, dy, dz)
+    for p in pts:
+        p.translate(dx, dy, dz)
 
     # si shape a des attributs "radius" (Circle/Sphere/Cone) => pas affecté par translation
     print(f"✅ Forme '{shape_name}' déplacée de ({dx}, {dy}, {dz}).")
