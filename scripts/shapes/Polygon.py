@@ -6,14 +6,12 @@ import math
 class Polygon(Shape):
     """Ensemble de points formant une forme fermée"""
     points: list[Point]
-    supertype: ShapeType
     
     def __init__(self, nom: str, type: ShapeType = ShapeType.Polygon, points=None):
         super().__init__(nom, ShapeType.Polygon)
         if points is None:
             points = []
         self.points = [point for point in points]
-        self.supertype = type
 
     def _supertype(self):
         """Définit le supertype du polygone en fonction de son type"""
@@ -52,7 +50,7 @@ class Polygon(Shape):
         L'ordre des points doit être consécutif.
         """
         
-        # 1. MODIFICATION ICI : On accède à .x, .y, .z au lieu de [0], [1], [2]
+        # 1. Calcul des vecteurs entre les points
         # Cette fonction retourne un tuple (dx, dy, dz) représentant le vecteur
         def vecteur(a, b):
             return (b.x - a.x, b.y - a.y, b.z - a.z)
