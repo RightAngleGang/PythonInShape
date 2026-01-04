@@ -1,7 +1,7 @@
 import pytest
 
 from scripts.shapes.Shape import Shape
-from scripts.shapes.ShapeType import ShapeType, PARENTS
+from scripts.shapes.ShapeType import ShapeType
 
 
 def test_shapetype_str_is_value():
