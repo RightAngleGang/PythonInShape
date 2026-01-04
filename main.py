@@ -3,7 +3,7 @@ from scripts.Space import Space
 import sys
 from scripts.menu_function import *
 import scripts.menu_points as mp
-from scripts.functions.calc_points import euclidean_distance
+import scripts.menu_calcul as mc
 import scripts.imp_exp as spaceData
 
 
@@ -52,7 +52,9 @@ ACTIONS_SHAPE = [
 ]
 
 ACTIONS_CALC = [
-    ("Calculer la distance entre 2 points", lambda: euclidean_distance(sm)),
+    ("Calculer la distance entre 2 points", lambda: mc.euclidean_distance(sm)),
+    ("Calculer l'aire d'une forme", lambda: mc.get_area(sm)),
+    ("Calculer le volume d'une forme 3D", lambda: mc.get_volume(sm)),
 ]
 
 ACTIONS_DATA = [
