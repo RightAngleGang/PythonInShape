@@ -109,7 +109,7 @@ def test_add_shape3d_unknown_type_returns(monkeypatch, capsys):
 # _shape_points + move_shape
 # -----------------------------
 
-@pytest.mark.xfail(reason="Uknwn failure reason - avoid failure")
+@pytest.mark.xfail(reason="Unknown failure reason - avoid failure")
 def test_shape_points_polygon_and_circle_and_cone():
   a = Point("A", 0, 0, 0)
   b = Point("B", 1, 0, 0)
