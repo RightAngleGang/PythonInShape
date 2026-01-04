@@ -17,29 +17,34 @@ class Polygon(Shape):
 
     def _supertype(self):
         """Définit le supertype du polygone en fonction de son type"""
-        # Segment → 2 points
-        if len(self.points) == 2:
-            return ShapeType.Segment
         
-        # Triangle → 3 points
-        if len(self.points) == 3:
-            return ShapeType.Triangle
-        
-        # Carré / Rectangle → 4 points
-        if len(self.points) == 4:
-            p1, p2, p3, p4 = self.points
-            # tous les côtés égaux
-            # diagonales égales
-            # fonctionne même pour les polygones non alignés avec les axes
-            if math.isclose(p1.distance_to(p2), p2.distance_to(p3)) and \
-              math.isclose(p2.distance_to(p3), p3.distance_to(p4)) and \
-              math.isclose(p3.distance_to(p4), p4.distance_to(p1)) and \
-              math.isclose(p1.distance_to(p3), p2.distance_to(p4)) :
-                return ShapeType.Square
-            elif self.is_rectangle(p1, p2, p3, p4):
-                return ShapeType.Rectangle
-        
-        return ShapeType.Polygon
+        match len(self.points):
+            # Segment → 2 points
+            case 2:
+                return ShapeType.Segment
+            
+            # Triangle → 3 points
+            case 3:
+                return ShapeType.Triangle
+            
+            # Carré / Rectangle → 4 points
+            case 4:
+                p1, p2, p3, p4 = self.points
+                # tous les côtés égaux
+                # diagonales égales
+                # fonctionne même pour les polygones non alignés avec les axes
+                if math.isclose(p1.distance_to(p2), p2.distance_to(p3)) and \
+                    math.isclose(p2.distance_to(p3), p3.distance_to(p4)) and \
+                    math.isclose(p3.distance_to(p4), p4.distance_to(p1)) and \
+                    math.isclose(p1.distance_to(p3), p2.distance_to(p4)) :
+
+                    return ShapeType.Square
+                
+                elif self.is_rectangle(p1, p2, p3, p4):
+                    return ShapeType.Rectangle
+            
+            case _:        
+                return ShapeType.Polygon
     
     def is_rectangle(self, p1, p2, p3, p4):
         """
