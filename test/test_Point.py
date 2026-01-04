@@ -1,7 +1,5 @@
 import math
 
-import pytest
-
 from scripts.shapes.Point import Point
 
 
