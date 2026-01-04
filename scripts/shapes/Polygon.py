@@ -136,7 +136,8 @@ class Polygon(Shape):
         """Calcul de l'aire du polygone.
 
         Utilise une formule spécifique pour les triangles, carrés et rectangles,
-        et la formule de Shoelace pour le cas général d'un polygone.
+        et la triangulation avec produits vectoriels pour le cas général.
+        Fonctionne pour les polygones 2D et 3D.
         """
         n = len(self.points)
         if n < 3:
@@ -162,36 +163,21 @@ class Polygon(Shape):
         for i in range(1, n - 1):
             p1 = self.points[i]
             p2 = self.points[i + 1]
-            
-            # Calcul de l'aire du triangle (p0, p1, p2) via produit vectoriel
-            # Vecteurs p0->p1 et p0->p2
-            v1_x = p1.x - p0.x
-            v1_y = p1.y - p0.y
-            v1_z = p1.z - p0.z
-            
-            v2_x = p2.x - p0.x
-            v2_y = p2.y - p0.y
-            v2_z = p2.z - p0.z
-            
-            # Produit vectoriel v1 ^ v2
-            cp_x = v1_y * v2_z - v1_z * v2_y
-            cp_y = v1_z * v2_x - v1_x * v2_z
-            cp_z = v1_x * v2_y - v1_y * v2_x
-            
-            # Norme du produit vectoriel
-            norme = math.sqrt(cp_x**2 + cp_y**2 + cp_z**2)
-            
-            # Aire du triangle
-            total_area += 0.5 * norme
+            total_area += self._triangle_area_from_points(p0, p1, p2)
         
         return total_area
         
-    def _triangle_area(self):
+    def _triangle_area_from_points(self, p1: Point, p2: Point, p3: Point) -> float:
         """
-        Calcule l'aire du triangle formé par p1, p2, p3 via le produit vectoriel.
+        Calcule l'aire du triangle formé par trois points via le produit vectoriel.
         Fonctionne en 2D (z=0) et en 3D.
+        
+        Args:
+            p1, p2, p3: Les trois points du triangle
+            
+        Returns:
+            L'aire du triangle
         """
-        p1, p2, p3 = self.points
         # 1. Calculer les deux vecteurs AB et AC
         # AB = p2 - p1
         ab_x = p2.x - p1.x
@@ -215,3 +201,11 @@ class Polygon(Shape):
 
         # 4. L'aire est la moitié de la norme
         return 0.5 * norme
+    
+    def _triangle_area(self):
+        """
+        Calcule l'aire du triangle formé par les trois points du polygone.
+        Fonctionne en 2D (z=0) et en 3D.
+        """
+        p1, p2, p3 = self.points
+        return self._triangle_area_from_points(p1, p2, p3)
