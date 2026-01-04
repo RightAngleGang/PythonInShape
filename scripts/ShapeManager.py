@@ -8,8 +8,9 @@ class ShapeManager:
     def __init__(self):
         self.shapes = []
     
-    def __str__(self):
-        return f"Shapes({self.number_of_shapes()}): [{'; '.join([shape.nom for shape in self.shapes])}]"
+    def __str__(self) -> str:
+        sep = ";\n\t"
+        return f"Shapes({self.number_of_shapes()}): [\n\t{sep.join([str(shape) for shape in self.shapes])}\n]"
 
     def add_shape(self, shape: Shape):
         self.shapes.append(shape)
