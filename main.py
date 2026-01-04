@@ -1,9 +1,9 @@
 # main.py
 from scripts.Space import Space
 import sys
-from scripts.menu_function import *
+import scripts.menu_function as mf
 import scripts.menu_points as mp
-from scripts.functions.calc_points import euclidean_distance
+import scripts.menu_calcul as mc
 import scripts.imp_exp as spaceData
 
 
@@ -44,15 +44,17 @@ ACTIONS_GESTION_POINTS = [
 ]
 
 ACTIONS_SHAPE = [
-    ("Ajouter une forme 2D", lambda: add_shape(sm)),
-    ("Ajouter une forme 3D", lambda: add_shape3D(sm)),
-    ("Lister les formes", lambda: show_shapes(sm)),
-    ("Modifier une forme", lambda: edit_shape(sm)),
+    ("Ajouter une forme 2D", lambda: mf.add_shape(sm)),
+    ("Ajouter une forme 3D", lambda: mf.add_shape3D(sm)),
+    ("Lister les formes", lambda: mf.show_shapes(sm)),
+    ("Modifier une forme", lambda: mf.edit_shape(sm)),
     #("Supprimer une forme", lambda: sm.get_shape_manager().remove_interactive()),
 ]
 
 ACTIONS_CALC = [
-    ("Calculer la distance entre 2 points", lambda: euclidean_distance(sm)),
+    ("Calculer la distance entre 2 points", lambda: mc.euclidean_distance(sm)),
+    ("Calculer l'aire d'une forme", lambda: mc.get_area(sm)),
+    ("Calculer le volume d'une forme 3D", lambda: mc.get_volume(sm)),
 ]
 
 ACTIONS_DATA = [
@@ -65,7 +67,7 @@ ACTIONS_BASIC = [
     ("Gestion des Formes ▶", lambda: menu_loop("--- MENU FORMES ---", ACTIONS_SHAPE)),
     ("Gestion des données ▶", lambda: menu_loop("--- MENU DONNÉES ---", ACTIONS_DATA)),
     ("Calculs ▶", lambda: menu_loop("--- MENU CALCULS ---", ACTIONS_CALC)),
-    ("DEV / ADD POINTS", lambda: add_points(sm)),
+    ("DEV / ADD POINTS", lambda: mf.add_points(sm)),
 ]
 
 if __name__ == "__main__":

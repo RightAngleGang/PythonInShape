@@ -4,11 +4,12 @@ from scripts.Space import Space
 from scripts.shapes.Point import Point
 from scripts.shapes.Polygon import Polygon
 from scripts.shapes.Circle import Circle
+from scripts.shapes.ShapeType import ShapeType
 from scripts.menu_points import choose_point
 from scripts.utils import get_coords2, get_coords3, clean_coord
 
 def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
-    polygon = Polygon(tmpStr, "Segment")
+    polygon = Polygon(tmpStr, ShapeType.Segment)
     print("Saisissez les 2 points du segment :")
     for i in range(2):
         print(f"Saisir le point {i+1} du segment :")
@@ -17,7 +18,7 @@ def add_segment(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
     return polygon
 
 def add_triangle(space: Space, tmpStr: str, a_3d:bool=False) -> Polygon:
-    polygon = Polygon(tmpStr, "Triangle")
+    polygon = Polygon(tmpStr, ShapeType.Triangle)
     print("Saisissez les 3 points du triangle :")
     for i in range(3):
         print(f"Saisir le point {i+1} du triangle :")
@@ -123,8 +124,7 @@ def add_polygon(tmpStr: str, space: Space):
 
     norm = math.sqrt(nx * nx + ny * ny + nz * nz)
     if norm == 0:
-        print("⚠ Vecteur normal nul : impossible de définir un plan.")
-        return None
+        raise ValueError("⚠ Vecteur normal nul : impossible de définir un plan.")
 
     n = np.array([nx / norm, ny / norm, nz / norm])
 
@@ -140,7 +140,7 @@ def add_polygon(tmpStr: str, space: Space):
     v = v / np.linalg.norm(v)
 
     # 5) Construction réelle du polygone en 3D
-    polygon = Polygon(tmpStr, "Polygone")
+    polygon = Polygon(tmpStr)
 
     for i, (sx, sy) in enumerate(points_2d):
         px = x0 + sx * u[0] + sy * v[0]
@@ -154,7 +154,7 @@ def add_polygon(tmpStr: str, space: Space):
     return polygon
 
 def add_carre(space: Space, tmpStr: str) -> Polygon:
-    polygon = Polygon(tmpStr, "Carré")
+    polygon = Polygon(tmpStr, ShapeType.Square)
     print("Saisissez le point d'origine du carré")
     (x0, y0, z0) = get_coords3()
 
@@ -202,7 +202,7 @@ def add_carre(space: Space, tmpStr: str) -> Polygon:
 
 def add_rectangle(space: Space, tmpStr: str) -> Polygon:
     
-    polygon = Polygon(tmpStr, "Rectangle")
+    polygon = Polygon(tmpStr, ShapeType.Rectangle)
     print("Saisissez le point d'origine du rectangle")
     (x0, y0, z0) = get_coords3()
 

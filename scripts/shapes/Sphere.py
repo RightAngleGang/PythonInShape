@@ -4,7 +4,7 @@ import math
 
 
 class Sphere(Shape):
-    """Ensemble de points formant une forme fermée"""
+    """Classe représentant une sphère"""
     point: Point
     radius: float
 
@@ -13,9 +13,9 @@ class Sphere(Shape):
         self.point = point
         self.radius = radius
 
-    def compute(self) -> str:
-        volume = (4 / 3) * math.pi * (self.radius ** 3)
-        return f"Le volume est {float(volume)}"
+    def volume(self) -> float:
+        """Calcule le volume de la sphère"""
+        return (4/3) * math.pi * (self.radius ** 3)
     
     def __str__(self):
         return f"{self.nom} (Sphere): [origine: {self.point}, rayon: {self.radius}]"
