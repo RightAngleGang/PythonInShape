@@ -15,6 +15,7 @@ from scripts.shapes.ShapeType import ShapeType
 from scripts.functions.shape_2d import add_carre, add_rectangle, add_triangle, add_segment, add_circle, add_polygon
 from scripts.functions.shape_3d import add_cube, add_pave_droit, add_pyramide, add_sphere, add_cone
 from scripts.menu_points import choose_point
+from scripts.utils import get_coords3
 
 def add_points(space: Space):
     space.get_point_manager().add_name_point(1.2, 3.4, 5.6)
@@ -227,29 +228,15 @@ def edit_shape(space: Space):
     print("Shape editing functionality is not yet implemented.")
 
 
-def _get_point_coords(p: Point):
-    x = float(p.x)
-    y = float(p.y)
-    z = float(getattr(p, "z", 0.0))
-    return x, y, z
-
-def _set_point_coords(p: Point, x: float, y: float, z: float):
-    p.x = float(x)
-    p.y = float(y)
-    # si ton Point est 2D (pas de z), on évite de créer z si tu veux.
-    if hasattr(p, "z"):
-        p.z = float(z)
-
-def _translate_point(p: Point, dx: float, dy: float, dz: float):
-    x, y, z = _get_point_coords(p)
-    _set_point_coords(p, x + dx, y + dy, z + dz)
 
 def _scale_point_about(p: Point, cx: float, cy: float, cz: float, s: float):
-    x, y, z = _get_point_coords(p)
+    x, y, z = p.as_tuple()
     nx = cx + s * (x - cx)
     ny = cy + s * (y - cy)
     nz = cz + s * (z - cz)
-    _set_point_coords(p, nx, ny, nz)
+    p.x = nx
+    p.y = ny
+    p.z = nz
 
 def _shape_points(shape: Shape) -> list[Point]:
     """Retourne la liste des points qui définissent la forme."""
@@ -293,20 +280,15 @@ def move_shape(space: Space):
         print(f"Shape '{shape_name}' introuvable.")
         return
 
-    try:
-        dx = float(input("x : "))
-        dy = float(input("y : "))
-        dz = float(input("z (0 si 2D) : "))
-    except ValueError:
-        print("Entrée invalide (x/y/z).")
-        return
+    print("Vecteur de translation :")
+    dx, dy, dz = get_coords3()
 
     pts = _shape_points(shape)
 
     # Polygon => tous les points
     if pts:
         for p in pts:
-            _translate_point(p, dx, dy, dz)
+            p.translate(dx, dy, dz)
 
     # si shape a des attributs "radius" (Circle/Sphere/Cone) => pas affecté par translation
     print(f"✅ Forme '{shape_name}' déplacée de ({dx}, {dy}, {dz}).")
@@ -341,41 +323,36 @@ def scale_shape(space: Space):
     cx = cy = cz = 0.0
 
     if mode == "2":
-        pivot = choose_point(space, allow_2d=True, allow_3d=True)
-        cx, cy, cz = _get_point_coords(pivot)
+        pivot = choose_point(space)
+        cx, cy, cz = pivot.as_tuple()
 
     elif mode == "3":
-        try:
-            cx = float(input("cx : "))
-            cy = float(input("cy : "))
-            cz = float(input("cz (0 si 2D) : "))
-        except ValueError:
-            print("Coordonnées pivot invalides.")
-            return
+        print("Coordonnées du pivot :")
+        cx, cy, cz = get_coords3()
 
     else:
         # centre automatique
         if isinstance(shape, Polygon) and shape.points:
             xs, ys, zs = [], [], []
             for p in shape.points:
-                x, y, z = _get_point_coords(p)
+                x, y, z = p.as_tuple()
                 xs.append(x); ys.append(y); zs.append(z)
             cx = sum(xs) / len(xs)
             cy = sum(ys) / len(ys)
             cz = sum(zs) / len(zs)
 
         elif isinstance(shape, (Circle, Sphere)):
-            cx, cy, cz = _get_point_coords(shape.point)
+            cx, cy, cz = shape.point.as_tuple()
 
         elif isinstance(shape, Cone):
             # pivot = centre de base si on l’a
             if hasattr(shape, "point"):
-                cx, cy, cz = _get_point_coords(shape.point)
+                cx, cy, cz = shape.point.as_tuple()
             elif hasattr(shape, "center_point"):
-                cx, cy, cz = _get_point_coords(shape.center_point)
+                cx, cy, cz = shape.center_point.as_tuple()
             else:
                 # fallback: apex si rien d'autre
-                cx, cy, cz = _get_point_coords(shape.apex)
+                cx, cy, cz = shape.apex.as_tuple()
 
         else:
             # fallback global
