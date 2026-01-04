@@ -124,7 +124,6 @@ def add_polygon(tmpStr: str, space: Space):
     norm = math.sqrt(nx * nx + ny * ny + nz * nz)
     if norm == 0:
         raise ValueError("⚠ Vecteur normal nul : impossible de définir un plan.")
-        return None
 
     n = np.array([nx / norm, ny / norm, nz / norm])
 
