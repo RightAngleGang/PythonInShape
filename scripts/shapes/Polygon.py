@@ -6,13 +6,14 @@ import math
 class Polygon(Shape):
     """Ensemble de points formant une forme fermée"""
     points: list[Point]
-    supertype: str
+    supertype: ShapeType
     
     def __init__(self, nom: str, type: ShapeType = ShapeType.Polygon, points=None):
-        super().__init__(nom, type)
+        super().__init__(nom, ShapeType.Polygon)
         if points is None:
             points = []
         self.points = [point for point in points]
+        self.supertype = type
 
     def _supertype(self):
         """Définit le supertype du polygone en fonction de son type"""
@@ -82,7 +83,7 @@ class Polygon(Shape):
         
 
     def __str__(self):
-        return f"{self.nom} ({self._supertype}): [{'; '.join(str(p) for p in self.points)}]"
+        return f"{self.nom} ({self._supertype()}): [{'; '.join(str(p) for p in self.points)}]"
     
     def __eq__(self, value: "Polygon") -> bool:
         if not isinstance(value, Polygon):
