@@ -154,13 +154,37 @@ class Polygon(Shape):
                 side2 = p2.distance_to(p3)
                 return side1 * side2
         
-        # Cas général pour les polygones
-        area = 0.0
-        for i in range(n):
-            j = (i + 1) % n
-            area += self.points[i].x * self.points[j].y
-            area -= self.points[j].x * self.points[i].y
-        return abs(area) / 2.0
+        # Cas général pour les polygones (fonctionne en 3D)
+        # Triangulation depuis le premier point et somme des aires
+        total_area = 0.0
+        p0 = self.points[0]
+        
+        for i in range(1, n - 1):
+            p1 = self.points[i]
+            p2 = self.points[i + 1]
+            
+            # Calcul de l'aire du triangle (p0, p1, p2) via produit vectoriel
+            # Vecteurs p0->p1 et p0->p2
+            v1_x = p1.x - p0.x
+            v1_y = p1.y - p0.y
+            v1_z = p1.z - p0.z
+            
+            v2_x = p2.x - p0.x
+            v2_y = p2.y - p0.y
+            v2_z = p2.z - p0.z
+            
+            # Produit vectoriel v1 ^ v2
+            cp_x = v1_y * v2_z - v1_z * v2_y
+            cp_y = v1_z * v2_x - v1_x * v2_z
+            cp_z = v1_x * v2_y - v1_y * v2_x
+            
+            # Norme du produit vectoriel
+            norme = math.sqrt(cp_x**2 + cp_y**2 + cp_z**2)
+            
+            # Aire du triangle
+            total_area += 0.5 * norme
+        
+        return total_area
         
     def _triangle_area(self):
         """
