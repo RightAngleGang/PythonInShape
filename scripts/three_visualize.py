@@ -18,7 +18,7 @@ def _is_port_open(host: str, port: int, timeout: float = 0.25) -> bool:
         return False
 
 
-def show_data(space):
+def show_data(space: Space) -> None:
     """
     Exporte le Space dans three-json-viewer/public/data.json,
     démarre Vite si nécessaire, puis ouvre le navigateur.
