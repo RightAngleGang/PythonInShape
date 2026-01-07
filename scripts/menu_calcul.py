@@ -42,3 +42,17 @@ def get_volume(space: Space):
     area = shape.volume()
     
     print(f"Le volume de la forme '{shape.nom}' est : {area}")
+
+def get_perimeter(space: Space):
+    count = len(space.get_shape_manager().get_shapes())
+    if count == 0:
+        raise ValueError("Aucune forme disponible dans l'espace.")
+    
+    tmpStr = str(input("Choisir une forme : "))
+    shape = space.get_shape_manager().find_shape_by_name(tmpStr)
+    if shape is None:
+        raise ValueError("Forme non trouvée.")
+    
+    perimeter = shape.perimeter()
+    
+    print(f"Le périmètre de la forme '{shape.nom}' est : {perimeter}")
