@@ -63,4 +63,4 @@ def test_get_volume_ok(monkeypatch, capsys):
   get_volume(space)
 
   out = capsys.readouterr().out
-  assert "L'aire de la forme 'C'" in out  # message actuelle (copié/collé)
+  assert "Le volume de la forme 'C'" in out
