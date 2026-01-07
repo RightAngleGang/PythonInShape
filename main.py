@@ -56,6 +56,9 @@ ACTIONS_SHAPE = [
 
 ACTIONS_CALC = [
     ("Calculer la distance entre 2 points", lambda: euclidean_distance(sm)),
+    ("Calculer le périmètre d'une forme 2D", lambda: mc.get_perimeter(sm)),
+    ("Calculer l'aire d'une forme 2D", lambda: mc.get_area(sm)),
+    ("Calculer le volume d'une forme 3D", lambda: mc.get_volume(sm)),
 ]
 
 ACTIONS_DATA = [
