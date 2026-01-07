@@ -9,7 +9,7 @@ from scripts.menu_points import choose_point
 from scripts.utils import get_coords2, get_coords3, clean_coord
 
 def add_cube(space: Space, tmpStr: str) -> Polygon:
-    polygon = Polygon(tmpStr, "Cube")
+    polygon = Polygon(tmpStr)
 
     print("Saisissez le point d'origine du cube (x, y, z)")
     x0, y0, z0 = get_coords3()
@@ -72,7 +72,7 @@ def add_cube(space: Space, tmpStr: str) -> Polygon:
     return polygon
         
 def add_pave_droit(space: Space, tmpStr: str) -> Polygon:
-    polygon = Polygon(tmpStr, "Pavé")
+    polygon = Polygon(tmpStr)
 
     print("Saisissez le point d'origine du pavé (x, y, z)")
     x0, y0, z0 = get_coords3()
@@ -160,7 +160,7 @@ def add_sphere(space: Space, tmpStr: str) -> Sphere:
     return Sphere(tmpStr, centre, radius)
 
 def add_pyramide(space: Space, tmpStr: str) -> Polygon:
-    polygon = Polygon(tmpStr, "Pyramide")
+    polygon = Polygon(tmpStr)
 
     print("Saisissez le point d'origine de la base (x, y, z)")
     x0, y0, z0 = get_coords3()

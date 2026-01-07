@@ -98,7 +98,7 @@ class Space:
                 pts_names = shape_data.get("points", [])
                 points = [point_map[name] for name in pts_names]
                 # ⚠️ adapte la signature de Polygon si besoin
-                shape = Polygon(shape_name, shape_data.get("subtype", "Polygon"), points)
+                shape = Polygon(shape_name, points)
 
             elif shape_type == "Circle":
                 print("Importing Circle:", shape_name)
@@ -130,7 +130,7 @@ class Space:
                     print("Importing Polygon (fallback):", shape_name)
                     pts_names = shape_data.get("points", [])
                     points = [point_map[name] for name in pts_names]
-                    shape = Polygon(shape_name, shape_data.get("subtype", "Polygon"), points)
+                    shape = Polygon(shape_name, points)
                 else:
                     raise ValueError(
                         f"Shape type non géré et sans 'points': type={shape_type}, name={shape_name}"

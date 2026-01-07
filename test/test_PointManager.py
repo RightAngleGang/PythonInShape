@@ -1,32 +1,73 @@
-from scripts.shapes.Point import Point
-from scripts.PointManager import PointManager
+import pytest
 
-def test_add_point():
-    pm = PointManager()
-    pm.add_point(Point("sqduids", 1, 2))
-    assert pm.number_of_points() == 1
-    assert pm.find_point_by_name("sqduids").x == 1
-    assert pm.find_point_by_name("sqduids").y == 2
-    assert f"{pm}" == "[sqduids(1;2)]"
-    
-def test_remove_point():
-    pm = PointManager()
-    pm.add_point(Point("sqduids", 1, 2))
-    pm.remove_point("sqduids")
-    assert pm.number_of_points() == 0
-    assert pm.find_point_by_name("sqduids") is None
-    assert f"{pm}" == "[]"
-    
-def test_multiple_points():
-    pm = PointManager()
-    pm.add_point(Point("point1", 1, 2))
-    pm.add_point(Point("point2", 3, 4))
-    pm.add_point(Point("point3", 5, 6))
-    assert pm.number_of_points() == 3
-    assert f"{pm}" == "[point1(1.0;2.0); point2(3.0;4.0); point3(5.0;6.0)]"
-    
-def test_find_nonexistent_point():
-    pm = PointManager()
-    pm.add_point(Point("existing", 1, 2))
-    assert pm.find_point_by_name("nonexistent") is None
-    
+from scripts.PointManager import PointManager
+from scripts.shapes.Point import Point
+
+
+def test_point_manager_init_empty():
+  pm = PointManager()
+  assert pm.number_of_points() == 0
+  assert pm.get_points() == []
+
+
+def test_point_manager_add_point_and_find():
+  pm = PointManager()
+  p = Point("A", 1, 2, 3)
+  pm.add_point(p)
+
+  assert pm.number_of_points() == 1
+  assert pm.find_point_by_name("A") == p
+  assert pm.find_point_by_name("B") is None
+
+
+def test_point_manager_add_duplicate_name_raises():
+  pm = PointManager()
+  pm.add_point(Point("A", 0, 0))
+  with pytest.raises(ValueError):
+    pm.add_point(Point("A", 1, 1))
+
+
+def test_point_manager_add_name_point_increments_pid():
+  pm = PointManager()
+  name1 = pm.add_name_point(0, 0)
+  name2 = pm.add_name_point(1, 1, 1)
+
+  assert name1 == "P1"
+  assert name2 == "P2"
+  assert pm.number_of_points() == 2
+
+
+def test_point_manager_add_name_point_pid_not_incremented_on_failure(monkeypatch):
+  pm = PointManager()
+
+  # force duplicate by faking find
+  def fake_find(_):
+    return Point("P1", 0, 0)
+
+  monkeypatch.setattr(pm, "find_point_by_name", fake_find)
+
+  with pytest.raises(ValueError):
+    pm.add_name_point(0, 0)
+
+  assert pm.pid == 1
+
+
+def test_point_manager_remove_point():
+  pm = PointManager()
+  p = Point("A", 0, 0)
+  pm.add_point(p)
+  pm.remove_point(p)
+
+  assert pm.number_of_points() == 0
+
+
+def test_point_manager_export_to_json():
+  pm = PointManager()
+  pm.add_point(Point("A", 1, 2))
+  pm.add_point(Point("B", 3, 4, 5))
+
+  data = pm.export_to_json()
+  assert data == [
+    {"name": "A", "x": 1.0, "y": 2.0, "z": 0.0},
+    {"name": "B", "x": 3.0, "y": 4.0, "z": 5.0},
+  ]

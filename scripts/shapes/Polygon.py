@@ -7,7 +7,7 @@ class Polygon(Shape):
     """Ensemble de points formant une forme fermée"""
     points: list[Point]
     
-    def __init__(self, nom: str, type: ShapeType = ShapeType.Polygon, points=None):
+    def __init__(self, nom: str, points=None):
         super().__init__(nom, ShapeType.Polygon)
         if points is None:
             points = []
