@@ -40,13 +40,6 @@ def test_shape_export_to_json_expected_type_string():
   assert j["type"] == "Circle"
 
 
-def test_shape_export_to_json_current_behavior():
-  s = Shape("S", ShapeType.Circle)
-  j = s.export_to_json()
-  assert j["name"] == "S"
-  assert j["type"] == "{self.type}"
-
-
 def test_shape_is_a_direct_type():
   s = Shape("S", ShapeType.Polygon)
   assert s.is_a(ShapeType.Polygon) is True
