@@ -41,4 +41,4 @@ def get_volume(space: Space):
     
     area = shape.volume()
     
-    print(f"L'aire de la forme '{shape.nom}' est : {area}")
+    print(f"Le volume de la forme '{shape.nom}' est : {area}")
